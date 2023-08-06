@@ -1,9 +1,11 @@
-import Image from 'next/image'
+//app/page.tsx
+
 
 export default function Home() {
   return (
-    <main >
-      <h1>HackHub</h1>
-    </main>
+    <>
+      {/**<UserButton afterSignOutUrl="/"/> */}
+      <h1 className="head-text text-left">Home</h1>
+    </>
   )
 }
