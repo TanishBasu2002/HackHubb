@@ -6,7 +6,7 @@ import { twMerge } from "tailwind-merge";
 
 export default function Topbar() {
     return (
-        <nav className={twMerge(`bg-gradient-to-b from-stone-500 to-black-800`,"topbar")}>
+        <nav className={twMerge(`bg-gradient-to-b from-gray-600 via-slate-800 to-black`,"topbar")}>
             <Link href="/" className="flex items-center gap-4">
                 <Image src="/assets/logo.svg" alt="logo" width={28} height={28}/>
                 <p className="text-heading3-bold text-light-1 max-xs:hidden">HackHub</p>

@@ -4,12 +4,13 @@ import { SignOutButton, SignedIn } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter,usePathname } from "next/navigation";
+import { twMerge } from "tailwind-merge";
 
 export default function LeftSidebar() {
     const router = useRouter();
     const pathname= usePathname();
     return (
-        <section className="custom-scrollbar leftsidebar">
+        <section className={twMerge(`bg-gradient-to-b  from-black`,"custom-scrollbar leftsidebar")}>
             <div className="flex w-full flex-1 flex-col gap-6 px-6">
                 {/**maping through index.ts eliments */}
                 {sidebarLinks.map((link)=>{
