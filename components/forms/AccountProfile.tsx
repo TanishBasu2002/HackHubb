@@ -20,6 +20,8 @@ import { ChangeEvent, useState } from "react";
 import { Textarea } from "../ui/textarea";
 import { isBase64Image } from "@/lib/utils";
 import { useUploadThing } from "@/lib/uploadthing";
+import { updateUser } from "@/lib/actions/user.actions";
+import { usePathname, useRouter } from "next/navigation";
 
 interface Props{
   user:{
@@ -36,6 +38,8 @@ interface Props{
 const AccountProfile = ( {user,btnTitle} :Props) => {
   const [files,setFiles]=useState<File[]>([]);
   const {startUpload} = useUploadThing("media");
+  const router = useRouter();
+  const pathname = usePathname();
   const form =useForm({
     resolver: zodResolver(UserValidation),
     defaultValues:{
@@ -74,7 +78,21 @@ const AccountProfile = ( {user,btnTitle} :Props) => {
     }
     // Img Upload End
     // Update User Profile Start
-    
+    await updateUser(
+      {
+        userId:user.id,
+        username:values.username,
+        name:values.name,
+        bio:values.bio,
+        image:values.profile_photo,
+        path:pathname
+      }
+    );
+    if(pathname === '/profile/edit'){
+      router.back();
+    }else{
+      router.push('/');
+    }
     // Update User Profile End
   }
   return (<>
@@ -156,7 +174,7 @@ const AccountProfile = ( {user,btnTitle} :Props) => {
               </FormLabel>
               <FormControl>
                 <Textarea
-                  rows={10}
+                  rows={5}
                   className='account-form_input no-focus'
                   {...field}
                 />
@@ -165,7 +183,7 @@ const AccountProfile = ( {user,btnTitle} :Props) => {
             </FormItem>
           )}
         />
-         <Button type='submit' className='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-pink-500 hover:via-red-500 hover:to-indigo-500'>{btnTitle}</Button>
+         <Button type='submit' className='focus:scale-105 hover:scale-105 rounded-full mt-5 bg-gradient-to-tr from-red-400 via-pink-600 to-purple-700 hover:bg-gradient-to-tr hover:from-purple-700 hover:via-red-600 hover:to-pink-400'>{btnTitle}</Button>
       </form>
     </Form></>
   )
