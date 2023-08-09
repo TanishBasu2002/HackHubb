@@ -26,7 +26,7 @@ export async function createHack({text,author,communityId,path}:Params) {
     }
 };
 
-export async function fetchPosts(pageNumber = 1, pageSize = 20) {
+export async function fetchPosts(pageNumber = 1, pageSize = 200) {
     connectToDB();
   
     // Calculate the number of posts to skip based on the page number and page size.
@@ -60,4 +60,46 @@ export async function fetchPosts(pageNumber = 1, pageSize = 20) {
     const isNext = totalPostsCount > skipAmount + posts.length;
   
     return { posts, isNext };
+  }
+  export async function fetchHackById(hackId: string) {
+    connectToDB();
+  
+    try {
+      const hack = await Hack.findById(hackId)
+        .populate({
+          path: "author",
+          model: User,
+          select: "_id id name image",
+        }) // Populate the author field with _id and username
+        /** .populate({
+          path: "community",
+          model: Community,
+          select: "_id id name image",
+        })*/ // Populate the community field with _id and name
+        .populate({
+          path: "children", // Populate the children field
+          populate: [
+            {
+              path: "author", // Populate the author field within children
+              model: User,
+              select: "_id id name parentId image", // Select only _id and username fields of the author
+            },
+            {
+              path: "children", // Populate the children field within children
+              model: Hack, // The model of the nested children (assuming it's the same "hack" model)
+              populate: {
+                path: "author", // Populate the author field within nested children
+                model: User,
+                select: "_id id name parentId image", // Select only _id and username fields of the author
+              },
+            },
+          ],
+        })
+        .exec();
+  
+      return hack;
+    } catch (err) {
+      console.error("Error while fetching hack:", err);
+      throw new Error("Unable to fetch hack");
+    }
   }
