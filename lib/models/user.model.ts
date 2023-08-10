@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
       hacks: [
         {
           type: mongoose.Schema.Types.ObjectId,
-          ref: "Hacks",
+          ref: "Hack",
         },
       ],
       onboarded: {type: Boolean,default: false,},

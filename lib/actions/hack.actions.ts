@@ -61,6 +61,7 @@ export async function fetchPosts(pageNumber = 1, pageSize = 200) {
   
     return { posts, isNext };
   }
+  //Hack Feching
   export async function fetchHackById(hackId: string) {
     connectToDB();
   
@@ -103,3 +104,42 @@ export async function fetchPosts(pageNumber = 1, pageSize = 200) {
       throw new Error("Unable to fetch hack");
     }
   }
+//Comment
+export async function addCommentToHack(
+  hackId: string,
+  commentText: string,
+  userId: string,
+  path: string
+) {
+  connectToDB();
+
+  try {
+    // Find the original Hack by its ID
+    const originalHack = await Hack.findById(hackId);
+
+    if (!originalHack) {
+      throw new Error("Hack not found");
+    }
+
+    // Create the new comment Hack
+    const commentHack = new Hack({
+      text: commentText,
+      author: userId,
+      parentId: hackId, // Set the parentId to the original Hack's ID
+    });
+
+    // Save the comment Hack to the database
+    const savedCommentHack = await commentHack.save();
+
+    // Add the comment Hack's ID to the original Hack's children array
+    originalHack.children.push(savedCommentHack._id);
+
+    // Save the updated original Hack to the database
+    await originalHack.save();
+
+    revalidatePath(path);
+  } catch (err) {
+    console.error("Error while adding comment:", err);
+    throw new Error("Unable to add comment");
+  }
+}

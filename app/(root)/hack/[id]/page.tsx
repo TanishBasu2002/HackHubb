@@ -1,4 +1,5 @@
 import HackCard from "@/components/cards/HackCard"
+import Comment from "@/components/forms/Comment";
 import { fetchHackById } from "@/lib/actions/hack.actions";
 import { fetchUser } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs";
@@ -21,6 +22,17 @@ const Page = async({params}:{params:{id:string}})=>{
         community={hack.community} createdAt={hack.createdAt} comments ={hack.children}
          />
         </div>
+         <div className="mt-7">
+            <Comment hackId={hack.id} currentUserImg={userInfo.image} currentUserId={JSON.stringify(userInfo._id)}/> 
+         </div>
+         <div className="mt-10">
+            {hack.children.map((childItem:any)=>(
+            <HackCard key={childItem._id} id={childItem._id} currentUserId={user?.id || ""}
+            parentId={childItem.prentId} content={childItem.text} author={childItem.author} 
+            community={childItem.community} createdAt={childItem.createdAt} comments ={childItem.children}
+            isComment /> 
+            ))}
+         </div>
     </section>)
 }
 export default Page
