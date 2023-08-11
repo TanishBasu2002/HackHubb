@@ -1,5 +1,6 @@
+import HacksTab from "@/components/share/HacksTab";
 import ProfileHeader from "@/components/share/ProfileHeader";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { profileTabs } from "@/constants";
 import { fetchUser } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs"
@@ -42,6 +43,11 @@ const Page = async({params}:{params:{id:string}}) => {
               </TabsTrigger>
             ))}
           </TabsList>
+          {profileTabs.map((tab) => (
+            <TabsContent key={`content-${tab.label}`} value={tab.value} className="w-full text-light-1">
+             <HacksTab currentUserId={user.id} accountId={userInfo.id} accountType="User"/>
+            </TabsContent>
+          ))}
         </Tabs>
       </div>
     </section>

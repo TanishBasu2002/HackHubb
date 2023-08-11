@@ -36,14 +36,14 @@ export default function HackCard({
     isComment,
 }:Props){
     return(
-        <article className={`p-7 flex w-full flex-col ${isComment?'px-0 xs:px-7 bg-gradient-to-r from-slate-950 via-black to-black rounded-full':'rounded-xl bg-gradient-to-tr from-slate-950 via-slate-700 to-slate-800'}`}>
+        <article className={`p-7 flex w-full flex-col ${isComment?'px-0 xs:px-7 bg-gradient-to-r mt-2 from-slate-950 via-black to-black rounded-full':'rounded-xl bg-gradient-to-bl from-gray-700 via-gray-800 to-gray-950'}`}>
             <div className="flex items-start justify-between">
                 <div className="flex w-full flex-1 flex-row gap-4">
                     <div className="flex flex-col items-center">
                         <Link href={`/profile/${author.id}`} className="relative h-11 w-11">
                             <Image src={author.image} alt="Profile Image" fill className="cursor-pointer rounded-full"/>
                         </Link>
-                        <div className="thread-card_bar"/>
+                        <div className={!isComment?"thread-card_bar":""}/>
                     </div>
                     <div className="flex w-full flex-col">
                         <Link href={`/profile/${author.id}`} className="w-fit">
