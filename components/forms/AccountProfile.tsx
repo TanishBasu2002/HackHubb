@@ -183,7 +183,7 @@ const AccountProfile = ( {user,btnTitle} :Props) => {
             </FormItem>
           )}
         />
-         <Button type='submit' className='focus:scale-105 hover:scale-105 rounded-full mt-5 bg-gradient-to-tr from-red-400 via-pink-600 to-purple-700 hover:bg-gradient-to-tr hover:from-purple-700 hover:via-red-600 hover:to-pink-400'>{btnTitle}</Button>
+         <Button type='submit' className='card-btn'>{btnTitle}</Button>
       </form>
     </Form></>
   )

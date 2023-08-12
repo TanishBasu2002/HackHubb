@@ -46,8 +46,8 @@
     @apply flex flex-1 items-start justify-start gap-3 xs:items-center;
   }
 
-  .user-card_btn {
-    @apply h-auto min-w-[74px] rounded-lg bg-primary-500 text-[12px] text-light-1 !important;
+  .card-btn {
+    @apply h-auto min-w-[74px] rounded-lg focus:scale-105 hover:scale-105 mt-5 bg-gradient-to-tr from-red-400 via-pink-600 to-purple-700 hover:bg-gradient-to-tr hover:from-purple-700 hover:via-red-600 hover:to-pink-400 text-[12px] text-light-1 !important;
   }
 
   .searchbar {

@@ -66,7 +66,7 @@ export default function Comment({hackId,
             </FormItem>
           )}
         />
-        <Button type="submit" className=" w-40 focus:scale-105 hover:scale-105 rounded-full bg-gradient-to-tr from-red-400 via-pink-600 to-purple-700 hover:bg-gradient-to-tr hover:from-purple-700 hover:via-red-600 hover:to-pink-400">
+        <Button type="submit" className=" w-40 card-btn">
             Reply
         </Button>
         </form>

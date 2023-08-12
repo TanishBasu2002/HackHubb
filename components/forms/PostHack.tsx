@@ -19,6 +19,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { updateUser } from "@/lib/actions/user.actions";
 import { HackValidation } from "@/lib/validations/hack.validation";
 import { createHack } from "@/lib/actions/hack.actions";
+import { Input } from "../ui/input";
 
 export default function PostHack({userId}:{userId:string}) {
     
@@ -55,7 +56,7 @@ export default function PostHack({userId}:{userId:string}) {
               <FormLabel className='mt-10 text-base-semibold text-light-2'>
                 Content
               </FormLabel>
-              <FormControl  className='border border-dark-4 bg-dark-3 text-light-1 no-focus'>
+              <FormControl  className='border border-dark-4 bg-dark-4 text-light-1 no-focus'>
                 <Textarea
                   rows={8}
                   {...field}
@@ -65,7 +66,7 @@ export default function PostHack({userId}:{userId:string}) {
             </FormItem>
           )}
         />
-        <Button type="submit" className=" w-40 focus:scale-105 hover:scale-105 rounded-full mt-5 bg-gradient-to-tr from-red-400 via-pink-600 to-purple-700 hover:bg-gradient-to-tr hover:from-purple-700 hover:via-red-600 hover:to-pink-400">
+        <Button type="submit" className=" w-40 card-btn">
             Post Hack
         </Button>
         </form>

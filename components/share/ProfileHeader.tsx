@@ -19,7 +19,7 @@ const ProfileHeader = ({accountId,
     bio,
     type,}:Props) => {
   return (
-    <div className='flex w-full flex-col justify-start p-7 bg-gradient-to-r from-gray-900 via-gray-950 to-black rounded-2xl'>
+    <div className='flex w-full flex-col justify-start p-7 bg-gradient-to-r from-gray-800 via-gray-950 to-black rounded-2xl'>
     <div className='flex items-center justify-between'>
       <div className='flex items-center gap-3'>
         <div className='relative h-20 w-20 object-cover'>

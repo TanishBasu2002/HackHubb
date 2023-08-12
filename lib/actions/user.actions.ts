@@ -97,6 +97,7 @@ export async function fetchUsers({
   pageSize = 20,
   sortBy = "desc",
 }: {
+  //TODO : tag can be added here for search
   userId: string;
   searchString?: string;
   pageNumber?: number;
@@ -122,6 +123,7 @@ export async function fetchUsers({
       query.$or = [
         { username: { $regex: regex } },
         { name: { $regex: regex } },
+        //TODO : tag can be added here for search
       ];
     }
 

@@ -2,6 +2,7 @@ import { ClerkProvider } from "@clerk/nextjs"
 import { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "../globals.css"
+import { cn } from "@/lib/utils"
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
     return (
      <ClerkProvider>
         <html lang="en">
-            <body className={`${inter.className} bg-dark-1`}>{children}</body>
+            <body className={ cn(`${inter.className}`,`bg-gradient-to-br from-slate-700 via-slate-950 to-black`)}>{children}</body>
         </html>
      </ClerkProvider>
     )
