@@ -15,7 +15,7 @@
 
   /* Activity */
   .activity-card {
-    @apply flex items-center gap-2 rounded-md bg-dark-2 px-7 py-4;
+    @apply flex items-center gap-2 rounded-md bg-gradient-to-r from-slate-800 via-black to-black px-7 py-4;
   }
 
   /* No Result */

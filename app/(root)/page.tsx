@@ -6,13 +6,17 @@ import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
 
-export default async function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | undefined };
+}) {
   const user = await currentUser();
   if (!user) return null;
 
   const userInfo = await fetchUser(user.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
-  const result =await fetchHacks(1,30);
+  const result =await fetchHacks(1,10000);
   return (
     <>
       <h1 className="head-text text-left">Home</h1>

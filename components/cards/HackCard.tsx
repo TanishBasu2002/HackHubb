@@ -64,7 +64,7 @@ export default function HackCard({
                             className="cursor-pointer object-contain"/>
                             </div>
                             {isComment && comments.length > 0 &&(
-                                <Link href={`/hacks/${id}`}>
+                                <Link href={`/hack/${id}`}>
                                     <p className="mt-1 text-subtle-medium text-gray-300">{comments.length} replies</p>
                                 </Link>
                             )}

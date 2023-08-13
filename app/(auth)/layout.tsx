@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 
 export const metadata: Metadata = {
-    title: 'HackHubb',
+    title: 'HackHubb Login',
     description: 'Developer Chat',
   }
   
@@ -20,7 +20,11 @@ export const metadata: Metadata = {
     return (
      <ClerkProvider>
         <html lang="en">
-            <body className={ cn(`${inter.className}`,`bg-gradient-to-br from-slate-700 via-slate-950 to-black`)}>{children}</body>
+            <body className={ cn(`${inter.className}`,`bg-gradient-to-br from-slate-700 via-slate-950 to-black`)}>
+              <div className="w-full flex justify-center items-center min-h-screen">
+              {children}
+              </div>
+            </body>
         </html>
      </ClerkProvider>
     )
