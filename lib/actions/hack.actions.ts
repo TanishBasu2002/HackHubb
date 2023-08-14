@@ -51,11 +51,12 @@ export async function fetchHacks(pageNumber = 1, pageSize = 20) {
 interface Params {
   text: string,
   author: string,
+  image:string | null,
   communityId: string | null,
   path: string,
 }
 
-export async function createHack({ text, author, communityId, path }: Params) {
+export async function createHack({ text,image, author, communityId, path }: Params) {
   try {
     connectToDB();
 
@@ -64,11 +65,16 @@ export async function createHack({ text, author, communityId, path }: Params) {
       { _id: 1 }
     );
 
-    const createdHack = await Hack.create({
+    const createdHack = await Hack.create(image?({
+      text,
+      image,
+      author,
+      community: communityIdObject, // Assign communityId if provided, or leave it null for personal account
+    }):({
       text,
       author,
       community: communityIdObject, // Assign communityId if provided, or leave it null for personal account
-    });
+    }));
 
     // Update User model
     await User.findByIdAndUpdate(author, {

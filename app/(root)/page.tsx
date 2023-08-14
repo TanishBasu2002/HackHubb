@@ -3,7 +3,7 @@ import HackCard from "@/components/cards/HackCard";
 import { fetchHacks } from "@/lib/actions/hack.actions";
 import { fetchUser } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 
 export default async function Home({
@@ -12,8 +12,7 @@ export default async function Home({
   searchParams: { [key: string]: string | undefined };
 }) {
   const user = await currentUser();
-  if (!user) return null;
-
+  if (!user) redirect("/sign-in");
   const userInfo = await fetchUser(user.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
   const result =await fetchHacks(1,10000);
@@ -27,7 +26,7 @@ export default async function Home({
           <>
           {result.hacks.map((hack)=>(
             <HackCard key={hack._id} id={hack._id} currentUserId={user?.id || ""}
-             parentId={hack.prentId} content={hack.text} author={hack.author} 
+             parentId={hack.prentId} content={hack.text} image={hack.image} author={hack.author} 
              community={hack.community} createdAt={hack.createdAt} comments ={hack.children}
             />
           ))}

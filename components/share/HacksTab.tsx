@@ -51,6 +51,7 @@ async function HacksTab({ currentUserId,accountId,accountType}: Props) {
           currentUserId={currentUserId}
           parentId={hack.parentId}  
           content={hack.text}  
+          image={hack.image}
           author={accountType === "User" ? {name: result.name, image: result.image, id: result.id}:{name: hack.author.name, image: hack.author.image, id: hack.author.id}}
           community={hack.community}
           createdAt={hack.createdAt}  

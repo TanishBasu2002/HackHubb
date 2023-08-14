@@ -18,7 +18,7 @@ const Page = async({params}:{params:{id:string}})=>{
     <section className="relative">
         <div>
         <HackCard key={hack._id} id={hack._id} currentUserId={user?.id || ""}
-        parentId={hack.prentId} content={hack.text} author={hack.author} 
+        parentId={hack.prentId} content={hack.text} author={hack.author} image={hack.image}
         community={hack.community} createdAt={hack.createdAt} comments ={hack.children}
          />
         </div>

@@ -32,9 +32,12 @@
     @apply rounded-lg bg-primary-500 px-5 py-1.5 text-small-regular !text-light-1 !important;
   }
 
-  /* thread card  */
+  /* hack card  */
   .thread-card_bar {
     @apply relative mt-2 w-0.5 grow rounded-full bg-slate-400;
+  }
+  .hack-form_image-label {
+    @apply flex h-64 w-96 items-center justify-center rounded-2xl bg-dark-4 !important;
   }
 
   /* User card */
@@ -51,11 +54,11 @@
   }
 
   .searchbar {
-    @apply flex gap-1 rounded-lg bg-dark-3 px-4 py-2;
+    @apply flex gap-1 rounded-lg bg-gradient-to-r from-slate-950 via-black to-black px-4 py-2;
   }
 
   .searchbar_input {
-    @apply border-none bg-dark-3 text-base-regular text-light-4 outline-none !important;
+    @apply border-none bg-transparent text-base-regular text-light-4 outline-none !important;
   }
 
   .topbar {
@@ -157,4 +160,11 @@
 
 .comment-form_btn {
   @apply rounded-3xl bg-primary-500 px-8 py-2 !text-small-regular text-light-1 max-xs:w-full !important;
+}
+
+/*Messenger*/
+html,
+body,
+:root {
+  height: 100%;
 }

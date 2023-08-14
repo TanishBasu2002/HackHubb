@@ -29,7 +29,13 @@ export const sidebarLinks = [
       route: "/profile",
       label: "Profile",
     },
+    {
+      imgURL: "/assets/message.svg",
+      route: "/messenger",
+      label: "Messenger",
+    },
   ];
+
   
   export const profileTabs = [
     { value: "hacks", label: "Hacks", icon: "/assets/reply.svg" },
