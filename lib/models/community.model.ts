@@ -1,33 +1,39 @@
 import mongoose from "mongoose";
-const communitySchema = new mongoose.Schema({
-    text: {
-        type: String,
-        required: true,
-      },
-      author: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: true,
-      },
-      community: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Community",
-      },
-      createdAt: {
-        type: Date,
-        default: Date.now,
-      },
-      parentId: {
-        type: String,
-      },
-      children: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Hack",
-        },
-      ],
-    });
-    
-    const Community = mongoose.models.Community || mongoose.model("Community", communitySchema);
-    
-    export default Community;
+
+const communitieSchema = new mongoose.Schema({
+  id: {
+    type: String,
+    required: true,
+  },
+  username: {
+    type: String,
+    unique: true,
+    required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  image: String,
+  bio: String,
+  createdBy:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'User'
+  },
+  hacks: [  
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Hack", 
+    },
+  ],
+  members:[
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref:'User',
+    }
+  ],
+});
+
+const Community = mongoose.models.Community || mongoose.model("Community", communitieSchema);
+
+export default Community;
