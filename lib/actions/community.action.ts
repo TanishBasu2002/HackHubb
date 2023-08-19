@@ -3,7 +3,7 @@
 import { FilterQuery, SortOrder } from "mongoose";
 
 import Community from "../models/community.model";
-import Hack from "../models/hack.model";
+import Hack from "../models/hack.model"; // Change import to use "Hack" model
 import User from "../models/user.model";
 
 import { connectToDB } from "../mongoose";
@@ -75,8 +75,8 @@ export async function fetchCommunityPosts(id: string) {
     connectToDB();
 
     const communityPosts = await Community.findById(id).populate({
-      path: "hacks",
-      model: Hack,
+      path: "hacks", // Change path to "hacks"
+      model: Hack, // Change model to "Hack"
       populate: [
         {
           path: "author",
@@ -85,7 +85,7 @@ export async function fetchCommunityPosts(id: string) {
         },
         {
           path: "children",
-          model: Hack,
+          model: Hack, // Change model to "Hack"
           populate: {
             path: "author",
             model: User,
@@ -282,7 +282,7 @@ export async function deleteCommunity(communityId: string) {
       throw new Error("Community not found");
     }
 
-    // Delete all Hacks associated with the community
+    // Delete all hacks associated with the community
     await Hack.deleteMany({ community: communityId });
 
     // Find all users who are part of the community

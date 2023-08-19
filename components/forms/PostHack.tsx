@@ -21,12 +21,14 @@ import Image from "next/image";
 import { ChangeEvent, useState } from "react";
 import { isBase64Image } from "@/lib/utils";
 import { useUploadThing } from "@/lib/uploadthing";
+import { useOrganization } from "@clerk/nextjs";
 
 export default function PostHack({ userId }: { userId: string }) {
   const [files, setFiles] = useState<File[]>([]);
   const { startUpload } = useUploadThing("media");
   const router = useRouter();
   const pathname = usePathname();
+  const {organization} = useOrganization();
   const form = useForm({
     resolver: zodResolver(HackValidation),
     defaultValues: {
@@ -76,7 +78,7 @@ export default function PostHack({ userId }: { userId: string }) {
       text: values.hack,
       image: values.image,
       author: userId,
-      communityId: null,
+      communityId: organization? organization.id : null,
       path: pathname,
     });
 

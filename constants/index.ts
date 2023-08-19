@@ -31,8 +31,8 @@ export const sidebarLinks = [
     },
     {
       imgURL: "/assets/message.svg",
-      route: "/messenger",
-      label: "Messenger",
+      route: "/hackchat",
+      label: "HackChat",
     },
   ];
 

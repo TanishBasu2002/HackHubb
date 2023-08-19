@@ -4,7 +4,7 @@ import { FilterQuery, SortOrder } from "mongoose";
 import { revalidatePath } from "next/cache";
 
 import Community from "../models/community.model";
-import Hack from "../models/hack.model";
+import Hack from "../models/hack.model"; // Change import to use "Hack" model
 import User from "../models/user.model";
 
 import { connectToDB } from "../mongoose";
@@ -72,6 +72,11 @@ export async function fetchUserPosts(userId: string) {
       model: Hack,
       populate: [
         {
+          path: "community",
+          model: Community,
+          select: "name id image _id", // Select the "name" and "_id" fields from the "Community" model
+        },
+        {
           path: "children",
           model: Hack,
           populate: {
@@ -89,7 +94,6 @@ export async function fetchUserPosts(userId: string) {
   }
 }
 
-// Almost similar to Hack (search + pagination) and Community (search + pagination)
 export async function fetchUsers({
   userId,
   searchString = "",
@@ -97,7 +101,6 @@ export async function fetchUsers({
   pageSize = 20,
   sortBy = "desc",
 }: {
-  //TODO : tag can be added here for search
   userId: string;
   searchString?: string;
   pageNumber?: number;
@@ -123,7 +126,6 @@ export async function fetchUsers({
       query.$or = [
         { username: { $regex: regex } },
         { name: { $regex: regex } },
-        //TODO : tag can be added here for search
       ];
     }
 
@@ -149,7 +151,7 @@ export async function fetchUsers({
     throw error;
   }
 }
-//Getting all the activities
+
 export async function getActivity(userId: string) {
   try {
     connectToDB();
