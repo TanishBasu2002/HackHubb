@@ -62,7 +62,10 @@ export default function HackCard({
                         {image && (<>
                             <p className="mt-2 text-small-regular font-semibold py-2 text-light-1">{content}</p>
                             <Link href={`/hack/${id}`} className="pt-8 sm:pt-0">
-                                <Image src={image} width={240} height={180} className="object-fill h-[100%] w-[90%] sm:object-cover sm:h-full sm:w-full rounded-2xl" alt="project image" />
+                                <Image src={image} width={100} height={70}
+                                 className="object-fill h-[90%] w-[90%] sm:object-cover sm:h-full sm:w-full rounded-2xl"
+                                 alt="project image"
+                                 />
                             </Link></>
                         )}
                         <div className={`mt-5 flex flex-col gap-3 `}>
@@ -85,8 +88,10 @@ export default function HackCard({
                     </div>
                 </div>
                 {/**TODO: Delete a hack and add images of comment users */}
-                {/**Community Configaration */}
-                {!isComment && community && (
+                
+            </div>
+            {/**Community Configaration */}
+            {!isComment && community && (
                     <Link
                     href={`/communities/${community.id}`}
                     className='mt-5 flex items-center'
@@ -102,7 +107,6 @@ export default function HackCard({
                     />
                     </Link>
                 )}
-            </div>
         </article>
     )
 }

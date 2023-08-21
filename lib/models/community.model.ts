@@ -18,17 +18,18 @@ const communitySchema = new mongoose.Schema({
   bio: String,
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: "User"
   },
   hacks: [ 
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Hack", }
+      ref: "Hack" 
+    }
   ],
   members: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: "User"
     },
   ],
 });
