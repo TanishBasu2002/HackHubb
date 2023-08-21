@@ -112,9 +112,9 @@ export default function PostHack({ userId }: { userId: string }) {
           name="image"
           render={({ field }) => (
             <FormItem className="flex items-center gap-4">
-              <FormLabel className="hack-form_image-label">
+              <FormLabel className="px-4">
                 {field.value?(
-                  <Image src={field.value} alt="Hack Photo" width={180} height={160} priority className=" object-contain"/>
+                  <Image src={field.value} alt="Hack Photo" width={180} height={160} priority className="object-contain"/>
                 ):(
                   <Image src="/assets/profile.svg" alt="Hack Photo" width={24} height={24} priority className="object-contain"/>
                 )}

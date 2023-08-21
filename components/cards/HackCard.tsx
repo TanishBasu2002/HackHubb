@@ -46,21 +46,24 @@ export default function HackCard({
                             <Image src={author.image} alt="Profile Image" fill className="cursor-pointer h-72 w-96 rounded-full"/>
                         </Link>
                         <div className={!isComment?"thread-card_bar":""}/>
-                    </div>
-                    <div className="flex w-full flex-col">
+                        </div>
+                        <div className="flex w-full flex-col">
                         <Link href={`/profile/${author.id}`} className="w-fit">
                             <h4 className="cursor-pointer text-base-semibold text-light-1">
                                 {author.name}
                             </h4>
                         </Link>
                         {/**No Image Content */}
-                            {!image&&(
-                                <p className="mt-1 text-small-regular text-light-2">{content}</p>)}
+                        {!image&&(
+                            <p className="mt-1 text-small-regular font-semibold text-light-2">{content}</p>)
+                        }
                         {/* Project Image */}
-                        {image && (
-                            <Link href={`/hack/${id}`} className="pt-8 sm:pt-2">
-                                <Image src={image} width={240} height={180} className="object-fill h-[100%] w-[90%] sm:object-cover sm:h-full sm:w-[90%] rounded-2xl" alt="project image" />
-                            </Link>
+                        {/**Content */}
+                        {image && (<>
+                            <p className="mt-2 text-small-regular font-semibold py-2 text-light-1">{content}</p>
+                            <Link href={`/hack/${id}`} className="pt-8 sm:pt-0">
+                                <Image src={image} width={240} height={180} className="object-fill h-[100%] w-[90%] sm:object-cover sm:h-full sm:w-full rounded-2xl" alt="project image" />
+                            </Link></>
                         )}
                         <div className={`mt-5 flex flex-col gap-3 `}>
                             <div className="flex gap-3.5">
@@ -79,8 +82,6 @@ export default function HackCard({
                                 </Link>
                             )}
                         </div>
-                        {/**Content */}{image&&(
-                        <p className="mt-2 text-base-semibold text-light-1">{content}</p>)}
                     </div>
                 </div>
                 {/**TODO: Delete a hack and add images of comment users */}

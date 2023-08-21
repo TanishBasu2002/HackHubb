@@ -12,7 +12,6 @@
     "@clerk/nextjs": "^4.23.2",
     "@clerk/themes": "^1.7.5",
     "@hookform/resolvers": "^3.2.0",
-    "@prisma/client": "^5.1.1",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tabs": "^1.0.4",
@@ -21,7 +20,6 @@
     "@types/react-dom": "18.2.7",
     "@uploadthing/react": "^5.2.0",
     "autoprefixer": "10.4.14",
-    "bcrypt": "^5.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "lucide-react": "^0.264.0",
@@ -41,7 +39,6 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "@types/bcrypt": "^5.0.0",
-    "prisma": "^5.1.1"
+    "@types/bcrypt": "^5.0.0"
   }
 }
