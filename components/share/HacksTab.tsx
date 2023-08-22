@@ -8,7 +8,7 @@ interface Result {
   name: string;
   image: string;
   id: string;
-  hacks: {  // Replaced "Hackss" with "hacks"
+  hacks: { 
     _id: string;
     text: string;
     parentId: string | null;
@@ -38,8 +38,8 @@ interface Props {
 }
 
 async function HacksTab({ currentUserId,accountId,accountType}: Props) {
-  let result:any;
-  if (accountType=='Community') {
+  let result:Result;
+  if (accountType ==='Community') {
     result= await fetchCommunityPosts(accountId);
   } else {
     result= await fetchUserPosts(accountId);
@@ -50,20 +50,30 @@ async function HacksTab({ currentUserId,accountId,accountType}: Props) {
 
   return (
     <section className='mt-9 flex flex-col gap-10'>
-      {result.hacks.length ===0 ?(
-          <p className="no-result">User has not posted yet. </p>
-        ):(
           <>
-          {result.hacks.map((hack:any)=>(
-            <HackCard key={hack._id} id={hack._id} currentUserId={currentUserId}
-             parentId={hack.prentId} content={hack.text} image={hack.image} 
-             author={accountType === "User" ? {name: result.name, image: result.image, id: result.id}:{name: hack.author.name, image: hack.author.image, id: hack.author.id}}
-             community={hack.community} createdAt={hack.createdAt} comments ={hack.children}
-            />
+          {result.hacks.map((hack)=>(
+            <HackCard
+            key={hack._id} id={hack._id} currentUserId={currentUserId} parentId={hack.parentId} content={hack.text}
+            author={
+              accountType === "User"
+                ? { name: result.name, image: result.image, id: result.id }
+                : {
+                    name: hack.author.name,
+                    image: hack.author.image,
+                    id: hack.author.id,
+                  }
+            }
+            community={
+              accountType === "Community"
+                ? { name: result.name, id: result.id, image: result.image }
+                : hack.community
+            }
+            createdAt={hack.createdAt}
+            comments={hack.children}
+          />
+  
           ))}
           </>
-        )
-        } 
     </section>
   );
 }
