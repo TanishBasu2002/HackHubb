@@ -12,6 +12,7 @@ interface Result {
     _id: string;
     text: string;
     parentId: string | null;
+    image:string;
     author: {
       name: string;
       image: string;
@@ -54,6 +55,7 @@ async function HacksTab({ currentUserId,accountId,accountType}: Props) {
           {result.hacks.map((hack)=>(
             <HackCard
             key={hack._id} id={hack._id} currentUserId={currentUserId} parentId={hack.parentId} content={hack.text}
+            image={hack.image}
             author={
               accountType === "User"
                 ? { name: result.name, image: result.image, id: result.id }
