@@ -10,7 +10,7 @@ const Page = async({params}:{params:{id:string}}) => {
     if(!userInfo?.onboarded) redirect('/onboarding')
     return(
         <div>
-            <h1 className="text-light-2 font-bold">HackStore</h1>
+            <h1 className="head-text text-left-">HackStore</h1>
         </div>
     )
 }

@@ -86,6 +86,7 @@ export default function PostHack({ userId }: { userId: string }) {
   
       router.push("/");
       toast.success("Posted");
+      router.refresh();
     } catch (error) {
       toast.error('Something went wrong');
     }
