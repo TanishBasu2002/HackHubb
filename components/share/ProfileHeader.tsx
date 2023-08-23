@@ -18,7 +18,7 @@ const ProfileHeader = ({accountId,
     imgUrl,
     bio,
     type,}:Props) => {
-  return (
+  return (<>
     <div className='flex w-full flex-col justify-start p-7 bg-gradient-to-r from-gray-800 via-gray-950 to-black rounded-2xl'>
     <div className='flex items-center justify-between'>
       <div className='flex items-center gap-3'>
@@ -37,7 +37,9 @@ const ProfileHeader = ({accountId,
         </div></div>
         {/**Community */}
         <p className="mt-6 max-w-lg text-light-2">{bio}</p>
+       
     </div>
+    </>
   )
 }
 

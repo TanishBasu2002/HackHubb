@@ -34,16 +34,11 @@ const Page = async({params}:{params:{id:string}}) => {
                   className='object-contain'
                 />
                 <p className='max-sm:hidden'>{tab.label}</p>
-
-                {tab.label === "Hacks" && (
-                  <p className='ml-1 rounded-sm bg-light-4 px-2 py-1 !text-tiny-medium text-light-2'>
-                    {userInfo.hacks.length}
-                  </p>
-                )}
               </TabsTrigger>
             ))}
           </TabsList>
-          {profileTabs.map((tab) => (
+          {profileTabs.map((tab) =>(
+            
             <TabsContent key={`content-${tab.label}`} value={tab.value} className="w-full text-light-1">
              <HacksTab currentUserId={user.id} accountId={userInfo.id} accountType="User"/>
             </TabsContent>
