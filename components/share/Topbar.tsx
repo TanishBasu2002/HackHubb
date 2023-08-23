@@ -1,32 +1,46 @@
+"use client";
 import { OrganizationSwitcher, SignOutButton, SignedIn } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import Image from "next/image";
 import Link from "next/link";
+
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { usePathname } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 
 export default function Topbar() {
+    const pathname= usePathname();
+    const isActive = (pathname ==="/activity");
+    const Icon = isActive ? AiFillHeart : AiOutlineHeart;
     return (
         <nav className={twMerge(`bg-gradient-to-b from-slate-500 via-slate-800 to-black`,"topbar")}>
             <Link href="/" className="flex items-center gap-4">
                 <Image src="/assets/logo.svg" alt="logo" width={28} height={28}/>
-                <p className="text-heading3-bold text-light-1 max-xs:hidden">HackHubb</p>
+                <p className="text-heading3-bold md:block lg:block hidden text-light-1 max-xs:hidden">HackHubb</p>
             </Link> 
             <div className="flex items-center gap-1">
-                <div className="block md:hidden">
-                    <SignedIn>
-                        <SignOutButton>
-                            <div className="flex cursor-pointer">
-                                <Image src="/assets/logout.svg" alt="logout" width={40} height={40}/>
-                            </div>
-                        </SignOutButton>
-                    </SignedIn>
+            <div className="block">
+                <Link href="/activity">
+                <div className="block cursor-pointer text-white">
+                <Icon color={isActive ? 'white' : 'white'} size={25} />
                 </div>
+                </Link>
+            </div>
                 <OrganizationSwitcher appearance={
                    { baseTheme:dark,
                     elements:{
                         organizationSwitcherTrigger:"py-2 px-4"
                     }}
                 }/>
+            <div className="md:hidden">
+                    <SignedIn>
+                        <SignOutButton>
+                            <div className="flex cursor-pointer">
+                                <Image src="/assets/logout.svg" alt="logout" width={22} height={22}/>
+                            </div>
+                        </SignOutButton>
+                    </SignedIn>
+                </div>
             </div>
         </nav>
     )
