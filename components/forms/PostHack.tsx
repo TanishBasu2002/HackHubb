@@ -22,6 +22,7 @@ import { ChangeEvent, useState } from "react";
 import { isBase64Image } from "@/lib/utils";
 import { useUploadThing } from "@/lib/uploadthing";
 import { useOrganization } from "@clerk/nextjs";
+import toast from "react-hot-toast";
 
 export default function PostHack({ userId }: { userId: string }) {
   const [files, setFiles] = useState<File[]>([]);
@@ -61,28 +62,33 @@ export default function PostHack({ userId }: { userId: string }) {
   };
 
   const onSubmit = async (values: z.infer<typeof HackValidation>) => {
-    let imageToUse = values.image; // Initialize with the provided image
+    try {
+      let imageToUse = values.image; // Initialize with the provided image
   
-    if (values.image) {
-      const blob = values.image;
-      const hasImageChanged = isBase64Image(blob);
-  
-      if (hasImageChanged) {
-        const imgRes = await startUpload(files);
-        if (imgRes && imgRes[0].fileUrl) {
-          imageToUse = imgRes[0].fileUrl; // Use the uploaded image URL
+      if (values.image) {
+        const blob = values.image;
+        const hasImageChanged = isBase64Image(blob);
+    
+        if (hasImageChanged) {
+          const imgRes = await startUpload(files);
+          if (imgRes && imgRes[0].fileUrl) {
+            imageToUse = imgRes[0].fileUrl; // Use the uploaded image URL
+          }
         }
       }
+      await createHack({
+        text: values.hack,
+        image: values.image,
+        author: userId,
+        communityId: organization? organization.id : null,
+        path: pathname,
+      });
+  
+      router.push("/");
+      toast.success("Posted");
+    } catch (error) {
+      toast.error('Something went wrong');
     }
-    await createHack({
-      text: values.hack,
-      image: values.image,
-      author: userId,
-      communityId: organization? organization.id : null,
-      path: pathname,
-    });
-
-    router.push("/");
   };
     return(
         <>

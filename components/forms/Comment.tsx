@@ -18,6 +18,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { CommentValidation } from "@/lib/validations/hack.validation";
 import { addCommentToHack, createHack } from "@/lib/actions/hack.actions";
 import Image from "next/image";
+import toast from "react-hot-toast";
 
 interface Props{
     hackId:string,
@@ -43,6 +44,7 @@ export default function Comment({hackId,
         JSON.parse(currentUserId),
         pathname); 
       form.reset();
+      toast.success("Commented");
     };
 
     return(
