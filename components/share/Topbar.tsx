@@ -1,5 +1,5 @@
 "use client";
-import { OrganizationSwitcher, SignOutButton, SignedIn } from "@clerk/nextjs";
+import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import Image from "next/image";
 import Link from "next/link";
@@ -33,13 +33,10 @@ export default function Topbar() {
                     }}
                 }/>
             <div className="md:hidden">
-                    <SignedIn>
-                        <SignOutButton>
                             <div className="flex cursor-pointer">
-                                <Image src="/assets/logout.svg" alt="logout" width={22} height={22}/>
+                            <UserButton afterSignOutUrl="/sign-in" appearance={{ baseTheme:dark,}} />
                             </div>
-                        </SignOutButton>
-                    </SignedIn>
+                       
                 </div>
             </div>
         </nav>
