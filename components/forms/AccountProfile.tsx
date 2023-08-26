@@ -22,6 +22,7 @@ import { isBase64Image } from "@/lib/utils";
 import { useUploadThing } from "@/lib/uploadthing";
 import { updateUser } from "@/lib/actions/user.actions";
 import { usePathname, useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
 
 interface Props{
   user:{
@@ -40,6 +41,7 @@ const AccountProfile = ( {user,btnTitle} :Props) => {
   const {startUpload} = useUploadThing("media");
   const router = useRouter();
   const pathname = usePathname();
+  const [loading, setLoading] = useState(false);
   const form =useForm({
     resolver: zodResolver(UserValidation),
     defaultValues:{
@@ -68,6 +70,8 @@ const AccountProfile = ( {user,btnTitle} :Props) => {
     }
   };
   async function onSubmit(values:z.infer<typeof UserValidation>) {
+    try {
+    setLoading(true);
     const blob = values.profile_photo;
     const hasImageChanged = isBase64Image(blob);
     if (hasImageChanged) {
@@ -94,6 +98,11 @@ const AccountProfile = ( {user,btnTitle} :Props) => {
       router.push('/');
     }
     // Update User Profile End
+    } catch (error:any) {
+      toast.error(error);
+    }finally{
+      setLoading(false);
+    }
   }
   return (<>
     {/**Usign Pre-Defile form from shadcn ui */}
@@ -183,7 +192,7 @@ const AccountProfile = ( {user,btnTitle} :Props) => {
             </FormItem>
           )}
         />
-         <Button type='submit' className='card-btn'>{btnTitle}</Button>
+         <Button disabled={loading} type='submit' className='card-btn'>{btnTitle}</Button>
       </form>
     </Form></>
   )

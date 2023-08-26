@@ -19,6 +19,7 @@ import { CommentValidation } from "@/lib/validations/hack.validation";
 import { addCommentToHack, createHack } from "@/lib/actions/hack.actions";
 import Image from "next/image";
 import toast from "react-hot-toast";
+import { useState } from "react";
 
 interface Props{
     hackId:string,
@@ -37,7 +38,10 @@ export default function Comment({hackId,
         }
     });
     //Submit action 
+    const [loading, setLoading] = useState(false);
     const onSubmit =async(values:z.infer<typeof CommentValidation>)=>{
+     try {
+      setLoading(true);
       await addCommentToHack(
         hackId,
         values.hack,
@@ -45,6 +49,11 @@ export default function Comment({hackId,
         pathname); 
       form.reset();
       toast.success("Commented");
+     } catch (error:any) {
+      toast.error(error);
+     }finally{
+      setLoading(false);
+     }
     };
 
     return(
@@ -68,7 +77,7 @@ export default function Comment({hackId,
             </FormItem>
           )}
         />
-        <Button type="submit" className=" w-40 card-btn">
+        <Button disabled={loading} type="submit" className=" w-40 card-btn">
             Reply
         </Button>
         </form>

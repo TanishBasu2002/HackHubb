@@ -60,9 +60,10 @@ export default function PostHack({ userId }: { userId: string }) {
       fileReader.readAsDataURL(file);
     }
   };
-
+  const [loading, setLoading] = useState(false);
   const onSubmit = async (values: z.infer<typeof HackValidation>) => {
     try {
+      setLoading(true);
       let imageToUse = values.image; // Initialize with the provided image
   
       if (values.image) {
@@ -89,6 +90,8 @@ export default function PostHack({ userId }: { userId: string }) {
       router.refresh();
     } catch (error) {
       toast.error('Something went wrong');
+    }finally{
+      setLoading(false);
     }
   };
     return(
@@ -138,7 +141,7 @@ export default function PostHack({ userId }: { userId: string }) {
             </FormItem>
           )}
         />
-        <Button type="submit" className=" w-40 card-btn">
+        <Button disabled={loading} type="submit" className=" w-40 card-btn">
             Post Hack
         </Button>
         </form>
