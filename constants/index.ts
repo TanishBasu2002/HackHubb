@@ -25,6 +25,11 @@ export const sidebarLinks = [
     label: "HackStore",
   },
   {
+    imgURL: "/assets/message.svg",
+    route: "/hackchat",
+    label: "HackChat",
+  },
+  {
     imgURL: "/assets/user.svg",
     route: "/profile",
     label: "Profile",
