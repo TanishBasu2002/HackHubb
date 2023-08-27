@@ -18,7 +18,7 @@ import { HackValidation } from "@/lib/validations/hack.validation";
 import { createHack } from "@/lib/actions/hack.actions";
 import { Input } from "../ui/input";
 import Image from "next/image";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { isBase64Image } from "@/lib/utils";
 import { useUploadThing } from "@/lib/uploadthing";
 import { useOrganization } from "@clerk/nextjs";
@@ -94,6 +94,14 @@ export default function PostHack({ userId }: { userId: string }) {
       setLoading(false);
     }
   };
+  const [isMounted,setIsMounted]=useState(false);
+  useEffect(()=>{
+      setIsMounted(true);
+  },[]);
+  
+    if (!isMounted) {
+        return null;
+    }
     return(
         <>
         {/**Usign Pre-Defile form from shadcn ui */}

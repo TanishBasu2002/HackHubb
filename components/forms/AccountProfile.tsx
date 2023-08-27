@@ -16,7 +16,7 @@ import {zodResolver} from "@hookform/resolvers/zod"
 import { UserValidation } from "@/lib/validations/user";
 import * as z from "zod"
 import Image from "next/image";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { Textarea } from "../ui/textarea";
 import { isBase64Image } from "@/lib/utils";
 import { useUploadThing } from "@/lib/uploadthing";
@@ -104,6 +104,14 @@ const AccountProfile = ( {user,btnTitle} :Props) => {
       setLoading(false);
     }
   }
+  const [isMounted,setIsMounted]=useState(false);
+  useEffect(()=>{
+      setIsMounted(true);
+  },[]);
+  
+    if (!isMounted) {
+        return null;
+    }
   return (<>
     {/**Usign Pre-Defile form from shadcn ui */}
     <Form {...form}>

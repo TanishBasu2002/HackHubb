@@ -19,10 +19,10 @@ export default async function Page() {
     image: userInfo? userInfo?.image : user?.imageUrl,
   }
   return (
-    <main className="mx-auto flex max-w-3xl flex-col justify-start px-10 py-20">
+    <main className="mx-auto flex max-w-3xl flex-col justify-start px-10 py-5 min-h-screen">
       <h1 className="head-text">Onboarding</h1>
-      <p className="mt-3 text-base-regular text-light-2">Complete your Profile to use HackHubb</p>
-      <section className="mt-9 bg-gradient-to-b from-slate-600 via-slate-800 to-slate-950 rounded-xl p-10">
+      
+      <section className="mt-3 bg-gradient-to-b from-slate-600 via-slate-800 to-slate-950 rounded-xl p-10">
         <AccountProfile user={userData} btnTitle="Continue"/>
       </section>
     </main>

@@ -19,7 +19,7 @@ import { CommentValidation } from "@/lib/validations/hack.validation";
 import { addCommentToHack, createHack } from "@/lib/actions/hack.actions";
 import Image from "next/image";
 import toast from "react-hot-toast";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Props{
     hackId:string,
@@ -55,7 +55,14 @@ export default function Comment({hackId,
       setLoading(false);
      }
     };
-
+    const [isMounted,setIsMounted]=useState(false);
+    useEffect(()=>{
+        setIsMounted(true);
+    },[]);
+    
+      if (!isMounted) {
+          return null;
+      }
     return(
         <>
         {/**Usign Pre-Defile form from shadcn ui */}

@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { deleteHack } from "@/lib/actions/hack.actions";
 import toast from "react-hot-toast";
 import { useAuth } from "@clerk/nextjs";
+import { useEffect, useState } from "react";
 
 interface Props {
   hackId: string;
@@ -26,7 +27,14 @@ function DeleteHack({
   const router = useRouter();
   const {userId} = useAuth();
   if (currentUserId !== authorId || pathname === "/") return null;
-
+  const [isMounted,setIsMounted]=useState(false);
+  useEffect(()=>{
+      setIsMounted(true);
+  },[]);
+  
+    if (!isMounted) {
+        return null;
+    }
   return (
     <Image
       src='/assets/delete.svg'
@@ -38,7 +46,7 @@ function DeleteHack({
        try {
         await deleteHack(JSON.parse(hackId), pathname);
         if (!parentId || !isComment) {
-            if (pathname === `/profile/${userId}`) {
+            if (pathname === `/profile/${userId}` || pathname===`/hack/${hackId}`) {
               router.refresh();
             } else {
               router.push("/");
