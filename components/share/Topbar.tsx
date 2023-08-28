@@ -7,11 +7,20 @@ import Link from "next/link";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { usePathname } from "next/navigation";
 import { twMerge } from "tailwind-merge";
+import { useEffect, useState } from "react";
 
 export default function Topbar() {
     const pathname= usePathname();
     const isActive = (pathname ==="/activity");
     const Icon = isActive ? AiFillHeart : AiOutlineHeart;
+    const [isMounted,setIsMounted]=useState(false);
+    useEffect(()=>{
+        setIsMounted(true);
+    },[]);
+    
+      if (!isMounted) {
+          return null;
+      }
     return (
         <nav className={twMerge(`bg-gradient-to-b from-slate-500 via-slate-800 to-black`,"topbar")}>
             <Link href="/" className="flex items-center gap-4">

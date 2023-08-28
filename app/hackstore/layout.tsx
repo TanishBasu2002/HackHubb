@@ -11,7 +11,7 @@ import { ToasterProvider } from '@/lib/providers/toaster'
 const inter = Open_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'HackHubb',
+  title: 'HackStore',
   description: 'Developer Chat',
 }
 
@@ -29,11 +29,10 @@ export default function RootLayout({
             <main className='flex flex-row'>
               <LeftSidebar />
               <section className="main-container">
-                <div className="w-full max-w-2xl">
+                <div className="w-full max-w-4xl">
                   {children}
                 </div>
               </section>
-              <RightSidebar />
             </main>
           <Bottombar />
           </body>

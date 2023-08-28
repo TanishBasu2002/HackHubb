@@ -8,8 +8,14 @@ import { Form,FormControl,FormField,FormItem,FormLabel,FormMessage } from "../ui
 import { Input } from "../ui/input"; 
 import { Button } from "../ui/button";
 import { useEffect, useState } from "react";
+import { FileUpload } from "./tools/file-upload";
+import toast from "react-hot-toast";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+
 
 export const InitialModel = ()=>{
+    const router = useRouter();
     const [isMounted,setIsMounted]=useState(false);
     useEffect(()=>{
         setIsMounted(true);
@@ -23,7 +29,16 @@ export const InitialModel = ()=>{
     });
     const isLoading =form.formState.isSubmitting;
     const onSubmit = async (values:z.infer<typeof ServerDialogValidation>)=>{
-        console.log(values);
+        try {
+            await axios.post("/api/servers",values);
+
+            form.reset();
+            toast.success("ChatRoom Created");
+            router.refresh();
+            window.location.reload();
+        } catch (error:any) {
+            toast.error(error);
+        }
         
     }
     if (!isMounted) {
@@ -34,7 +49,7 @@ export const InitialModel = ()=>{
             <DialogContent className="bg-gradient-to-tr from-slate-800 via-gray-600 to-slate-800 text-white p-0 overflow-hidden border-0">
                 <DialogHeader className="pt-8 px-6">
                     <DialogTitle className="text-2xl text-center font-bold">
-                        Customize your server
+                        Customize your ChatRoom
                     </DialogTitle>
                     <DialogDescription className="text-center text-slate-400">
                         Give your Chat a personality with a name and image.
@@ -44,7 +59,20 @@ export const InitialModel = ()=>{
                     <form onSubmit={form.handleSubmit(onSubmit)}>
                         <div className="space-y-8 px-6">
                             <div className="flex items-center justify-center text-center">
-                                Image
+                                <FormField
+                                    control={form.control}
+                                    name="imageUrl"
+                                    render={({field})=>(
+                                        <FormItem>
+                                            <FormControl>
+                                            <FileUpload 
+                                                endpoint="chatImage"
+                                                value={field.value}
+                                                onChange={field.onChange}/>
+                                            </FormControl>
+                                        </FormItem>
+                                    )}
+                                />
                             </div>
                             <FormField
                                 control={form.control}

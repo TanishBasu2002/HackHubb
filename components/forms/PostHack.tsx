@@ -72,8 +72,8 @@ export default function PostHack({ userId }: { userId: string }) {
     
         if (hasImageChanged) {
           const imgRes = await startUpload(files);
-          if (imgRes && imgRes[0].fileUrl) {
-            imageToUse = imgRes[0].fileUrl; // Use the uploaded image URL
+          if (imgRes && imgRes[0].url) {
+            imageToUse = imgRes[0].url; // Use the uploaded image URL
           }
         }
       }

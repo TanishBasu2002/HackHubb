@@ -4,11 +4,19 @@ import { useAuth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { twMerge } from "tailwind-merge";
+import { useEffect, useState } from "react";
 
 export default function Bottombar() {
     const pathname =usePathname();
     const {userId} = useAuth();
+    const [isMounted,setIsMounted]=useState(false);
+    useEffect(()=>{
+        setIsMounted(true);
+    },[]);
+    
+      if (!isMounted) {
+          return null;
+      }
     return (
         <section className="bottombar">
             <div className="bottombar_container">

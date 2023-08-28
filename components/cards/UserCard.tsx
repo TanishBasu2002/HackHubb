@@ -10,11 +10,13 @@ interface UserCardProps {
 }
 
 const UserCard = ({id,name,username,imgUrl,personType,}:UserCardProps) => {
+    const isCommunity = personType === "Community";
+
     return (
-        <Link href={`/profile/${id}`}>
+        <Link href={isCommunity?`/communities/${id}`:`/profile/${id}`}>
         <article className="user-card">
         <div className="user-card_avatar">
-        <Image src={imgUrl} alt="profile picture" className="rounded-full" width={48} height={48} />
+        <Image src={imgUrl} alt="profile picture" className="rounded-full object-contain" width={48} height={48} />
             <div className="flex-1 text-ellipsis">
             <h4 className="text-base-semibold text-light-1">{name}</h4>
             <p className="text-small-medium text-gray-1">@{username}</p>
