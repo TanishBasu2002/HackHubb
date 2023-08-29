@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 "use client";
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
@@ -6,8 +7,8 @@ import Link from "next/link";
 
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { usePathname } from "next/navigation";
-import { twMerge } from "tailwind-merge";
 import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 
 export default function Topbar() {
     const pathname= usePathname();
@@ -22,7 +23,7 @@ export default function Topbar() {
           return null;
       }
     return (
-        <nav className={twMerge(`bg-gradient-to-b from-slate-500 via-slate-800 to-black`,"topbar")}>
+        <nav className={cn(`bg-gradient-to-b from-slate-500 via-slate-800 to-black`,"topbar")}>
             <Link href="/" className="flex items-center gap-4">
                 <Image src="/assets/logo.svg" alt="logo" width={28} height={28}/>
                 <p className="text-heading3-bold md:block lg:block hidden text-light-1 max-xs:hidden">HackHubb</p>

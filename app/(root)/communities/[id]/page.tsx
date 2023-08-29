@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/react-in-jsx-scope */
 import UserCard from "@/components/cards/UserCard";
 import HacksTab from "@/components/share/HacksTab";
 import ProfileHeader from "@/components/share/ProfileHeader";
@@ -47,7 +49,6 @@ const Page = async({params}:{params:{id:string}}) => {
           </TabsList>
 
           <TabsContent value='hacks' className='w-full text-light-1'>
-            {/* @ts-ignore */}
             <HacksTab
               currentUserId={user.id}
               accountId={communityDetails._id}

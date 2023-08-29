@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { InitialModel } from "@/components/chat-models/initial-model";
 import { initialProfile } from "@/lib/chat/initial-profile"
 import { db } from "@/lib/db"
@@ -15,7 +16,7 @@ const SetupPage = async() => {
     });
 
     if(server){
-        return redirect(`/servers/${server.id}`);
+        return redirect(`/hackchat/servers/${server.id}`);
     }
   return (
 

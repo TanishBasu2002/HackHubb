@@ -1,14 +1,15 @@
+/* eslint-disable react/react-in-jsx-scope */
 import UserCard from "@/components/cards/UserCard";
 import Pagination from "@/components/share/Pagination";
 import Searchbar from "@/components/share/SearchBar";
 import { fetchUser, fetchUsers } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs"
 import { redirect } from "next/navigation";
-async function Page({
+const Page = async ({
   searchParams,
 }: {
   searchParams: { [key: string]: string | undefined };
-}) {
+}) =>  {
   const user = await currentUser();
   if (!user) return null;
 
@@ -31,7 +32,7 @@ async function Page({
       <div className='mt-14 flex flex-col gap-9'>
         {result.users.length === 0 ? (
           <p className='no-result'>No Result</p>
-        ) : (
+        ):(
           <>
             {result.users.map((person) => (
               <UserCard
