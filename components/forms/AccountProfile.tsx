@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 "use client"
 
 import { useForm } from "react-hook-form";
@@ -5,7 +6,6 @@ import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -98,6 +98,7 @@ const AccountProfile = ( {user,btnTitle} :Props) => {
       router.push('/');
     }
     // Update User Profile End
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error:any) {
       toast.error(error);
     }finally{

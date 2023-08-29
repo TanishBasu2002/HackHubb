@@ -1,8 +1,8 @@
+/* eslint-disable react/react-in-jsx-scope */
 "use client";
 
 import { UploadDropzone } from "@/lib/uploadthing";
 import "@uploadthing/react/styles.css"
-import toast from "react-hot-toast";
 import {X} from "lucide-react"
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -48,8 +48,8 @@ export const FileUpload = ({
         onClientUploadComplete={(res)=>{
           onChange(res?.[0].url);
         }}
-        onUploadError={(error:any)=>{
-          toast.error(error);
+        onUploadError={(error:Error)=>{
+          console.log(error);
         }}
         appearance={{
           button:

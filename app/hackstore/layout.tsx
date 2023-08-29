@@ -1,10 +1,10 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { ClerkProvider } from '@clerk/nextjs'
 import '../globals.css'
 import type { Metadata } from 'next'
 import { Open_Sans } from 'next/font/google'
 import Topbar from '@/components/share/Topbar'
 import LeftSidebar from '@/components/share/LeftSidebar'
-import RightSidebar from '@/components/share/RightSidebar'
 import Bottombar from '@/components/share/Bottombar'
 import { ToasterProvider } from '@/lib/providers/toaster'
 

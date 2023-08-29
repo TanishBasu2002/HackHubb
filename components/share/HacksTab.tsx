@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { redirect } from "next/navigation";
 import { fetchUserPosts } from "@/lib/actions/user.actions";
 

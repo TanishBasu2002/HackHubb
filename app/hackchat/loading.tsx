@@ -1,7 +1,7 @@
-"use client";
+/* eslint-disable react/react-in-jsx-scope */
+
 
 import { ScaleLoader} from "react-spinners";
-
 
 const Loading = () => {
   return (

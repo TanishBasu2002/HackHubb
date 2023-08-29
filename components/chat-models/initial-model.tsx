@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 "use client";
 import * as z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -36,8 +37,8 @@ export const InitialModel = ()=>{
             toast.success("ChatRoom Created");
             router.refresh();
             window.location.reload();
-        } catch (error:any) {
-            toast.error(error);
+        } catch (error:unknown) {
+            console.log(error);
         }
         
     }

@@ -4,6 +4,14 @@ const nextConfig = {
       serverActions: true,
       serverComponentsExternalPackages: ["mongoose"],
     },
+    webpack: (config) => {
+      config.externals.push({
+        "utf-8-validate": "commonjs utf-8-validate",
+        bufferutil: "commonjs bufferutil"
+      });
+  
+      return config;
+    },
     eslint: {
       // Warning: This allows production builds to successfully complete even if
       // your project has typescript errors.
@@ -31,4 +39,5 @@ const nextConfig = {
     },
   };
   
+  // eslint-disable-next-line no-undef
   module.exports = nextConfig;

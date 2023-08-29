@@ -1,3 +1,5 @@
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
 import { useForm } from "react-hook-form";
@@ -12,11 +14,11 @@ import {
 import {zodResolver} from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { Input } from "../ui/input";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname} from "next/navigation";
 
 //import { updateUser } from "@/lib/actions/user.actions";
 import { CommentValidation } from "@/lib/validations/hack.validation";
-import { addCommentToHack, createHack } from "@/lib/actions/hack.actions";
+import { addCommentToHack} from "@/lib/actions/hack.actions";
 import Image from "next/image";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
@@ -29,7 +31,6 @@ interface Props{
 export default function Comment({hackId,
     currentUserImg,
     currentUserId,}:Props){
-        const router = useRouter();
     const pathname = usePathname();
     const form =useForm({
         resolver: zodResolver(CommentValidation),

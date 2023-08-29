@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 "use client";
 
 import Image from "next/image";
@@ -53,6 +54,7 @@ function DeleteHack({
             }
           }
         toast.success("Deleted");
+       // eslint-disable-next-line @typescript-eslint/no-explicit-any
        } catch (error:any) {
         toast.error(error);
        }

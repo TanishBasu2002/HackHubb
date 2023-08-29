@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 "use client"
 import { sidebarLinks } from "@/constants";
 import { useAuth } from "@clerk/nextjs";

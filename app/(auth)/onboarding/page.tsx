@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 //app/page.tsx
 import AccountProfile from "@/components/forms/AccountProfile";
 import { fetchUser } from "@/lib/actions/user.actions";

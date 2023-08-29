@@ -1,14 +1,15 @@
+/* eslint-disable react/react-in-jsx-scope */
 "use client"
 import { sidebarLinks } from "@/constants";
 import {UserButton,useAuth } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter,usePathname } from "next/navigation";
+import {usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function LeftSidebar() {
-    const router = useRouter();
+
     const pathname= usePathname();
     const {userId} = useAuth();
     const [isMounted,setIsMounted]=useState(false);

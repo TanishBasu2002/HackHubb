@@ -1,10 +1,10 @@
+/* eslint-disable react/react-in-jsx-scope */
 "use client"
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -73,6 +73,7 @@ export default function PostHack({ userId }: { userId: string }) {
         if (hasImageChanged) {
           const imgRes = await startUpload(files);
           if (imgRes && imgRes[0].url) {
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             imageToUse = imgRes[0].url; // Use the uploaded image URL
           }
         }
