@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/react-in-jsx-scope */
 "use client"
 
@@ -23,6 +24,7 @@ import { useUploadThing } from "@/lib/uploadthing";
 import { updateUser } from "@/lib/actions/user.actions";
 import { usePathname, useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
+import { FileUpload } from "../chat-models/tools/file-upload";
 
 interface Props{
   user:{
@@ -51,24 +53,6 @@ const AccountProfile = ( {user,btnTitle} :Props) => {
       bio:user?.bio||'',
     }
   });
-  const handleImage =(e:ChangeEvent<HTMLInputElement>,fieldChange:(value:string)=>void)=>{
-    //Image Uplod start
-    e.preventDefault();
-    const fileReader= new FileReader();
-    if (e.target.files && e.target.files.length > 0) {
-      const file = e.target.files[0];
-      setFiles(Array.from(e.target.files));
-
-      if (!file.type.includes("image")) return;
-
-      fileReader.onload = async (event) => {
-        const imageDataUrl = event.target?.result?.toString() || "";
-        fieldChange(imageDataUrl);
-      };
-
-      fileReader.readAsDataURL(file);
-    }
-  };
   async function onSubmit(values:z.infer<typeof UserValidation>) {
     try {
     setLoading(true);
@@ -76,8 +60,8 @@ const AccountProfile = ( {user,btnTitle} :Props) => {
     const hasImageChanged = isBase64Image(blob);
     if (hasImageChanged) {
       const imgRes = await startUpload(files);
-      if (imgRes && imgRes[0].fileUrl) {
-        values.profile_photo =imgRes[0].fileUrl;
+      if (imgRes && imgRes[0].url) {
+        values.profile_photo =imgRes[0].url;
       }
     }
     // Img Upload End
@@ -122,21 +106,13 @@ const AccountProfile = ( {user,btnTitle} :Props) => {
           name="profile_photo"
           render={({ field }) => (
             <FormItem className="flex items-center gap-4">
-              <FormLabel className="account-form_image-label">
-                {field.value?(
-                  <Image src={field.value} alt="Profile Photo" width={96} height={96} priority className="rounded-full object-contain"/>
-                ):(
-                  <Image src="/assets/profile.svg" alt="Profile Photo" width={24} height={24} priority className="object-contain"/>
-                )}
-              </FormLabel>
               <FormControl className='flex-1 text-base-semibold text-gray-200'>
-                <Input
-                  type='file'
-                  accept='image/*'
-                  placeholder='Add profile photo'
-                  className='account-form_image-input'
-                  onChange={(e) => handleImage(e, field.onChange)}
-                />
+              <div className="account-form_image-input"> 
+              <FileUpload 
+               endpoint="media"
+               value={field.value}
+               onChange={field.onChange}/>
+              </div>
               </FormControl>
             </FormItem>
           )}

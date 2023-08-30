@@ -4,6 +4,8 @@ import '../globals.css'
 import type { Metadata } from 'next'
 import { Open_Sans } from 'next/font/google'
 import { cn } from '@/lib/utils'
+import { ModalProvider } from '@/components/chat-models/providers/modal-provider'
+import { ToasterProvider } from '@/lib/providers/toaster'
 const inter = Open_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -19,7 +21,9 @@ export default function RootLayout({
   return (
     <ClerkProvider>
     <html lang="en">
-        <body className={cn(inter.className,"bg-gradient-to-tr from-slate-700 via-slate-800 to-slate-950 text-light-1")}>
+        <body className={cn(inter.className,"bg-slate-950 text-light-1")}>
+        <ToasterProvider />
+        <ModalProvider/>
         {children}
         </body>
     </html>

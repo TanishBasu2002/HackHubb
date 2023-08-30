@@ -16,15 +16,15 @@ import { Textarea } from "../ui/textarea";
 import { usePathname, useRouter } from "next/navigation";
 import { HackValidation } from "@/lib/validations/hack.validation";
 import { createHack } from "@/lib/actions/hack.actions";
-import { Input } from "../ui/input";
-import Image from "next/image";
-import { ChangeEvent, useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 import { isBase64Image } from "@/lib/utils";
 import { useUploadThing } from "@/lib/uploadthing";
 import { useOrganization } from "@clerk/nextjs";
 import toast from "react-hot-toast";
+import { FileUpload } from "../chat-models/tools/file-upload";
 
 export default function PostHack({ userId }: { userId: string }) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [files, setFiles] = useState<File[]>([]);
   const { startUpload } = useUploadThing("media");
   const router = useRouter();
@@ -38,28 +38,6 @@ export default function PostHack({ userId }: { userId: string }) {
       accountId: userId,
     },
   });
-
-  const handleImage = (
-    e: ChangeEvent<HTMLInputElement>,
-    fieldChange: (value: string) => void
-  ) => {
-    e.preventDefault();
-    const fileReader = new FileReader();
-
-    if (e.target.files && e.target.files.length > 0) {
-      const file = e.target.files[0];
-      setFiles(Array.from(e.target.files));
-
-      if (!file.type.includes("image")) return;
-
-      fileReader.onload = async (event) => {
-        const imageDataUrl = event.target?.result?.toString() || "";
-        fieldChange(imageDataUrl);
-      };
-
-      fileReader.readAsDataURL(file);
-    }
-  };
   const [loading, setLoading] = useState(false);
   const onSubmit = async (values: z.infer<typeof HackValidation>) => {
     try {
@@ -131,21 +109,15 @@ export default function PostHack({ userId }: { userId: string }) {
           name="image"
           render={({ field }) => (
             <FormItem className="flex items-center gap-4">
-              <FormLabel className="px-4">
-                {field.value?(
-                  <Image src={field.value} alt="Hack Photo" width={180} height={160} priority className="object-contain"/>
-                ):(
-                  <Image src="/assets/profile.svg" alt="Hack Photo" width={24} height={24} priority className="object-contain"/>
-                )}
-              </FormLabel>
               <FormControl className='flex-1 text-base-semibold text-gray-200'>
-                <Input
-                  type='file'
-                  accept='image/*'
-                  placeholder='Add Hack photo'
-                  className='account-form_image-input'
-                  onChange={(e) => handleImage(e, field.onChange)}
-                />
+              <div className="account-form_image-input"> 
+              <FileUpload 
+                divClass="h-72 w-64"
+                imgClass="rounded-2xl"
+               endpoint="media"
+               value={field.value}
+               onChange={field.onChange}/>
+              </div>
               </FormControl>
             </FormItem>
           )}

@@ -8,19 +8,17 @@ import { ServerDialogValidation } from "@/lib/validations/chat.validation";
 import { Form,FormControl,FormField,FormItem,FormLabel,FormMessage } from "../ui/form";
 import { Input } from "../ui/input"; 
 import { Button } from "../ui/button";
-import { useEffect, useState } from "react";
 import { FileUpload } from "./tools/file-upload";
-import toast from "react-hot-toast";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useModal } from "@/hooks/use-modal-store";
+import toast from "react-hot-toast";
 
 
-export const InitialModel = ()=>{
+export const CreateServerModal = ()=>{
+    const {isOpen,onClose,type}=useModal();
     const router = useRouter();
-    const [isMounted,setIsMounted]=useState(false);
-    useEffect(()=>{
-        setIsMounted(true);
-    },[]);
+    const isModalOpen = isOpen && type ==="createServer";
     const form =useForm({
         resolver:zodResolver(ServerDialogValidation),
         defaultValues:{
@@ -32,22 +30,21 @@ export const InitialModel = ()=>{
     const onSubmit = async (values:z.infer<typeof ServerDialogValidation>)=>{
         try {
             await axios.post("/api/servers",values);
-
             form.reset();
-            toast.success("ChatRoom Created");
             router.refresh();
             toast.success("ChatRoom Created");
-            window.location.reload();
+            onClose();
         } catch (error:unknown) {
             console.log(error);
         }
         
     }
-    if (!isMounted) {
-        return null;
+    const handleClose = ()=>{
+        form.reset();
+        onClose();
     }
     return(
-        <Dialog open>
+        <Dialog open={isModalOpen} onOpenChange={handleClose}>
             <DialogContent className="bg-gradient-to-tr from-slate-800 via-gray-600 to-slate-800 text-white p-0 overflow-hidden border-0">
                 <DialogHeader className="pt-8 px-6">
                     <DialogTitle className="text-2xl text-center font-bold">

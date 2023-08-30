@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { fetchCommunities } from "@/lib/actions/community.action";
 import { fetchUsers } from "@/lib/actions/user.actions";
 import { currentUser, redirectToSignIn } from "@clerk/nextjs";
@@ -45,7 +46,7 @@ async function RightSidebar() {
       </div>
 
       <div className='flex flex-1 flex-col justify-start'>
-        <h3 className='text-heading4-medium text-light-1'>Similar Minds</h3>
+        <h3 className='text-heading4-medium text-light-1'>Suggested Users</h3>
         <div className='mt-7 flex w-[350px] flex-col gap-10'>
           {similarMinds && similarMinds.users.length > 0 ? (
             <>

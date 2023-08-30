@@ -1,30 +1,41 @@
 /* eslint-disable react/react-in-jsx-scope */
 "use client";
 
-import { cn } from "@/lib/utils";
-import { ActionTooltip } from "../tools/action-tooltip";
-import { useParams } from "next/navigation";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useParams, useRouter } from "next/navigation";
 
-interface NavigationItemProps{
-    id: string;
-    imageUrl:string;
-    name:string;
+import { cn } from "@/lib/utils";
+import { ActionTooltip } from "../tools/action-tooltip"; 
+interface NavigationItemProps {
+  id: string;
+  imageUrl: string;
+  name: string;
 }
-const NavigationItem = ({id,
-    imageUrl,
-    name,}:NavigationItemProps) => {
-    const params = useParams();
-    const router = useRouter();
-    const onClick = () =>{
-        router.push(`/hackchat/server/${id}`)
-    }
-    return (
-        <ActionTooltip side="right" align="center" label={name}>
-            <button onClick={onClick} className="group relative flex items-center">
-            <div className={cn(
-          "absolute left-0 ml-[105px] bg-primary rounded-r-full transition-all w-[4px]",
+
+export const NavigationItem = ({
+  id,
+  imageUrl,
+  name
+}: NavigationItemProps) => {
+  const params = useParams();
+  const router = useRouter();
+  
+  const onClick = () => {
+    router.push(`hackchat/servers/${id}`);
+  }
+
+  return (
+    <ActionTooltip
+      side="right"
+      align="center"
+      label={name}
+    >
+      <button
+        onClick={onClick}
+        className="group relative flex items-center"
+      >
+        <div className={cn(
+          "absolute left-0 bg-primary rounded-r-full transition-all w-[4px]",
           params?.serverId !== id && "group-hover:h-[20px]",
           params?.serverId === id ? "h-[36px]" : "h-[8px]"
         )} />
@@ -38,9 +49,7 @@ const NavigationItem = ({id,
             alt="Channel"
           />
         </div>
-            </button>
-        </ActionTooltip>
-    )
+      </button>
+    </ActionTooltip>
+  )
 }
-
-export default NavigationItem

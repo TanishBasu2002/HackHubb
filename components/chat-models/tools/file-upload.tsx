@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 
 interface FileUploadProps{
   onChange:(url?:string)=>void;
-  value:string;
+  value:string | null;
   divClass?:string;
   imgClass?:string;
   endpoint:"messageFile"|"chatImage"|"media"
@@ -29,7 +29,7 @@ export const FileUpload = ({
       <div className={cn("relative h-20 w-20",divClass)}>
         <Image
           fill
-          src={value}
+          src={value?value:"/assets/profile.svg"}
           alt="Upload"
           className={cn("rounded-full",imgClass)}
         />
