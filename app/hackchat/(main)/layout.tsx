@@ -15,7 +15,6 @@ const MainLayout = async({children}:{children:React.ReactNode}) => {
         </div>
         <div className="ml-[100px] hidden md:flex h-full w-[72px] z-30 flex-col fixed inset-y-0">
         <NavigationSidebar/>
-
         </div>
       <main className="md:pl-[172px] h-full">
       {children}
