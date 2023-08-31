@@ -29,6 +29,12 @@ const hackSchema = new mongoose.Schema({
           ref: "Hack",
         },
       ],
+      likes: {
+        // array of user ids
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: "User",
+        default: [],
+      },
     });
     
     const Hack = mongoose.models.Hack || mongoose.model("Hack", hackSchema);

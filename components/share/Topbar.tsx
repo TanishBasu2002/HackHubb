@@ -23,7 +23,7 @@ export default function Topbar() {
           return null;
       }
     return (
-        <nav className={cn(`bg-gradient-to-b from-slate-500 via-slate-800 to-black`,"topbar")}>
+        <nav className={cn(`bg-gradient-to-b  from-slate-600 to-black`,"topbar")}>
             <Link href="/" className="flex items-center gap-4">
                 <Image src="/assets/logo.svg" alt="logo" width={28} height={28}/>
                 <p className="text-heading3-bold md:block lg:block hidden text-light-1 max-xs:hidden">HackHubb</p>

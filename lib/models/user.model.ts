@@ -26,6 +26,14 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  followers: {
+    type: [String],
+    default: [],
+  },
+  following: {
+    type: [String],
+    default: [],
+  },
   communities: [
     {
       type: mongoose.Schema.Types.ObjectId,
