@@ -46,8 +46,11 @@ export const ServerTopbar=async({serverId}:ServerTopbarProps)=>{
 
     const role =server.members.find((member)=>member.profileId === profile.id)?.role;
     return(
-        <div className="flex flex-col h-full text-primary w-full">
-            <ServerHeader server={server} role={role} />
+        <div className="flex flex-col h-full text-primary w-full bg-slate-500/10">
+            <ServerHeader
+                server={server}
+                role={role}
+            />
         </div>
     )
 }

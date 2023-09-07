@@ -1,13 +1,14 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { fetchCommunities } from "@/lib/actions/community.action";
 import { fetchUsers } from "@/lib/actions/user.actions";
-import { currentUser, redirectToSignIn } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs";
 import UserCard from "../cards/UserCard";
+import { redirect } from "next/navigation";
 
 
 async function RightSidebar() {
   const user = await currentUser();
-  if (!user) return redirectToSignIn();
+  if (!user) return redirect('/sign-in');
 
   const similarMinds = await fetchUsers({
     userId: user.id,

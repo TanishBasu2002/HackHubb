@@ -3,7 +3,6 @@
 import { ServerTopbar } from "@/components/chat-models/server/server-topbar";
 import { currentProfile } from "@/lib/chat/current-profile"
 import { db } from "@/lib/db";
-import { cn } from "@/lib/utils";
 import { redirectToSignIn } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
@@ -28,10 +27,10 @@ const ServerIdLayout= async({children,params}:{children:React.ReactNode;params:{
     }
   return (
     <div className="h-full">
-      <div className={cn("topbar","h-16")}>
+      <div className="hidden md:flex h-full w-60 z-20 flex-col fixed inset-y-0">
         <ServerTopbar serverId={params.serverId}/>
       </div>
-      <main className="h-full pt-16 md:pl-5">
+      <main className="h-full md:pl-60">
       {children}
       </main>
     </div>

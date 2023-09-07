@@ -6,6 +6,10 @@ import NavigationAction from './navigation-action';
 import { Separator } from '@/components/ui/separator';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { NavigationItem } from './navigation-item'; 
+import { UserButton } from '@clerk/nextjs';
+import Link from 'next/link';
+import Image from 'next/image';
+import { dark } from '@clerk/themes';
 
 const NavigationSidebar = async() => {
     const profile =await currentProfile();
@@ -28,12 +32,26 @@ const NavigationSidebar = async() => {
       <Separator className='h-[2px] bg-zinc-500 rounded-md w-10 mx-auto'/>
       <ScrollArea className='flex-1 w-full'>
         {servers.map((server)=>(
-          <div key={server.id}>
+          <div key={server.id} className="mb-4">
             <NavigationItem id={server.id} name={server.name} imageUrl={server.imageUrl
             }/>
           </div>
         ))}
       </ScrollArea>
+      <div className="pb-3 mt-auto flex items-center flex-col gap-y-4">
+      <Link href="/" className='leftsidebar_link '>
+        <Image src="/assets/home.svg"  width={24} height={24} alt='Home'/>
+       </Link>
+        <UserButton
+          afterSignOutUrl="/"
+          appearance={{
+            baseTheme: dark,
+            elements: {
+              avatarBox: "h-[36px] w-[36px]"
+            }
+          }}
+        />
+      </div>
     </div>
   )
 }

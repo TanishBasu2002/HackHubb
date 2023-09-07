@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { ClerkProvider } from "@clerk/nextjs"
 import { Metadata } from "next"
 import { Open_Sans } from "next/font/google"
