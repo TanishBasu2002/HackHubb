@@ -13,7 +13,7 @@ const Navbar = () => {
         <Link href="/hackstore" className="ml-4 flex lg:ml-0 gap-x-2">
           <p className="font-bold text-white text-xl">HackStore</p>
         </Link>
-        <MainNav data={[]} />
+        <MainNav />{/**TODO: add data={[]} */}
         </div>
       </Container>
     </div>
