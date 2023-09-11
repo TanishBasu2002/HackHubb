@@ -28,6 +28,10 @@ const nextConfig = {
           hostname: "images.clerk.dev",
         },
         {
+          protocol:"https",
+          hostname:"utfs.io",
+        },
+        {
           protocol: "https",
           hostname: "uploadthing.com",
         },
