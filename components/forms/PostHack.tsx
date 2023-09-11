@@ -65,7 +65,13 @@ export default function PostHack({ userId }: { userId: string }) {
       });
   
       router.push("/");
-      toast.success("Posted");
+      toast.success("Posted",{
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      });
       router.refresh();
     } catch (error) {
       toast.error('Something went wrong');

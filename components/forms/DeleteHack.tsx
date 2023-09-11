@@ -53,7 +53,13 @@ function DeleteHack({
               router.push("/");
             }
           }
-        toast.success("Deleted");
+        toast.success("Deleted",{
+          style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+          },
+        });
        // eslint-disable-next-line @typescript-eslint/no-explicit-any
        } catch (error:any) {
         toast.error(error);

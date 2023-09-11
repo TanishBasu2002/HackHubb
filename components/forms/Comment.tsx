@@ -49,7 +49,13 @@ export default function Comment({hackId,
         JSON.parse(currentUserId),
         pathname); 
       form.reset();
-      toast.success("Commented");
+      toast.success("Commented",{
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      });
      } catch (error:any) {
       toast.error(error);
      }finally{
