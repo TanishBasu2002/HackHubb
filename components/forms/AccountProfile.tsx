@@ -77,8 +77,24 @@ const AccountProfile = ( {user,btnTitle} :Props) => {
       }
     );
     if(pathname === '/profile/edit'){
+      toast.promise(
+        saveSettings(settings),
+         {
+           loading: 'Saving...',
+           success: <b>Profile Edited!</b>,
+           error: <b>Could not edit.</b>,
+         }
+       );
       router.back();
     }else{
+      toast.promise(
+        saveSettings(settings),
+         {
+           loading: 'Saving...',
+           success: <b>Profile Edited!</b>,
+           error: <b>Could not edit.</b>,
+         }
+       );
       router.push('/');
     }
     // Update User Profile End

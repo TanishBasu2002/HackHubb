@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import HacksTab from "@/components/share/HacksTab";
 import ProfileHeader from "@/components/share/ProfileHeader";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
