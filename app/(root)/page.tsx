@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 
 import HackCard from "@/components/cards/HackCard";
 import { fetchHacks } from "@/lib/actions/hack.actions";

@@ -8,6 +8,7 @@ import LeftSidebar from '@/components/share/LeftSidebar'
 import RightSidebar from '@/components/share/RightSidebar'
 import Bottombar from '@/components/share/Bottombar'
 import { ToasterProvider } from '@/lib/providers/toaster'
+import { NextUiProviders } from '../providers'
 
 const inter = Open_Sans({ subsets: ['latin'] })
 
@@ -23,9 +24,11 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
+    
     <html lang="en">
         <body className={`${inter.className}`}>
         <ToasterProvider />
+        <NextUiProviders>
           <Topbar />
             <main className='flex flex-row'>
               <LeftSidebar />
@@ -37,9 +40,10 @@ export default function RootLayout({
               <RightSidebar/>
             </main>
           <Bottombar />
+          </NextUiProviders>
           </body>
-          
     </html>
+    
     </ClerkProvider>
   )
 }
