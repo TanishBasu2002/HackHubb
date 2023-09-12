@@ -5,7 +5,6 @@ import { dark } from "@clerk/themes";
 import Image from "next/image";
 import Link from "next/link";
 
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
@@ -13,7 +12,6 @@ import { cn } from "@/lib/utils";
 export default function Topbar() {
     const pathname= usePathname();
     const isActive = (pathname ==="/activity");
-    const Icon = isActive ? AiFillHeart : AiOutlineHeart;
     const [isMounted,setIsMounted]=useState(false);
     useEffect(()=>{
         setIsMounted(true);
@@ -32,7 +30,7 @@ export default function Topbar() {
             <div className="block">
                 <Link href="/activity">
                 <div className="block cursor-pointer text-white">
-                <Icon color={isActive ? 'white' : 'white'} size={25} />
+                {isActive ? <Image src="/assets/heart-filled.svg"  alt="logo" width={28} height={28}/> : <Image src="/assets/heart.svg"  alt="logo" width={24} height={24}/>}
                 </div>
                 </Link>
             </div>
