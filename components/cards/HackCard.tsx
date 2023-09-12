@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { formatDateString } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -39,6 +40,7 @@ export default function HackCard({
     isComment,
 }:Props){
     return(
+        
         <article className={`p-7 flex w-full flex-col ${isComment?'px-0 xs:px-7 bg-gradient-to-r mt-2 from-slate-950 via-black to-black rounded-full':'rounded-xl bg-gradient-to-bl from-gray-700 via-gray-800 to-gray-950'}`}>
             <div className="flex items-start justify-between gap-4">
                 <div className=" w-full flex-1 flex-row gap-4 flex ">

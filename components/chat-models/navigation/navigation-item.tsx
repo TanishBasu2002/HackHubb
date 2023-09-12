@@ -6,6 +6,7 @@ import { useParams, useRouter } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 import { ActionTooltip } from "../tools/action-tooltip"; 
+import { useEffect, useState } from "react";
 interface NavigationItemProps {
   id: string;
   imageUrl: string;
@@ -23,7 +24,14 @@ export const NavigationItem = ({
   const onClick = () => {
     router.push(`/hackchat/servers/${id}`);
   }
-
+  const [isMounted,setIsMounted]=useState(false);
+      useEffect(()=>{
+          setIsMounted(true);
+      },[]);
+  
+      if (!isMounted) {
+          return null;
+      }
   return (
     <ActionTooltip
     side="right"
@@ -35,7 +43,7 @@ export const NavigationItem = ({
       className="group relative flex items-center"
     >
       <div className={cn(
-        "absolute left-0 bg-primary rounded-r-full transition-all w-[4px]",
+        "bg-white absolute left-0 rounded-r-full transition-all w-[4px]",
         params?.serverId !== id && "group-hover:h-[20px]",
         params?.serverId === id ? "h-[36px]" : "h-[8px]"
       )} />

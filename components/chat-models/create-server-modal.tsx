@@ -13,6 +13,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useModal } from "@/hooks/use-modal-store";
 import toast from "react-hot-toast";
+import { useEffect, useState } from "react";
 
 
 export const CreateServerModal = ()=>{
@@ -32,7 +33,11 @@ export const CreateServerModal = ()=>{
             await axios.post("/api/servers",values);
             form.reset();
             router.refresh();
-            toast.success("ChatRoom Created");
+            toast.success("ChatRoom Created",{style: {
+                borderRadius: '10px',
+                background: '#333',
+                color: '#fff',
+              },});
             onClose();
         } catch (error:unknown) {
             console.log(error);
@@ -43,6 +48,14 @@ export const CreateServerModal = ()=>{
         form.reset();
         onClose();
     }
+    const [isMounted,setIsMounted]=useState(false);
+      useEffect(()=>{
+          setIsMounted(true);
+      },[]);
+  
+      if (!isMounted) {
+          return null;
+      }
     return(
         <Dialog open={isModalOpen} onOpenChange={handleClose}>
             <DialogContent className="bg-gradient-to-tr from-slate-800 via-gray-600 to-slate-800 text-white p-0 overflow-hidden border-0">

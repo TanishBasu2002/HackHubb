@@ -1,6 +1,8 @@
+/* eslint-disable react/react-in-jsx-scope */
 "use client"
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 interface UserCardProps {
     id:string;
     name:string;
@@ -11,7 +13,14 @@ interface UserCardProps {
 
 const UserCard = ({id,name,username,imgUrl,personType,}:UserCardProps) => {
     const isCommunity = personType === "Community";
+    const [isMounted,setIsMounted]=useState(false);
+    useEffect(()=>{
+        setIsMounted(true);
+    },[]);
 
+    if (!isMounted) {
+        return null;
+    }
     return (
         <Link href={isCommunity?`/communities/${id}`:`/profile/${id}`}>
         <article className="user-card">

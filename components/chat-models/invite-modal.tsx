@@ -9,7 +9,7 @@ import { Button } from "../ui/button";
 import { Check, Copy, RefreshCw } from "lucide-react";
 import { useOrigin } from "@/hooks/use-origin";
 import toast from "react-hot-toast";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 
@@ -24,7 +24,11 @@ export const InviteModal = ()=>{
     const onCopy = () =>{
         navigator.clipboard.writeText(inviteUrl);
         setCopied(true);
-        toast.success("Copied")
+        toast.success("Copied",{style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+          },})
         setTimeout(()=>{
             setCopied(false);
         },1000);
@@ -33,7 +37,11 @@ export const InviteModal = ()=>{
         try {
             setIsLoading(true);
             const responce = await axios.patch(`/api/servers/${server?.id}/invite-code`);
-            toast.success("Regenerated")
+            toast.success("Regenerated",{style: {
+                borderRadius: '10px',
+                background: '#333',
+                color: '#fff',
+              },})
             onOpen("invite",{server:responce.data});
         } catch (error:any) {
             toast.error(error)
@@ -41,6 +49,14 @@ export const InviteModal = ()=>{
             setIsLoading(false);
         }
     }
+    const [isMounted,setIsMounted]=useState(false);
+      useEffect(()=>{
+          setIsMounted(true);
+      },[]);
+  
+      if (!isMounted) {
+          return null;
+      }
     return(
         <Dialog open={isModalOpen} onOpenChange={onClose}>
             <DialogContent className="bg-gradient-to-tr from-slate-800 via-gray-600 to-slate-800 text-white p-0 overflow-hidden border-0">
@@ -50,7 +66,7 @@ export const InviteModal = ()=>{
                     </DialogTitle>
                 </DialogHeader>
                     <div className="p-6">
-                        <Label className="uppercase text-xs font-bold text-secondary/70">
+                        <Label className="uppercase text-xs font-bold text-light-2">
                         Chatroom Invite Link
                         </Label>
                     <div className="flex items-center mt-2 gap-x-2">

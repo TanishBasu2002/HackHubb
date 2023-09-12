@@ -4,9 +4,19 @@ import { Plus } from 'lucide-react';
 
 import { ActionTooltip } from '../tools/action-tooltip';
 import { useModal } from '@/hooks/use-modal-store';
+import { useEffect, useState } from 'react';
 
 const NavigationAction = () => {
   const {onOpen}=useModal();
+  const [isMounted,setIsMounted]=useState(false);
+      useEffect(()=>{
+          setIsMounted(true);
+      },[]);
+  
+      if (!isMounted) {
+          return null;
+      }
+    
   return (
     <div>
         <ActionTooltip side='right' align='center' label='Create New ChatRoom'> 

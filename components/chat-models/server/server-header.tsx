@@ -6,6 +6,7 @@ import { useModal } from "@/hooks/use-modal-store";
 import { ServerWithMemberandProfile } from "@/types";
 import { MemberRole } from "@prisma/client";
 import { ChevronDown, LogOut, PlusCircle, Settings, Trash, User, UserPlus } from "lucide-react";
+import { useEffect, useState } from "react";
 
 interface ServerHeaderProps{
     server:ServerWithMemberandProfile;
@@ -16,10 +17,18 @@ export const ServerHeader = ({server,role}:ServerHeaderProps)=>{
     const {onOpen}=useModal();
     const isAdmin = role === MemberRole.ADMIN;
     const isModerator = isAdmin || role === MemberRole.MODERATOR;
+    const [isMounted,setIsMounted]=useState(false);
+      useEffect(()=>{
+          setIsMounted(true);
+      },[]);
+  
+      if (!isMounted) {
+          return null;
+      }
     return(
         <DropdownMenu>
             <DropdownMenuTrigger className="focus:outline-none" asChild>
-                <button className="w-full text-md font-semibold px-3 flex items-center h-12 hover:bg-zinc-900 transition">
+                <button className="text-white w-full text-md font-semibold px-3 flex items-center h-12 hover:bg-zinc-900 transition">
                     {server.name}
                     <ChevronDown className="h-5 w-5 ml-auto"/>
                 </button>

@@ -1,6 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 "use client";
 import { Tooltip,TooltipContent,TooltipProvider,TooltipTrigger } from "@/components/ui/tooltip";
+import { useEffect, useState } from "react";
 
 interface ActionTooltipProps{
     label:string,
@@ -12,6 +13,14 @@ export const ActionTooltip= ({label,
     children,
     side,
     align,}:ActionTooltipProps)=>{
+      const [isMounted,setIsMounted]=useState(false);
+      useEffect(()=>{
+          setIsMounted(true);
+      },[]);
+  
+      if (!isMounted) {
+          return null;
+      }
         return(
             <TooltipProvider>
             <Tooltip delayDuration={50}>

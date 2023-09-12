@@ -34,9 +34,12 @@ export const InitialModel = ()=>{
             await axios.post("/api/servers",values);
 
             form.reset();
-            toast.success("ChatRoom Created");
+            toast.success("ChatRoom Created",{style: {
+                borderRadius: '10px',
+                background: '#333',
+                color: '#fff',
+              },});
             router.refresh();
-            toast.success("ChatRoom Created");
             window.location.reload();
         } catch (error:unknown) {
             console.log(error);
