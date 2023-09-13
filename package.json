@@ -13,6 +13,7 @@
     "@clerk/nextjs": "^4.23.2",
     "@clerk/themes": "^1.7.5",
     "@hookform/resolvers": "^3.3.0",
+    "@next/eslint-plugin-next": "^13.4.19",
     "@nextui-org/react": "^2.1.12",
     "@prisma/client": "^5.2.0",
     "@radix-ui/react-avatar": "^1.0.3",
@@ -59,9 +60,10 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/uuid": "^9.0.2",
-    "@typescript-eslint/eslint-plugin": "^6.5.0",
-    "@typescript-eslint/parser": "^6.5.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
     "eslint": "^8.48.0",
+    "eslint-config-next": "13.4.19",
     "eslint-plugin-react": "^7.33.2",
     "prisma": "^5.2.0"
   }
