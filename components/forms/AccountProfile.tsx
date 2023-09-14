@@ -77,26 +77,17 @@ const AccountProfile = ( {user,btnTitle} :Props) => {
       }
     );
     if(pathname === '/profile/edit'){
-      toast.success("Edited",
-        {
-          style: {
-            borderRadius: '10px',
-            background: '#333',
-            color: '#fff',
-          },
-        }
-       );
       router.back();
     }else{
-      toast.success("Edited",{
-        style: {
-          borderRadius: '10px',
-          background: '#333',
-          color: '#fff',
-        },
-      })
       router.push('/');
     }
+    toast.success("Edited",{
+      style: {
+        borderRadius: '10px',
+        background: '#0F172A',
+        color: '#fff',
+      },
+    })
     // Update User Profile End
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error:any) {

@@ -8,6 +8,8 @@ import { ServerHeader } from "./server-header";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import ServerSearch from "./server-search";
 import { Hash, Mic, ShieldAlert, ShieldCheck, Video } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+import ServerSection from "./server-section";
 interface ServerTopbarProps{
     serverId:string;
 }
@@ -103,6 +105,12 @@ export const ServerTopbar=async({serverId}:ServerTopbarProps)=>{
                         }
                     ]}/>
                 </div>
+                <Separator className="bg-zinc-700 rounded-md my-2"/>
+                {!!textChannels?.length &&(
+                    <div className="mb-2">
+                        <ServerSection label="Text Channels" role={role} sectionType="channel" channelType={ChannelType.TEXT}/>
+                    </div>
+                )}
             </ScrollArea>
         </div>
     )

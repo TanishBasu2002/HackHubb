@@ -35,7 +35,7 @@ export const CreateServerModal = ()=>{
             router.refresh();
             toast.success("ChatRoom Created",{style: {
                 borderRadius: '10px',
-                background: '#333',
+                background: '#0F172A',
                 color: '#fff',
               },});
             onClose();

@@ -52,7 +52,7 @@ export default function Comment({hackId,
       toast.success("Commented",{
         style: {
           borderRadius: '10px',
-          background: '#333',
+          background: '#0F172A',
           color: '#fff',
         },
       });

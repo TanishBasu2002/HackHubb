@@ -68,7 +68,7 @@ export default function PostHack({ userId }: { userId: string }) {
       toast.success("Posted",{
         style: {
           borderRadius: '10px',
-          background: '#333',
+          background: '#0F172A',
           color: '#fff',
         },
       });

@@ -43,7 +43,7 @@ export const EditServerModal = ()=>{
             router.refresh();
             toast.success("ChatRoom Updated",{style: {
                 borderRadius: '10px',
-                background: '#333',
+                background: '#0F172A',
                 color: '#fff',
               },});
             onClose();

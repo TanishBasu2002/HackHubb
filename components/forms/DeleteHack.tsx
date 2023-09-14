@@ -44,9 +44,10 @@ function DeleteHack({
        toast.success("Deleted",{
          style: {
            borderRadius: '10px',
-           background: '#333',
+           background: '#0F172A',
            color: '#fff',
          },
+         duration: 500,
        });
        if (!parentId || !isComment) {
         if (pathname === `/profile/${userId}`) {
@@ -63,22 +64,25 @@ function DeleteHack({
      const onClick = async () => {
       try {
         toast((t) => (
-          <div className="px-6 py-4">
+          <div className="px-6 py-4 ">
             <span className="flex items-center gap-2 justify-between w-full ">
-             <p>Delete it permerantly?</p>
-             <Button className="bg-emerald-700" onClick={onToastClick}>
+             <p className="px-8 text-center justify-between">Delete it permerantly?</p><br />
+           </span>
+           <span className="flex py-2 items-center p-2 gap-2 justify-between w-full ">
+            <Button className="bg-emerald-700 hover:bg-emerald-900" onClick={onToastClick}>
                Confirm
              </Button>
-             <Button className="bg-rose-700" onClick={() => toast.dismiss(t.id)}>
+             <Button className="bg-rose-700 hover:bg-rose-900" onClick={() => toast.dismiss(t.id)}>
                Cancel
              </Button>
-           </span>
+             </span>
+           
           </div>
          ),
          {
            style: {
              borderRadius: '10px',
-             background: '#333',
+             background: '#0F172A',
              color: '#fff',
            },
          });
@@ -92,7 +96,7 @@ function DeleteHack({
       alt='delete'
       width={18}
       height={18}
-      className='cursor-pointer object-contain'
+      className='cursor-pointer  object-contain'
       onClick={onClick}
     /></>
   );

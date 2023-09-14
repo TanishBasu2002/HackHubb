@@ -25,7 +25,7 @@ export const LeaveServerModal = ()=>{
           onClose();
           toast.success("Left the ChatRoom!",{style: {
             borderRadius: '10px',
-            background: '#333',
+            background: '#0F172A',
             color: '#fff',
           },}); 
           router.refresh();

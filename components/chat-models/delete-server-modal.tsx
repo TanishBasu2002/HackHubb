@@ -25,7 +25,7 @@ export const DeleteServerModal = ()=>{
           onClose();
           toast.success("Deleted the ChatRoom!",{style: {
             borderRadius: '10px',
-            background: '#333',
+            background: '#0F172A',
             color: '#fff',
           },}); 
           router.push("/hackchat");

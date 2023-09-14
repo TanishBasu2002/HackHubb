@@ -36,7 +36,7 @@ export const InitialModel = ()=>{
             form.reset();
             toast.success("ChatRoom Created",{style: {
                 borderRadius: '10px',
-                background: '#333',
+                background: '#0F172A',
                 color: '#fff',
               },});
             router.refresh();

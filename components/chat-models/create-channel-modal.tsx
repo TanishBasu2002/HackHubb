@@ -44,7 +44,7 @@ export const CreateChannelModal = ()=>{
             router.refresh();
             toast.success("Channel Created",{style: {
                 borderRadius: '10px',
-                background: '#333',
+                background: '#0F172A',
                 color: '#fff',
               },});
             onClose();
