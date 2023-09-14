@@ -15,6 +15,7 @@ export const LikeHack=({hackId,currentUserId}:LikeHackProps)=>{
     const router= useRouter();
     const handelLike = ()=>{
         if(isLiked){
+          setIsLiked(false);
         }else{
             setIsLiked(true);
         }
