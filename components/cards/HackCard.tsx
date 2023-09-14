@@ -3,6 +3,7 @@ import { formatDateString } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import DeleteHack from "../forms/DeleteHack";
+import { LikeHack } from "../forms/LikeHack";
 interface Props{
         id:string;
         currentUserId:string;
@@ -58,7 +59,7 @@ export default function HackCard({
                         </Link>
                         {/**No Image Content */}
                         {!image&&(
-                            <p className="mt-1 text-small-regular font-semibold text-light-2">{content}</p>)
+                            <Link href={`/hack/${id}`} className="mt-1 text-small-regular font-semibold text-light-2">{content}</Link>)
                         }
                         {/* Project Image */}
                         {/**Content */}
@@ -73,8 +74,7 @@ export default function HackCard({
                         )}
                         <div className={`mt-5 flex flex-col gap-3 `}>
                             <div className="flex gap-3.5">
-                            <Image src="/assets/heart-gray.svg" alt="heart" width={24} height={24}
-                            className="cursor-pointer object-contain"/>
+                            <LikeHack hackId={JSON.stringify(id)} currentUserId={currentUserId}/>
                             <Link href={`/hack/${id}`}>
                             <Image src="/assets/reply.svg" alt="reply" width={24} height={24}
                             className="cursor-pointer object-contain"/>

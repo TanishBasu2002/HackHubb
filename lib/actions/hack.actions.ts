@@ -244,3 +244,67 @@ export async function addCommentToHack(
     throw new Error("Unable to add comment");
   }
 }
+
+export async function addLikeToHack(
+  hackId: string,
+  userId: string,
+) {
+  connectToDB();
+
+  try {
+    // Find the original hack by its ID
+    const originalHack = await Hack.findById(hackId);
+
+    if (!originalHack) {
+      throw new Error("Hack not found");
+    }
+
+    // Create the new like hack
+    const likeHack = new Hack({
+      author: userId,
+      parentId: hackId, // Set the parentId to the original hack's ID
+    });
+
+    // Save the like hack to the database
+    const savedLikeHack = await likeHack.save();
+
+    // Add the like hack's ID to the original hack's children array
+    originalHack.children.push(savedLikeHack._id);
+
+    // Save the updated original hack to the database
+    await originalHack.save();
+  } catch (err) {
+    console.error("Error while adding like:", err);
+    throw new Error("Unable to add like");
+  }
+}
+
+export async function deleteLikeFromHack(
+  hackId: string,
+  userId: string,
+  pathname: string,
+) {
+  connectToDB();
+
+  try {
+    // Find the like hack by its parent ID and user ID
+    const likeHack = await Hack.findOne({ parentId: hackId, author: userId });
+
+    if (!likeHack) {
+      throw new Error("Like hack not found");
+    }
+
+    // Delete the like hack from the database
+    await likeHack.remove();
+
+    // Remove the like hack's ID from the original hack's children array
+    const originalHack = await Hack.findById(hackId);
+    originalHack.children = originalHack.children.filter(childId => childId !== likeHack._id);
+
+    // Save the updated original hack to the database
+    await originalHack.save();
+  } catch (err) {
+    console.error("Error while deleting like:", err);
+    throw new Error("Unable to delete like");
+  }
+}
