@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
     <html lang="en">
-        <body className={cn(inter.className,"bg-slate-950 text-light-1")}>
+        <body className={cn(inter.className,"bg-slate-950 text-light-2")}>
         <ToasterProvider />
         <ModalProvider/>
         {children}
