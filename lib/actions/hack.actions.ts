@@ -245,7 +245,7 @@ export async function addCommentToHack(
   }
 }
 
-export async function addLikeToHack(
+/**export async function addLikeToHack(
   hackId: string,
   userId: string,
 ) {
@@ -305,4 +305,4 @@ export async function deleteLikeFromHack(
     console.error("Error while deleting like:", err);
     throw new Error("Unable to delete like");
   }
-}
+} */

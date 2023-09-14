@@ -1,11 +1,10 @@
 /* eslint-disable react/react-in-jsx-scope */
 "use client";
 
-import { addLikeToHack, deleteLikeFromHack } from "@/lib/actions/hack.actions";
+
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 
 interface LikeHackProps{
     hackId:string;
@@ -21,7 +20,7 @@ export const LikeHack=({hackId,currentUserId}:LikeHackProps)=>{
         }
     }
     const pathname = usePathname();
-    const [loading, setLoading] = useState(false);
+    /**const [loading, setLoading] = useState(false);
     const h =async()=>{
      try {
       setLoading(true);
@@ -50,7 +49,7 @@ export const LikeHack=({hackId,currentUserId}:LikeHackProps)=>{
       setLoading(false);
       router.refresh();
      }
-    };
+    }; */
     const [isMounted,setIsMounted]=useState(false);
     useEffect(()=>{
         setIsMounted(true);
