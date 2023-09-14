@@ -282,7 +282,6 @@ export async function addLikeToHack(
 export async function deleteLikeFromHack(
   hackId: string,
   userId: string,
-  pathname: string,
 ) {
   connectToDB();
 
@@ -299,7 +298,6 @@ export async function deleteLikeFromHack(
 
     // Remove the like hack's ID from the original hack's children array
     const originalHack = await Hack.findById(hackId);
-    originalHack.children = originalHack.children.filter(childId => childId !== likeHack._id);
 
     // Save the updated original hack to the database
     await originalHack.save();
