@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { ScrollArea } from "../ui/scroll-area";
 
 export default function LeftSidebar() {
 
@@ -21,7 +22,7 @@ export default function LeftSidebar() {
       if (!isMounted) {
           return null;
       } 
-    const isSpacial = pathname.includes('/hackchat') || pathname.includes('/hackstore') || pathname === "/hackchat" || pathname === "/hackstore";
+    const isSpacial = pathname.includes('/hackchat') || pathname.includes('/hackstore') || pathname === "/hackchat" || pathname === "/hackstore" ;
     return (
         <section className={cn("custom-scrollbar leftsidebar", isSpacial?"w-[100px] z-10 ":"")}>
             
@@ -29,6 +30,7 @@ export default function LeftSidebar() {
                 {/**maping through index.ts eliments */}
                 
                     
+                <ScrollArea>
                 {sidebarLinks.map((link)=>{
                     const isActive = (pathname.includes(link.route) && link.route.length > 1) || pathname === link.route;
                     if(link.route==='/profile') link.route=`${link.route}/${userId}`
@@ -39,12 +41,13 @@ export default function LeftSidebar() {
                         </Link>
                     )
                 })}
+                </ScrollArea>
             </div>
             <div className="mt-10 px-6">
-                            <div className="flex cursor-pointer gap-4 p-4">
-                            <UserButton afterSignOutUrl="/sign-in" appearance={{ baseTheme:dark,}} />
-                               {!isSpacial? <p className="text-light-2 max-lg:hidden">Settings</p>:<p></p>}
-                            </div>
+                <div className="flex cursor-pointer gap-4 p-4">
+                    <UserButton afterSignOutUrl="/sign-in" appearance={{ baseTheme:dark,}} />
+                    {!isSpacial? <p className="text-light-2 max-lg:hidden">Settings</p>:<p></p>}
+                </div>
             </div>
         </section>
     )

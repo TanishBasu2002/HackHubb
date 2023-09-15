@@ -62,7 +62,7 @@
   }
 
   .topbar {
-    @apply fixed top-0 z-30 flex min-w-full items-center justify-between bg-slate-800 px-6 py-3;
+    @apply fixed top-0 z-30 flex min-w-full items-center justify-between bg-gradient-to-b  from-slate-600 to-black px-6 py-3;
   }
 
   .bottombar {
