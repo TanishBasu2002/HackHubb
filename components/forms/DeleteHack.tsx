@@ -44,18 +44,22 @@ function DeleteHack({
        toast.success("Deleted",{
          style: {
            borderRadius: '10px',
-           background: '#0F172A',
+           background: '#44495C',
            color: '#fff',
          },
          duration: 500,
        });
-       if (!parentId || !isComment) {
-        if (pathname === `/profile/${userId}`) {
+       
+      if (!parentId || !isComment && pathname === `/profile/${userId}`) {
           router.refresh();
-        } else {
-          router.push("/");
-        }
       }
+      else if(isComment || parentId && pathname === `/hack/${hackId}`){
+        router.refresh();
+      }
+      else{
+        router.push("/");
+      }
+
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error:any) {
        toast.error(error);
@@ -82,7 +86,7 @@ function DeleteHack({
          {
            style: {
              borderRadius: '10px',
-             background: '#0F172A',
+             background: '#44495C',
              color: '#fff',
            },
          });

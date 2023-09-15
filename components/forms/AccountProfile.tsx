@@ -84,7 +84,7 @@ const AccountProfile = ( {user,btnTitle} :Props) => {
     toast.success("Edited",{
       style: {
         borderRadius: '10px',
-        background: '#0F172A',
+        background: '#44495C',
         color: '#fff',
       },
     })

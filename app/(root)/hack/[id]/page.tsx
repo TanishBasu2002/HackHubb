@@ -18,10 +18,10 @@ const Page = async({params}:{params:{id:string}})=>{
     return(
     <section className="relative">
         <div>
-        <HackCard key={hack._id} id={hack._id} currentUserId={user?.id || ""}
+        { hack?._id ?<HackCard key={hack._id} id={hack?._id} currentUserId={user?.id || ""}
         parentId={hack.prentId} content={hack.text} author={hack.author} image={hack.image}
         community={hack.community} createdAt={hack.createdAt} comments ={hack.children}
-         />
+         />:redirect("/")}
         </div>
          <div className="mt-7">
             <Comment hackId={hack.id} currentUserImg={userInfo.image} currentUserId={JSON.stringify(userInfo._id)}/> 

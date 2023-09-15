@@ -39,7 +39,7 @@ export const MembersModal = ()=>{
           const response = await axios.delete(url);
           toast.success("Kicked out Successfully!",{style: {
             borderRadius: '10px',
-            background: '#0F172A',
+            background: '#44495C',
             color: '#fff',
           },});
           router.refresh();
@@ -62,7 +62,7 @@ export const MembersModal = ()=>{
           const response = await axios.patch(url, { role });
           toast.success("Changed Successfully!",{style: {
             borderRadius: '10px',
-            background: '#0F172A',
+            background: '#44495C',
             color: '#fff',
           },});
           router.refresh();

@@ -26,7 +26,7 @@ export const InviteModal = ()=>{
         setCopied(true);
         toast.success("Copied",{style: {
             borderRadius: '10px',
-            background: '#0F172A',
+            background: '#44495C',
             color: '#fff',
           },})
         setTimeout(()=>{
@@ -39,7 +39,7 @@ export const InviteModal = ()=>{
             const responce = await axios.patch(`/api/servers/${server?.id}/invite-code`);
             toast.success("Regenerated",{style: {
                 borderRadius: '10px',
-                background: '#0F172A',
+                background: '#44495C',
                 color: '#fff',
               },})
             onOpen("invite",{server:responce.data});

@@ -10,48 +10,45 @@ import { Form,FormControl,FormField,FormItem,FormLabel,FormMessage } from "../ui
 import { Input } from "../ui/input"; 
 import { Button } from "../ui/button";
 import axios from "axios";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useModal } from "@/hooks/use-modal-store";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { Select,SelectContent,SelectItem,SelectTrigger,SelectValue,} from "@/components/ui/select";
 import { ChannelType } from "@prisma/client";
 
-export const CreateChannelModal = ()=>{
+export const EditChannelModal = ()=>{
     const {isOpen,onClose,type,data}=useModal();
     const router = useRouter();
-    const params =useParams();
-    const isModalOpen = isOpen && type ==="createChannel";
-    const {channelType} = data;
+    const isModalOpen = isOpen && type ==="editChannel";
+    const {channel,server} = data;
  
     const form = useForm({
       resolver: zodResolver(ChannelDialogValidation),
       defaultValues: {
         name: "",
-        type:channelType || ChannelType.TEXT,
+        type:channel?.type || ChannelType.TEXT,
       }
     });
     useEffect(()=>{
-        if(channelType){
-            form.setValue("type",channelType);
-        }
-        else{
-            form.setValue("type",ChannelType.TEXT);
-        }
-    },[channelType,form]);
+       if(channel){
+        form.setValue("name",channel.name);
+        form.setValue("type",channel.type);
+       }
+    },[form,channel]);
     const isLoading =form.formState.isSubmitting;
     const onSubmit = async (values:z.infer<typeof ChannelDialogValidation>)=>{
         try {
             const url = qs.stringifyUrl({
-                url:"/api/channels",
+                url:`/api/channels/${channel?.id}`,
                 query:{
-                    serverId:params?.serverId
+                    serverId:server?.id
                 }
             })
-            await axios.post(url,values);
+            await axios.patch(url,values);
             form.reset();
             router.refresh();
-            toast.success("Channel Created",{style: {
+            toast.success("Channel Updated",{style: {
                 borderRadius: '10px',
                 background: '#44495C',
                 color: '#fff',
@@ -79,7 +76,7 @@ export const CreateChannelModal = ()=>{
             <DialogContent className="bg-gradient-to-tr from-slate-800 via-gray-600 to-slate-800 text-white p-0 overflow-hidden border-0">
                 <DialogHeader className="pt-8 px-6">
                     <DialogTitle className="text-2xl text-center font-bold">
-                        Create Channel
+                        Edit Channel
                     </DialogTitle>
                 </DialogHeader>
                 <Form {...form}>
@@ -130,7 +127,7 @@ export const CreateChannelModal = ()=>{
                         </div>  
                         <DialogFooter className="px-6 py-4">
                             <Button disabled={isLoading} variant="primary">
-                                Create
+                                Update
                             </Button>
                         </DialogFooter>
                     </form>
