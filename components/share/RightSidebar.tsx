@@ -12,9 +12,9 @@ async function RightSidebar() {
 
   const similarMinds = await fetchUsers({
     userId: user.id,
-    pageSize: 4,
+    pageSize: 6,
   });
-  const suggestedCommunities = await fetchCommunities({ pageSize: 4});
+  const suggestedCommunities = await fetchCommunities({ pageSize: 6});
   
   
   return (
@@ -24,7 +24,7 @@ async function RightSidebar() {
           Suggested Communities
         </h3>
 
-        <div className='mt-7 flex w-[350px] flex-col gap-9'>
+        <div className='mt-7 flex w-[350px] flex-col gap-5'>
           {suggestedCommunities && suggestedCommunities.communities.length > 0 ? (
             <>
               {suggestedCommunities.communities.map((community) => (
@@ -48,7 +48,7 @@ async function RightSidebar() {
 
       <div className='flex flex-1 flex-col justify-start'>
         <h3 className='text-heading4-medium text-light-1'>Suggested Users</h3>
-        <div className='mt-7 flex w-[350px] flex-col gap-10'>
+        <div className='mt-7 flex w-[350px] flex-col gap-5'>
           {similarMinds && similarMinds.users.length > 0 ? (
             <>
               {similarMinds.users.map((person) => (

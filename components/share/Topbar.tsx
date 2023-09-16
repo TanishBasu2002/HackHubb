@@ -2,11 +2,12 @@
 "use client";
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
+import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
-
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { ActionTooltip } from "../chat-models/tools/action-tooltip";
 
 export default function Topbar() {
     const pathname= usePathname();
@@ -19,6 +20,7 @@ export default function Topbar() {
       if (!isMounted) {
           return null;
       }
+
     return (
         <nav className="topbar">
             <Link href="/" className="flex items-center gap-4">
@@ -30,7 +32,7 @@ export default function Topbar() {
                 <div className="block">
                     <Link href="/activity">
                     <div className="block cursor-pointer text-white">
-                    {isActive ? <Image src="/assets/heart-filled.svg"  alt="logo" width={28} height={28}/> : <Image src="/assets/heart.svg"  alt="logo" width={24} height={24}/>}
+                    <ActionTooltip label="Activity" side="bottom">{isActive ? <Image src="/assets/heart-filled.svg"  alt="logo" width={28} height={28}/> : <Image src="/assets/heart.svg"  alt="logo" width={24} height={24}/>}</ActionTooltip>
                     </div>
                     </Link>
                 </div>
@@ -53,7 +55,9 @@ export default function Topbar() {
                 <div className="block">
                     <Link href="/">
                     <div className="block cursor-pointer text-white">
-                     <Image src="/assets/home.svg"  alt="logo" width={28} height={28}/>
+                    <Button isIconOnly color="danger" aria-label="Like">
+                    <Image src="/assets/home.svg"  alt="logo" width={28} height={28}/>
+                    </Button>
                     </div>
                     </Link>
                     </div>

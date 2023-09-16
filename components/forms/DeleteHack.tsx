@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import { useAuth } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../ui/alert-dialog";
 
 interface Props {
   hackId: string;
@@ -37,7 +38,7 @@ function DeleteHack({
     if (!isMounted) {
         return null;
     }
-    const onToastClick = async () => {
+    const onClick = async () => {
       try {
        await deleteHack(JSON.parse(hackId), pathname);
         toast.dismiss();
@@ -65,44 +66,36 @@ function DeleteHack({
        toast.error(error);
       }
      }
-     const onClick = async () => {
-      try {
-        toast((t) => (
-          <div className="px-6 py-4 ">
-            <span className="flex items-center gap-2 justify-between w-full ">
-             <p className="px-8 text-center justify-between">Delete it permerantly?</p><br />
-           </span>
-           <span className="flex py-2 items-center p-2 gap-2 justify-between w-full ">
-            <Button className="bg-emerald-700 hover:bg-emerald-900" onClick={onToastClick}>
-               Confirm
-             </Button>
-             <Button className="bg-rose-700 hover:bg-rose-900" onClick={() => toast.dismiss(t.id)}>
-               Cancel
-             </Button>
-             </span>
-           
-          </div>
-         ),
-         {
-           style: {
-             borderRadius: '10px',
-             background: '#44495C',
-             color: '#fff',
-           },
-         });
-      } catch (error:any) {
-        toast.error(error);
-      }
-     }
   return (<>
-    <Image
-      src='/assets/delete.svg'
-      alt='delete'
-      width={18}
-      height={18}
-      className='cursor-pointer  object-contain'
-      onClick={onClick}
-    /></>
+  <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Button variant="outline" className="bg-transparent hover:bg-slate-600"> 
+            <Image
+            src='/assets/delete.svg'
+            alt='delete'
+            width={18}
+            height={18}
+            className='cursor-pointer  object-contain'
+          />
+          </Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle className="text-light-2">Are you absolutely sure?</AlertDialogTitle>
+              <AlertDialogDescription>
+                This action cannot be undone. This will permanently delete your
+                post and remove your data from our servers.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter className="pr-2">
+              <div className="justify-between text-light-2 flex py-2 items-center p-2 gap-2 w-full">
+              <AlertDialogCancel className="bg-rose-700 hover:bg-rose-900 hover:text-light-1 border-none">Cancel</AlertDialogCancel>
+              <AlertDialogAction className="bg-emerald-700 hover:bg-emerald-900" onClick={onClick}>Continue</AlertDialogAction>
+              </div>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+   </>
   );
 }
 

@@ -45,6 +45,14 @@ const ServerSearch = ({data}:ServerSearchProps) => {
         return router.push(`/hackchat/servers/${params?.serverId}/channels/${id}`)
         }
     }
+    const [isMounted,setIsMounted]=useState(false);
+      useEffect(()=>{
+          setIsMounted(true);
+      },[]);
+  
+      if (!isMounted) {
+          return null;
+      }
     return (
    <>
     <button onClick={()=>setOpen(true)} className="group px-2 py-2 rounded-md flex items-center gap-x-2 w-full hover:bg-slate-700/50 transition">

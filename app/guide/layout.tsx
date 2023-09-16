@@ -2,11 +2,10 @@
 import { Metadata } from "next"
 import { Open_Sans } from "next/font/google"
 import "../globals.css"
-import { cn } from "@/lib/utils"
-import LeftSidebar from "@/components/share/LeftSidebar"
 import { ClerkProvider } from "@clerk/nextjs"
-import { NextUiProviders } from "../providers"
+
 import Topbar from "@/components/share/Topbar"
+import { NextUiProviders } from "@/app/providers"
 
 const inter = Open_Sans({ subsets: ['latin'] })
 
