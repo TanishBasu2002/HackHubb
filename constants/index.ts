@@ -1,3 +1,40 @@
+export const bottombarLinks =[
+  {
+    imgURL: "/assets/home.svg",
+    route: "/",
+    label: "Home",
+  },
+  {
+    imgURL: "/assets/search.svg",
+    route: "/search",
+    label: "Search",
+  },
+  {
+    imgURL: "/assets/create.svg",
+    route: "/create-hack",
+    label: "Create Hack",
+  },
+  {
+    imgURL: "/assets/community.svg",
+    route: "/communities",
+    label: "Communities",
+  },
+  {
+    imgURL: "/assets/store.svg",
+    route: "/hackstore",
+    label: "HackStore",
+  },
+  {
+    imgURL: "/assets/message.svg",
+    route: "/hackchat",
+    label: "HackChat",
+  },
+ {
+    imgURL: "/assets/user.svg",
+    route: "/profile",
+    label: "Profile",
+  },
+]
 export const sidebarLinks = [
   {
     imgURL: "/assets/home.svg",
@@ -28,6 +65,11 @@ export const sidebarLinks = [
     imgURL: "/assets/message.svg",
     route: "/hackchat",
     label: "HackChat",
+  },
+  {
+    imgURL: "/assets/storage.svg",
+    route: "/storage",
+    label: "File Storage",
   },
   {
     imgURL: "/assets/user.svg",

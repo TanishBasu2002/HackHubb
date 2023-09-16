@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 "use client"
-import { sidebarLinks } from "@/constants";
+import { bottombarLinks } from "@/constants";
 import { useAuth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,7 +22,7 @@ export default function Bottombar() {
         <section className="bottombar">
             <div className="bottombar_container">
                 {/**maping through index.ts eliments */}
-                {sidebarLinks.map((link)=>{
+                {bottombarLinks.map((link)=>{
                     //checking if the link is active
                     const isActive = (pathname.includes(link.route) && link.route.length > 1) || pathname === link.route;
                     if(link.route==='/profile') link.route=`${link.route}/${userId}`

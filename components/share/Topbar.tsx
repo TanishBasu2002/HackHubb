@@ -25,7 +25,7 @@ export default function Topbar() {
         <nav className="topbar">
             <Link href="/" className="flex items-center gap-4">
                 <Image src="/assets/logo.svg" alt="logo" width={28} height={28}/>
-                <p className="text-heading3-bold md:block text-light-1 sm:hidden">HackHubb</p>
+                <p className="text-heading3-bold md:block text-light-1 max-lg:hidden">HackHubb</p>
             </Link>
             {pathname !== "/guide" &&(
                 <div className="flex items-center gap-1">
