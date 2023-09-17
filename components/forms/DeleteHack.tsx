@@ -40,7 +40,7 @@ function DeleteHack({
     }
     const onClick = async () => {
       try {
-       await deleteHack(JSON.parse(hackId), pathname);
+       await deleteHack(JSON.parse(hackId), pathname ?? '');
         toast.dismiss();
        toast.success("Deleted",{
          style: {

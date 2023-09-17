@@ -73,7 +73,7 @@ const AccountProfile = ( {user,btnTitle} :Props) => {
         name:values.name,
         bio:values.bio,
         image:values.profile_photo,
-        path:pathname
+        path:pathname ?? ''
       }
     );
     if(pathname === '/profile/edit'){

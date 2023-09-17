@@ -23,7 +23,7 @@ export default function LeftSidebar() {
       if (!isMounted) {
           return null;
       } 
-    const isSpacial = pathname.includes('/hackchat') || pathname.includes('/hackstore') || pathname === "/hackchat" || pathname === "/hackstore" ;
+    const isSpacial = pathname?.includes('/hackchat') || pathname?.includes('/hackstore') || pathname === "/hackchat" || pathname === "/hackstore" ;
     return (
         <section className={cn("custom-scrollbar leftsidebar", isSpacial?"w-[100px] z-10 ":"")}>
             
@@ -33,7 +33,7 @@ export default function LeftSidebar() {
                     
                 <ScrollArea className="pb-3">
                 {sidebarLinks.map((link)=>{
-                    const isActive = (pathname.includes(link.route) && link.route.length > 1) || pathname === link.route;
+                    const isActive = (pathname?.includes(link.route) && link.route.length > 1) || pathname === link.route;
                     if(link.route==='/profile') link.route=`${link.route}/${userId}`
                     return(
                         <Link href={link.route} key={link.label} className={`leftsidebar_link ${isActive && 'bg-gradient-to-tr from-red-500 via-purple-500 to-gray-500'}`}>

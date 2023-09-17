@@ -61,7 +61,7 @@ export default function PostHack({ userId }: { userId: string }) {
         image: values.image,
         author: userId,
         communityId: organization? organization.id : null,
-        path: pathname,
+        path: pathname ?? '',
       });
   
       router.push("/");

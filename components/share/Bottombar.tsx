@@ -24,7 +24,7 @@ export default function Bottombar() {
                 {/**maping through index.ts eliments */}
                 {bottombarLinks.map((link)=>{
                     //checking if the link is active
-                    const isActive = (pathname.includes(link.route) && link.route.length > 1) || pathname === link.route;
+                    const isActive = (pathname?.includes(link.route) && link.route.length > 1) || pathname === link.route;
                     if(link.route==='/profile') link.route=`${link.route}/${userId}`
                     return(
                         <Link href={link.route} key={link.label} className={`bottombar_link ${isActive && 'bg-gradient-to-r from-red-500 via-purple-500 to-gray-500'}`}>

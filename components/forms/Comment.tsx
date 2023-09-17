@@ -47,7 +47,7 @@ export default function Comment({hackId,
         hackId,
         values.hack,
         JSON.parse(currentUserId),
-        pathname); 
+        pathname ?? ''); 
       form.reset();
       toast.success("Commented",{
         style: {
