@@ -28,7 +28,7 @@ const roleIconMap = {
     [MemberRole.ADMIN]:<ShieldAlert className="h-4 w-4 mr-3 text-rose-700"/>
 }
 
-export const ServerTopbar=async({serverId}:ServerTopbarProps)=>{
+export const ServerTopbar= async ({serverId}:ServerTopbarProps)=>{
     const profile =await currentProfile();
     if(!profile){
         return redirect("/");
