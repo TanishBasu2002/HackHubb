@@ -175,7 +175,7 @@ const AccountProfile = ( {user,btnTitle} :Props) => {
               </FormLabel>
               <FormControl>
                 <Textarea
-                  rows={5}
+                  rows={3}
                   className='account-form_input no-focus'
                   {...field}
                 />

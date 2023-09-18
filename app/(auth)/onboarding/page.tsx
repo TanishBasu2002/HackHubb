@@ -20,10 +20,10 @@ export default async function Page() {
     image: userInfo? userInfo?.image : user?.imageUrl,
   }
   return (
-    <main className="mx-auto flex max-w-3xl flex-col justify-start px-10 py-5 min-h-screen">
+    <main className="mx-auto flex max-w-4xl flex-col justify-start px-10 py-5 h-full">
       <h1 className="head-text">Onboarding</h1>
       
-      <section className="mt-3 bg-gradient-to-b from-slate-600 via-slate-800 to-slate-950 rounded-xl p-10">
+      <section className="mt-3 bg-gradient-to-b from-slate-600 via-slate-800 to-slate-950 rounded-xl p-5">
         <AccountProfile user={userData} btnTitle="Continue"/>
       </section>
     </main>
