@@ -1,19 +1,18 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { ClerkProvider } from '@clerk/nextjs'
+import '../globals.css'
 import type { Metadata } from 'next'
-import "../globals.css"
 import { Open_Sans } from 'next/font/google'
+import Topbar from '@/components/share/Topbar'
 import LeftSidebar from '@/components/share/LeftSidebar'
+import RightSidebar from '@/components/share/RightSidebar'
 import Bottombar from '@/components/share/Bottombar'
 import { ToasterProvider } from '@/lib/providers/toaster'
-import Footer from '@/components/store/footer'
-import Navbar from '@/components/store/navbar'
-import Topbar from '@/components/share/Topbar'
 
 const inter = Open_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'HackStore',
+  title: 'HackHubb Cloud Storage',
   description: 'Developer Chat',
 }
 
@@ -24,23 +23,23 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
+    
     <html lang="en">
         <body className={`${inter.className}`}>
         <ToasterProvider />
-            <Topbar />
+          <Topbar />
             <main className='flex flex-row'>
-              <LeftSidebar />
+              <LeftSidebar className='max-md:hidden'/>
               <section className="main-container">
                 <div className="w-full max-w-4xl">
-                  <Navbar/>
                   {children}
-                  <Footer/>
                 </div>
               </section>
+              <RightSidebar/>
             </main>
           </body>
-          
     </html>
+    
     </ClerkProvider>
   )
 }

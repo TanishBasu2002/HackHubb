@@ -31,7 +31,7 @@ export default function RootLayout({
         <NextUiProviders>
           <Topbar />
             <main className='flex flex-row'>
-              <LeftSidebar />
+              <LeftSidebar className='max-md:hidden'/>
               <section className="main-container">
                 <div className="w-full max-w-4xl">
                   {children}
@@ -39,7 +39,6 @@ export default function RootLayout({
               </section>
               <RightSidebar/>
             </main>
-          <Bottombar />
           </NextUiProviders>
           </body>
     </html>

@@ -4,7 +4,7 @@ import HackCard from "@/components/cards/HackCard";
 import { fetchHacks } from "@/lib/actions/hack.actions";
 import { fetchUser } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs";
-import { redirect, useRouter } from "next/navigation";
+import { redirect} from "next/navigation";
 
 
 export default async function Home({
@@ -20,16 +20,18 @@ export default async function Home({
   return (
     <>
       <h1 className="head-text text-left">Home</h1>
-      <section className="mt-9 flex flex-col gap-10">
+      <section className="mt-9 flex flex-col gap-10 ">
         {result.hacks.length ===0 ?(
           <p className="no-result">No hacks found</p>
         ):(
           <>
           {result.hacks.map((hack)=>(
-            <HackCard key={hack._id} id={hack._id} currentUserId={user?.id || ""}
+            <div key={hack._id} className="w-full">
+              <HackCard key={hack._id} id={hack._id} currentUserId={user?.id || ""}
              parentId={hack.prentId} content={hack.text} image={hack.image} author={hack.author} 
              community={hack.community} createdAt={hack.createdAt} comments ={hack.children}
             />
+            </div>
           ))}
           </>
         )

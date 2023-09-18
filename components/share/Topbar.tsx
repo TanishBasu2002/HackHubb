@@ -8,6 +8,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ActionTooltip } from "../chat-models/tools/action-tooltip";
+import MobileToggle from "./MobileToggle";
 
 export default function Topbar() {
     const pathname= usePathname();
@@ -27,8 +28,7 @@ export default function Topbar() {
                 <Image src="/assets/logo.svg" alt="logo" width={28} height={28}/>
                 <p className="text-heading3-bold md:block text-light-1 max-lg:hidden">HackHubb</p>
             </Link>
-            {pathname !== "/guide" &&(
-                <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1">
                 <div className="block">
                     <Link href="/activity">
                     <div className="block cursor-pointer text-white">
@@ -42,27 +42,11 @@ export default function Topbar() {
                             organizationSwitcherTrigger:"py-2 px-4"
                         }}
                     }/>
-                <div className="md:hidden">
+                    
                                 <div className="flex cursor-pointer">
-                                <UserButton afterSignOutUrl="/sign-in" appearance={{ baseTheme:dark,}} />
+                                 {pathname ==="/guide" ?  <MobileToggle/> : <MobileToggle className="md:hidden"/>}
                                 </div>
-                           
-                    </div>
                 </div>
-            )}
-            {pathname === "/guide" &&(
-                <div className="flex items-center gap-1">
-                <div className="block">
-                    <Link href="/">
-                    <div className="block cursor-pointer text-white">
-                    <Button isIconOnly color="danger" aria-label="Like">
-                    <Image src="/assets/home.svg"  alt="logo" width={28} height={28}/>
-                    </Button>
-                    </div>
-                    </Link>
-                    </div>
-                    </div>
-            )}
         </nav>
     )
 }

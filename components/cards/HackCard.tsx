@@ -66,7 +66,7 @@ export default function HackCard({
                         {image && (<>
                             <p className="mt-2 text-small-regular font-semibold py-2 text-light-1">{content}</p>
                             <Link href={`/hack/${id}`} className="pt-8 sm:pt-0">
-                                <Image src={image} width={100} height={70}
+                                <Image src={image} width={100} height={70} quality="100" loading="lazy"
                                  className="object-fit h-[90%] w-[90%] sm:object-cover sm:h-full sm:w-full rounded-2xl"
                                  alt="project image"
                                  />
