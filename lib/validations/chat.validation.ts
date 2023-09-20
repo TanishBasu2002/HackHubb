@@ -25,4 +25,10 @@ export const ChannelDialogValidation = z.object({
 export const ChatInputValidation =z.object({
   content:z.string().min(1),
 });
+
+export const MessageFileValidation = z.object({
+  fileUrl: z.string().min(1, {
+    message: "Attachment is required."
+  })
+});
   
