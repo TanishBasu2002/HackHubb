@@ -4,6 +4,7 @@ import { fetchUsers } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs";
 import UserCard from "../cards/UserCard";
 import { redirect } from "next/navigation";
+import { ScrollArea } from "../ui/scroll-area";
 
 
 async function RightSidebar() {
@@ -23,7 +24,7 @@ async function RightSidebar() {
         <h3 className='text-heading4-medium text-light-1'>
           Suggested Communities
         </h3>
-
+        <ScrollArea className="pb-3">
         <div className='mt-7 flex w-[350px] flex-col gap-5'>
           {suggestedCommunities && suggestedCommunities.communities.length > 0 ? (
             <>
@@ -44,11 +45,14 @@ async function RightSidebar() {
             </p>
           )}
         </div>
+        </ScrollArea>
       </div>
 
       <div className='flex flex-1 flex-col justify-start'>
         <h3 className='text-heading4-medium text-light-1'>Suggested Users</h3>
+        <ScrollArea className="pb-3">
         <div className='mt-7 flex w-[350px] flex-col gap-5'>
+        
           {similarMinds && similarMinds.users.length > 0 ? (
             <>
               {similarMinds.users.map((person) => (
@@ -65,7 +69,9 @@ async function RightSidebar() {
           ) : (
             <p className='!text-base-regular text-light-3'>No users yet</p>
           )}
+          
         </div>
+        </ScrollArea>
       </div>
     </section>
   );

@@ -4,6 +4,7 @@ import { Metadata } from "next"
 import { Open_Sans } from "next/font/google"
 import "../globals.css"
 import { cn } from "@/lib/utils"
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Open_Sans({ subsets: ['latin'] })
 
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
             <body className={ cn(`${inter.className}`,`bg-gradient-to-br from-slate-700 via-slate-950 to-black`)}>
               <div className="w-full flex justify-center items-center min-h-screen">
               {children}
+              <Analytics />
               </div>
             </body>
         </html>

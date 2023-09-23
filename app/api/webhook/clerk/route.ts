@@ -170,7 +170,7 @@ export const POST = async (request: Request)=> {
       // @ts-ignore
       await updateCommunityInfo(id, name, slug, logo_url);
 
-      return NextResponse.json({ message: "Member removed" }, { status: 201 });
+      return NextResponse.json({ message: "Organiztion Updated" }, { status: 201 });
     } catch (err) {
       console.log(err);
 

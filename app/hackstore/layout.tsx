@@ -1,20 +1,19 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { ClerkProvider } from '@clerk/nextjs'
-import type { Metadata } from 'next'
+import { ClerkProvider } from '@clerk/nextjs';
+import type { Metadata } from 'next';
 import "../globals.css"
-import { Open_Sans } from 'next/font/google'
-import LeftSidebar from '@/components/share/LeftSidebar'
-import Bottombar from '@/components/share/Bottombar'
-import { ToasterProvider } from '@/lib/providers/toaster'
-import Footer from '@/components/store/footer'
-import Navbar from '@/components/store/navbar'
-import Topbar from '@/components/share/Topbar'
+import { Urbanist } from 'next/font/google';
+import LeftSidebar from '@/components/share/LeftSidebar';
+import { ToasterProvider } from '@/lib/providers/toaster';
+import Footer from '@/components/store/footer';
+import Navbar from '@/components/store/navbar';
+import Topbar from '@/components/share/Topbar';
+import { Analytics } from '@vercel/analytics/react';
 
-const inter = Open_Sans({ subsets: ['latin'] })
+const inter = Urbanist({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'HackStore',
-  description: 'Developer Chat',
 }
 
 export default function RootLayout({
@@ -28,12 +27,13 @@ export default function RootLayout({
         <body className={`${inter.className}`}>
         <ToasterProvider />
             <Topbar />
-            <main className='flex flex-row'>
+            <main className='flex flex-row text-light-2'>
               <LeftSidebar />
               <section className="main-container">
                 <div className="w-full max-w-4xl">
                   <Navbar/>
                   {children}
+                  <Analytics />
                   <Footer/>
                 </div>
               </section>

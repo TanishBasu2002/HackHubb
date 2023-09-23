@@ -13,7 +13,7 @@ interface FileUploadProps{
   value:string | null;
   divClass?:string;
   imgClass?:string;
-  endpoint:"messageFile"|"chatImage"|"media"
+  endpoint:"messageFile"|"chatImage"|"media"|"storage"
 }
 export const FileUpload = ({
   onChange,

@@ -5,8 +5,9 @@ import type { Metadata } from 'next'
 import { Open_Sans } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import { ModalProvider } from '@/components/chat-models/providers/modal-provider'
-import { ToasterProvider } from '@/lib/providers/toaster'
-import { SocketProvider } from '@/components/chat-models/providers/socket-provider'
+import { ToasterProvider } from '@/lib/providers/toaster';
+import { SocketProvider } from '@/components/chat-models/providers/socket-provider';
+import { Analytics } from '@vercel/analytics/react';
 const inter = Open_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -27,6 +28,7 @@ export default function RootLayout({
         <ToasterProvider />
         <ModalProvider/>
         {children}
+        <Analytics />
         </SocketProvider>
         </body>
     </html>

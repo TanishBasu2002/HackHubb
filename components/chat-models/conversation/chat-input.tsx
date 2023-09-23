@@ -10,6 +10,8 @@ import * as z from "zod";
 import qs from "query-string";
 import axios from "axios";
 import { useModal } from "@/hooks/use-modal-store";
+import { EmojiPicker } from "../tools/emoji-picker";
+import { useRouter } from "next/navigation";
 
 interface ChatInputProps{
     apiUrl:string;
@@ -20,6 +22,7 @@ interface ChatInputProps{
 
 export default function ChatInput({apiUrl,query,name,type}:ChatInputProps) {
     const {onOpen}=useModal();
+    const router = useRouter();
     const form =useForm<z.infer<typeof ChatInputValidation>>({
     resolver:zodResolver(ChatInputValidation),
     defaultValues:{
@@ -34,6 +37,8 @@ export default function ChatInput({apiUrl,query,name,type}:ChatInputProps) {
             query,
         });
         await axios.post(url,values);
+        form.reset();
+        router.refresh();
        } catch (error) {
         console.log(error);
        }
@@ -49,7 +54,7 @@ export default function ChatInput({apiUrl,query,name,type}:ChatInputProps) {
                         <FormControl>
                             <div className="relative p-4 pb-6">
                                 <div className="absolute top-7 left-8">
-                                <Smile className="text-slate-400"/>
+                                <EmojiPicker onChange={(emoji:string)=>field.onChange(`${field.value} ${emoji}`)}/>
                                 </div>
                                 <Input disabled={isLoading} className="px-14 py-6 bg-slate-700/75 border-none border-0 focus-visible:ring-0 focus-visible:ring-offset-0 text-slate-200" placeholder={`Message ${type === "conversation" ? name : "#"+name}`} {...field}/>
                                 <button type="button" onClick={()=>onOpen("messageFile",{apiUrl,query})}

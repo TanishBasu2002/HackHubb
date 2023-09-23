@@ -16,10 +16,13 @@ export const ourFileRouter = {
   media:f({ image: { maxFileSize: "4MB", maxFileCount: 1 } })
   .middleware(() => handleAuth())
   .onUploadComplete(() => {}),
-    chatImage: f({ image: { maxFileSize: "4MB", maxFileCount: 1 } })
+  chatImage: f({ image: { maxFileSize: "4MB", maxFileCount: 1 } })
     .middleware(() => handleAuth())
     .onUploadComplete(() => {}),
   messageFile: f(["image", "pdf"])
+    .middleware(() => handleAuth())
+    .onUploadComplete(() => {}),
+  storage: f(["image", "pdf","video","audio","application/javascript"])
     .middleware(() => handleAuth())
     .onUploadComplete(() => {})
 } satisfies FileRouter;
