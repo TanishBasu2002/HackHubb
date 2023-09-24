@@ -11,6 +11,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { dark } from '@clerk/themes';
 import { ActionTooltip } from '../tools/action-tooltip';
+import MobileToggle from '@/components/share/MobileToggle';
 
 const NavigationSidebar = async() => {
     const profile =await currentProfile();
@@ -41,8 +42,8 @@ const NavigationSidebar = async() => {
       </ScrollArea>
       <div className="pb-3 mt-auto flex items-center flex-col gap-y-4">
       <Link href="/" className='leftsidebar_link '>
-       <ActionTooltip label='Home' side='left' align='center'>
-       <Image src="/assets/home.svg"  width={24} height={24} alt='Home'/>
+       <ActionTooltip label='Navbar' side='left' align='center'>
+       <MobileToggle className='bg-transparent' />
        </ActionTooltip>
        </Link>
         <UserButton
