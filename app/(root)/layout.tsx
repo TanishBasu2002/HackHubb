@@ -2,18 +2,18 @@
 import { ClerkProvider } from '@clerk/nextjs';
 import '../globals.css';
 import type { Metadata } from 'next';
-import { Open_Sans } from 'next/font/google';
+import { Urbanist } from 'next/font/google';
 import Topbar from '@/components/share/Topbar';
 import LeftSidebar from '@/components/share/LeftSidebar';
 import RightSidebar from '@/components/share/RightSidebar';
 import { Analytics } from '@vercel/analytics/react';
 import { ToasterProvider } from '@/lib/providers/toaster';
+import { dark } from '@clerk/themes';
 
-const inter = Open_Sans({ subsets: ['latin'] })
+const inter = Urbanist({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'HackHubb',
-  description: 'Developer Chat',
 }
 
 export default function RootLayout({
@@ -22,7 +22,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider appearance={{
+      baseTheme: dark,
+    }}>
     <html lang="en">
         <body className={`${inter.className}`}>
         <ToasterProvider />

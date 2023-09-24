@@ -5,6 +5,7 @@ import { ShoppingBag, Store } from "lucide-react";
 import { Button } from "../ui/button";
 import { ActionTooltip } from "../chat-models/tools/action-tooltip";
 import { useEffect, useState } from "react";
+import MobileToggle from "../share/MobileToggle";
 
 const NavbarActions =()=>{
     const [isMounted,setIsMounted]=useState(false);
@@ -16,7 +17,7 @@ const NavbarActions =()=>{
           return null;
       } 
     return(
-        <div className="ml-auto flex items-cemnter gap-x-4">
+        <div className="ml-auto flex items-center gap-x-4">
             <ActionTooltip label="Cart" side="top">
             <Button className="flex items-center rounded-full bg-slate-400 hover:bg-slate-300 px-4 py-2">
                 <ShoppingBag size={20} color="black"/>
@@ -25,11 +26,7 @@ const NavbarActions =()=>{
                 </span>
             </Button>
             </ActionTooltip>
-            <ActionTooltip label="Become a Seller" side="top">
-            <Button className="p-2 flex items-center rounded-full bg-slate-400 hover:bg-slate-300 px-4 py-2">
-                <Store size={20} color="black"/>
-            </Button>
-            </ActionTooltip>
+            <MobileToggle/>
         </div>
     )
 }

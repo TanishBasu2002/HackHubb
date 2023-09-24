@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { Metadata } from "next";
-import { Open_Sans } from "next/font/google";
+import { Urbanist } from "next/font/google";
 import "../globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 
@@ -8,7 +8,7 @@ import Topbar from "@/components/share/Topbar";
 import { NextUiProviders } from "@/app/providers";
 import { Analytics } from "@vercel/analytics/react";
 
-const inter = Open_Sans({ subsets: ['latin'] })
+const inter = Urbanist({ subsets: ['latin'] })
 
 
 export const metadata: Metadata = {

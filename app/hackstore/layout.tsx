@@ -3,12 +3,11 @@ import { ClerkProvider } from '@clerk/nextjs';
 import type { Metadata } from 'next';
 import "../globals.css"
 import { Urbanist } from 'next/font/google';
-import LeftSidebar from '@/components/share/LeftSidebar';
 import { ToasterProvider } from '@/lib/providers/toaster';
 import Footer from '@/components/store/footer';
 import Navbar from '@/components/store/navbar';
-import Topbar from '@/components/share/Topbar';
 import { Analytics } from '@vercel/analytics/react';
+import { dark } from '@clerk/themes';
 
 const inter = Urbanist({ subsets: ['latin'] })
 
@@ -22,24 +21,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider    appearance={{
+      baseTheme: dark,
+    }}>
     <html lang="en">
-        <body className={`${inter.className}`}>
+        <body className={`${inter.className} bg-slate-950`}>
         <ToasterProvider />
-            <Topbar />
-            <main className='flex flex-row text-light-2'>
-              <LeftSidebar />
-              <section className="main-container">
-                <div className="w-full max-w-4xl">
                   <Navbar/>
                   {children}
                   <Analytics />
                   <Footer/>
-                </div>
-              </section>
-            </main>
           </body>
-          
     </html>
     </ClerkProvider>
   )

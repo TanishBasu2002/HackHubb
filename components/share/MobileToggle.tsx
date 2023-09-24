@@ -18,7 +18,7 @@ const MobileToggle = ({className}:MobileToggleProps) => {
             <Menu />
             </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="p-0 flex gap-0 w-[80px]">
+        <SheetContent side="left" className="p-0 flex gap-0 w-fit">
             <div className="w-full">
             <LeftSidebar/>
             </div>

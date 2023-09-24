@@ -2,13 +2,14 @@
 import { ClerkProvider } from '@clerk/nextjs'
 import "../globals.css"
 import type { Metadata } from 'next'
-import { Open_Sans } from 'next/font/google'
+import { Urbanist } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import { ModalProvider } from '@/components/chat-models/providers/modal-provider'
 import { ToasterProvider } from '@/lib/providers/toaster';
 import { SocketProvider } from '@/components/chat-models/providers/socket-provider';
 import { Analytics } from '@vercel/analytics/react';
-const inter = Open_Sans({ subsets: ['latin'] })
+import { dark } from '@clerk/themes'
+const inter = Urbanist({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'HackChat',
@@ -21,7 +22,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider    appearance={{
+      baseTheme: dark,
+    }}>
     <html lang="en">
         <body className={cn(inter.className,"bg-slate-950 text-light-2")}>
         <SocketProvider>

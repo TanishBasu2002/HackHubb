@@ -1,4 +1,6 @@
 /* eslint-disable camelcase */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 // Resource: https://clerk.com/docs/users/sync-data-to-your-backend
 // Above article shows why we need webhooks i.e., to sync data to our backend
 
@@ -34,7 +36,7 @@ type Event = {
   type: EventType;
 };
 
-export const POST = async (request: Request)=> {
+export const POST = async (request: Request) => {
   const payload = await request.json();
   const header = headers();
 
@@ -170,7 +172,7 @@ export const POST = async (request: Request)=> {
       // @ts-ignore
       await updateCommunityInfo(id, name, slug, logo_url);
 
-      return NextResponse.json({ message: "Organiztion Updated" }, { status: 201 });
+      return NextResponse.json({ message: "Member removed" }, { status: 201 });
     } catch (err) {
       console.log(err);
 

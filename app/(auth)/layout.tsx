@@ -1,12 +1,13 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { ClerkProvider } from "@clerk/nextjs"
 import { Metadata } from "next"
-import { Open_Sans } from "next/font/google"
+import { Urbanist } from "next/font/google"
 import "../globals.css"
 import { cn } from "@/lib/utils"
 import { Analytics } from "@vercel/analytics/react"
+import { dark } from "@clerk/themes"
 
-const inter = Open_Sans({ subsets: ['latin'] })
+const inter = Urbanist({ subsets: ['latin'] })
 
 
 export const metadata: Metadata = {
@@ -20,7 +21,9 @@ export const metadata: Metadata = {
     children: React.ReactNode
   }) {
     return (
-     <ClerkProvider>
+     <ClerkProvider    appearance={{
+      baseTheme: dark,
+    }}>
         <html lang="en">
             <body className={ cn(`${inter.className}`,`bg-gradient-to-br from-slate-700 via-slate-950 to-black`)}>
               <div className="w-full flex justify-center items-center min-h-screen">

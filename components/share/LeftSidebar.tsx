@@ -39,14 +39,12 @@ export default function LeftSidebar({className}:LeftSidebrProps) {
                     if(link.route==='/profile') link.route=`${link.route}/${userId}`
                     return(
                         <Link href={link.route} key={link.label} className={cn("leftsidebar_link",isActive && 'bg-gradient-to-tr from-red-500 via-purple-500 to-gray-500')}>
-                        <ActionTooltip className="lg:hidden" label={link.label} side="left" align="center">
-                            <Image src={link.imgURL} alt={link.label} width={24} height={24}/>
-                        </ActionTooltip>
-                       
+                            <ActionTooltip className="lg:hidden" label={link.label} side="left" align="center">
+                                <Image src={link.imgURL} alt={link.label} width={24} height={24}/>
+                            </ActionTooltip>
                             <p className="text-light-1 max-lg:hidden">
                             {link.label}
                             </p>
-
                         </Link>
                     )
                 })}
