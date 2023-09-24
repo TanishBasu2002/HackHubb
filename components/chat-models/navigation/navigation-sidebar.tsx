@@ -41,11 +41,9 @@ const NavigationSidebar = async() => {
         ))}
       </ScrollArea>
       <div className="pb-3 mt-auto flex items-center flex-col gap-y-4">
-      <Link href="/" className='leftsidebar_link '>
        <ActionTooltip label='Navbar' side='left' align='center'>
        <MobileToggle className='bg-transparent' />
        </ActionTooltip>
-       </Link>
         <UserButton
           afterSignOutUrl="/"
           appearance={{
