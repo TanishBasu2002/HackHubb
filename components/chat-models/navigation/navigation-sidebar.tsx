@@ -44,15 +44,6 @@ const NavigationSidebar = async() => {
        <ActionTooltip label='Navbar' side='left' align='center'>
        <MobileToggle className='bg-transparent' />
        </ActionTooltip>
-        <UserButton
-          afterSignOutUrl="/"
-          appearance={{
-            baseTheme: dark,
-            elements: {
-              avatarBox: "h-[36px] w-[36px]"
-            }
-          }}
-        />
       </div>
     </div>
   )
