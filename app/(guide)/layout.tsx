@@ -26,11 +26,9 @@ export const metadata: Metadata = {
         <body className={`${inter.className}`}>
         <NextUiProviders>
           <Topbar />
-          <div className="bg-black text-white">
-              <div className="w-full flex justify-center items-center min-h-screen">
+          <div className="bg-black text-white h-full">
               {children}
               <Analytics />
-              </div>
             </div>
           </NextUiProviders>
           </body>
