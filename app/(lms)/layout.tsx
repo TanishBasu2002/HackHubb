@@ -4,11 +4,9 @@ import type { Metadata } from 'next';
 import "../globals.css"
 import { Urbanist } from 'next/font/google';
 import { ToasterProvider } from '@/lib/providers/toaster';
-import Footer from '@/components/store/footer';
 
 import { Analytics } from '@vercel/analytics/react';
 import { dark } from '@clerk/themes';
-import MobileToggle from '@/components/share/MobileToggle';
 
 const inter = Urbanist({ subsets: ['latin'] })
 
@@ -26,12 +24,10 @@ export default function RootLayout({
       baseTheme: dark,
     }}>
     <html lang="en">
-        <body className={`${inter.className} bg-slate-950`}>
+        <body className={`${inter.className} bg-slate-950 text-white`}>
         <ToasterProvider />
-                  <MobileToggle/>
                   {children}
                   <Analytics />
-                  <Footer/>
           </body>
     </html>
     </ClerkProvider>
