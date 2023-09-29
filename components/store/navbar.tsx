@@ -3,7 +3,7 @@
 import Link from "next/link"
 import Container from "./ui/container"
 import MainNav from "./main-nav"
-import getCategory from "@/lib/actions/get-categories"
+import getCategory from "@/lib/actions/store/get-categories"
 import NavbarActions from "./navbar-actions"
 import Image from "next/image"
 
