@@ -1,4 +1,4 @@
-# Fullstack Ecosystem for Developers: Next.js 13, React, Socket.io, Prisma, Tailwind, MySQL,MongoDB,Clerk Webhooks
+# Fullstack Web Ecosystem for Developers: Next.js 13, React, Socket.io, Prisma, Tailwind, MySQL,MongoDB,Clerk Webhooks
 
 
 Features:
