@@ -114,7 +114,10 @@ export default function PostHack({ userId }: { userId: string }) {
           control={form.control}
           name="image"
           render={({ field }) => (
-            <FormItem className="flex items-center gap-4">
+            <FormItem className="flex w-full flex-col gap-3">
+              <FormLabel className='mt-10 text-base-semibold text-light-2'>
+                Add Image
+              </FormLabel>
               <FormControl className='flex-1 text-base-semibold text-gray-200'>
               <div className="account-form_image-input"> 
               <FileUpload 

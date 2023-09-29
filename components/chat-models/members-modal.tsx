@@ -5,7 +5,7 @@ import { ServerWithMemberandProfile } from "@/types";
 import { Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle } from "../ui/dialog";
 import { useModal } from "@/hooks/use-modal-store";
 import { ScrollArea } from "../ui/scroll-area";
-import UserAvatar from "./tools/user-avatar";
+
 import { Check, Gavel, Loader2, MoreVertical, Shield, ShieldAlert, ShieldCheck, ShieldQuestion } from "lucide-react";
 import { useEffect, useState } from "react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuPortal, DropdownMenuSeparator, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from "../ui/dropdown-menu";
@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 import { MemberRole } from "@prisma/client";
 import qs from "query-string";
 import toast from "react-hot-toast";
+import { UserAvatar } from "./tools/user-avatar";
 
 
 const roleIconMap={

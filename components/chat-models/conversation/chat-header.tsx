@@ -2,8 +2,9 @@
 
 import { Hash} from "lucide-react";
 import MobileToggle from "../tools/mobile-toggle";
-import UserAvatar from "../tools/user-avatar";
+
 import { SocketIndicator } from "../tools/socket-indicator";
+import { UserAvatar } from "../tools/user-avatar";
 
 interface ChatHeaderProps{
     serverId:string;

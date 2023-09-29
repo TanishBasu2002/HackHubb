@@ -31,4 +31,9 @@ export const MessageFileValidation = z.object({
     message: "Attachment is required."
   })
 });
+
+export const editMessageFormSchema = z.object({
+  content: z.string().min(1),
+});
+
   

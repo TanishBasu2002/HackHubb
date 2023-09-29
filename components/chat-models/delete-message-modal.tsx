@@ -9,15 +9,13 @@ import { Button } from "../ui/button";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 
 
-export const DeleteChannelModal = ()=>{
+export const DeleteMessageModal = ()=>{
     const { isOpen, onClose, type, data } = useModal();
-    const router = useRouter();
   
-    const isModalOpen = isOpen && type === "deleteChannel";
-    const { server, channel } = data;
+    const isModalOpen = isOpen && type === "deleteMessage";
+    const { apiUrl, query } = data;
   
     const [isLoading, setIsLoading] = useState(false);
   
@@ -25,23 +23,19 @@ export const DeleteChannelModal = ()=>{
         try {
           setIsLoading(true);
           const url = qs.stringifyUrl({
-            url: `/api/channels/${channel?.id}`,
-            query: {
-              serverId: server?.id,
-            }
+            url:apiUrl  || "",
+            query,
           });
       
           await axios.delete(url);
           onClose();
-          toast.success("Deleted the Channel!", {
+          toast.success("Deleted the Message!", {
             style: {
               borderRadius: '10px',
               background: '#44495C',
               color: '#fff',
             },
           });
-          router.refresh();
-          router.push(`/hackchat/servers/${server?.id}`);
         } catch (error:any) {
           const responseData = error.response.data;
           if (responseData.status === 400 && responseData.data === 'Channel Id Not Found') {
@@ -66,10 +60,11 @@ export const DeleteChannelModal = ()=>{
             <DialogContent className="bg-gradient-to-tr from-slate-800 via-gray-600 to-slate-800 text-white p-0 overflow-hidden border-0">
                 <DialogHeader className="pt-8 px-6">
                     <DialogTitle className="text-2xl text-center font-bold">
-                        Delete Channel
+                        Delete Message
                     </DialogTitle>
                     <DialogDescription className="text-center text-slate-300">
-                        Are you sure you want to delete <span className="font-semibold text-indigo-500">#{channel?.name}</span>?
+                        Are you sure you want to delete? <br />
+                        The Message Will be permerently deleted.
                     </DialogDescription>
                 </DialogHeader>
                     <DialogFooter className="px-6 py-4">
