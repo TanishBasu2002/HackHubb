@@ -20,7 +20,7 @@ const nextConfig = {
       // your project has typescript errors.
       ignoreDuringBuilds: true,
     },
-    
+    swcMinify: true,
     images: {
       remotePatterns: [
         {

@@ -3,8 +3,13 @@
 import { Button } from "../ui/button"
 
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../ui/alert-dialog"
+import { useRouter } from "next/navigation";
 
 const FileStorageHeader = () => {
+  const router = useRouter();
+  const onClick =()=>{
+    router.push("/file-converter")
+  }
   return (
     <div className="justify-between text-light-2 flex py-2 items-center p-2 gap-2 w-full">
          <AlertDialog>
@@ -50,6 +55,9 @@ const FileStorageHeader = () => {
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
+        <Button onClick={onClick} variant="outline" className="bg-gradient-to-tr from-gray-500 via-purple-500 to-rose-600 hover:bg-gradient-to-tr hover:from-rose-600 hover:via-sky-600 hover:to-emerald-600 hover:text-light-1 border-none"> 
+            File Converter
+        </Button>
     </div>
   )
 }

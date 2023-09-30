@@ -1,6 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-
-import '../globals.css';
+import "@/app/globals.css";
 import type { Metadata } from 'next';
 import { Urbanist } from 'next/font/google';
 import Topbar from '@/components/share/Topbar';
