@@ -9,7 +9,7 @@ import { fetchUser } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
-export const revlidate =0;
+export const revalidate =0;
 const Page = async({params}:{params:{id:string}}) => {
     const products = await getProducts({isFeatured:true});
     const user = await currentUser();
