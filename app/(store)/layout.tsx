@@ -6,7 +6,6 @@ import { Urbanist } from 'next/font/google';
 import { ToasterProvider } from '@/lib/providers/toaster';
 import Footer from '@/components/store/footer';
 import Navbar from '@/components/store/navbar';
-import { Analytics } from '@vercel/analytics/react';
 import { dark } from '@clerk/themes';
 
 const inter = Urbanist({ subsets: ['latin'] })
@@ -26,7 +25,6 @@ export default function RootLayout({
         <ToasterProvider />
                   <Navbar/>
                   {children}
-                  <Analytics />
                   <Footer/>
           </body>
     </html>

@@ -1,4 +1,7 @@
 import ChatHeader from "@/components/chat-models/conversation/chat-header";
+import ChatInput from "@/components/chat-models/conversation/chat-input";
+import { ChatMessages } from "@/components/chat-models/conversation/chat-messges";
+import { MediaRoom } from "@/components/chat-models/tools/media-room";
 import { getOrCreateConversation } from "@/lib/chat/converstion";
 import { currentProfile } from "@/lib/chat/current-profile";
 import { db } from "@/lib/db";
@@ -11,8 +14,11 @@ interface MemberIdPageProps{
         memberId:string;
         serverId:string;
     }
+    searchParams:{
+        video?:boolean;
+    }
 }
-export default async function MemberIdPage({params}:MemberIdPageProps){
+export default async function MemberIdPage({params,searchParams}:MemberIdPageProps){
     const profile = await currentProfile();
     if(!profile){
         return redirectToSignIn();
@@ -41,8 +47,15 @@ export default async function MemberIdPage({params}:MemberIdPageProps){
 
     const otherMember = memberOne.profileId === profile.id ? memberTwo :memberOne;
     return(
-        <div className="text-light-2">
+        <div className="text-light-2 flex flex-col h-full">
             <ChatHeader type="conversation" imageUrl={otherMember.profile.imageUrl} name={otherMember.profile.name} serverId={params.serverId}/>
+            {searchParams.video && (<MediaRoom chatId={conversation.id} video={true} audio={true}/>)}
+            {!searchParams.video && (
+            <>
+                <ChatMessages member={currentMember} name={otherMember.profile.name} chatId={conversation.id} type="conversation" apiUrl="/api/direct-messages" paramKey="conversationId" paramValue={conversation.id} socketUrl="/api/socket/direct-messages" socketQuery={{conversationId: conversation.id,}}/>
+                <ChatInput name={otherMember.profile.name} type="conversation" apiUrl="/api/socket/direct-messages" query={{ conversationId: conversation.id,}}/>
+            </>
+            )}
         </div>
     )
 }
