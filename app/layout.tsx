@@ -16,7 +16,7 @@ export default function RootLayout({
         baseTheme: dark,
       }}>
       <html lang="en">
-        <body>{children}</body>
+        <body suppressHydrationWarning >{children}</body>
         <Analytics />
       </html>
     </ClerkProvider>

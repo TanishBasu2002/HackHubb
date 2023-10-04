@@ -38,7 +38,7 @@ const ServerSection = ({label,role,sectionType,channelType,server,}:ServerSectio
         </ActionTooltip>
       )}
       {role === MemberRole.ADMIN && sectionType==="members" && (
-        <ActionTooltip label="Mnage Members" side="top">
+        <ActionTooltip label="Manage Members" side="top">
         <button className="text-slate-400 hover:text-slate-200 transition" onClick={()=>onOpen("members",{server})}>
           <Settings className="h-4 w-4"/>
         </button>
