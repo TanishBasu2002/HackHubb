@@ -1,9 +1,16 @@
 // imports
 
+import { redirect } from "next/navigation";
 import Dropzone from "../_components/dropzone";
+import { fetchUser } from "@/lib/actions/user.actions";
+import { currentUser } from "@clerk/nextjs";
 
 
-export default function Home() {
+export default async function Home() {
+  const user = await currentUser();
+  if (!user) redirect("/sign-in");
+  const userInfo = await fetchUser(user.id);
+  if (!userInfo?.onboarded) redirect("/onboarding");
   return (
     <div className="space-y-16 pb-8">
       {/* Title + Desc */}

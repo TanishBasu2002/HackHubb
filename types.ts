@@ -15,51 +15,8 @@ export type NextApiResponseServerIo = NextApiResponse & {
     };
 };
 
-
-
-//HackStore
-export interface Product {
-    id: string;
-    category: Category;
-    name: string;
-    price: string;
-    isFeatured: boolean;
-    size: Size;
-    color: Color;
-    images: Image[]
-  };
-  
-  export interface Image {
-    id: string;
-    url: string;
-  }
-  
-  export interface Billboard {
-    id: string;
-    label: string;
-    imageUrl: string;
-  };
-  
-  export interface Category {
-    id: string;
-    name: string;
-    billboard: Billboard;
-  };
-  
-  export interface Size {
-    id: string;
-    name: string;
-    value: string;
-  };
-  
-  export interface Color {
-    id: string;
-    name: string;
-    value: string;
-  };
-
-  //converter
-  export type ConvertAction = {
+//converter
+export type ConvertAction = {
     file: any;
     file_name: string;
     file_size: number;
@@ -73,3 +30,5 @@ export interface Product {
     output?: any;
   };
   
+
+

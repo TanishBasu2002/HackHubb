@@ -1,7 +1,7 @@
 import { ClerkProvider } from '@clerk/nextjs'
 import { dark } from '@clerk/themes'
 import { Analytics } from '@vercel/analytics/react'
- 
+import "./globals.css"
 export const metadata = {
   title: 'HackSpace',
 }
@@ -16,7 +16,7 @@ export default function RootLayout({
         baseTheme: dark,
       }}>
       <html lang="en">
-        <body suppressHydrationWarning >{children}</body>
+        <body suppressHydrationWarning>{children}</body>
         <Analytics />
       </html>
     </ClerkProvider>

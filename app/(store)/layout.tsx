@@ -4,9 +4,7 @@ import type { Metadata } from 'next';
 import "../globals.css"
 import { Urbanist } from 'next/font/google';
 import { ToasterProvider } from '@/lib/providers/toaster';
-import Footer from '@/components/store/footer';
-import Navbar from '@/components/store/navbar';
-import { dark } from '@clerk/themes';
+
 
 const inter = Urbanist({ subsets: ['latin'] })
 
@@ -21,11 +19,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-        <body className={`${inter.className} bg-slate-950`}>
-        <ToasterProvider />
-                  <Navbar/>
+        <body className={`${inter.className} bg-slate-950 text-white`}>
+                  <ToasterProvider />
                   {children}
-                  <Footer/>
           </body>
     </html>
   )
