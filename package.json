@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.25.2",
-    "@clerk/themes": "^1.7.7/",
+    "@clerk/themes": "^1.7.7",
     "@emailjs/browser": "^3.11.0",
     "@emoji-mart/data": "^1.1.2",
     "@emoji-mart/react": "^1.1.1",
