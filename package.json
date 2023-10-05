@@ -10,8 +10,8 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
-    "@clerk/nextjs": "^4.25.1",
-    "@clerk/themes": "^1.7.5",
+    "@clerk/nextjs": "^4.25.2",
+    "@clerk/themes": "^1.7.7/",
     "@emailjs/browser": "^3.11.0",
     "@emoji-mart/data": "^1.1.2",
     "@emoji-mart/react": "^1.1.1",
@@ -37,7 +37,7 @@
     "@radix-ui/react-toast": "^1.1.5",
     "@radix-ui/react-tooltip": "^1.0.7",
     "@sanity/image-url": "^1.0.2",
-    "@sanity/vision": "^3.16.7",
+    "@sanity/vision": "^3.17.0",
     "@tanstack/react-query": "^4.35.7",
     "@types/node": "20.4.7",
     "@types/react": "18.2.18",
@@ -46,7 +46,7 @@
     "@vercel/analytics": "^1.0.2",
     "autoprefixer": "10.4.14",
     "axios": "^1.5.1",
-    "canvas-confetti": "^1.7.0",
+    "canvas-confetti": "^1.8.0",
     "class-variance-authority": "^0.7.0",
     "client-only": "^0.0.1",
     "clsx": "^2.0.0",
@@ -58,7 +58,7 @@
     "livekit-client": "^1.13.4",
     "livekit-server-sdk": "^1.2.6",
     "lucide-react": "^0.264.0",
-    "mongoose": "^7.5.3",
+    "mongoose": "^7.5.4",
     "next": "^13.5.4",
     "next-themes": "^0.2.1",
     "postcss": "8.4.27",
@@ -78,13 +78,13 @@
     "tailwindcss": "3.3.3",
     "tailwindcss-animate": "^1.0.6",
     "typescript": "5.1.6",
-    "uploadthing": "^5.7.0",
+    "uploadthing": "^5.7.1",
     "uuid": "^9.0.1",
-    "zod": "^3.22.2",
-    "zustand": "^4.4.2"
+    "zod": "^3.22.4",
+    "zustand": "^4.4.3"
   },
   "devDependencies": {
-    "@prisma/client": "^5.3.1",
+    "@prisma/client": "^5.4.1",
     "@types/bcrypt": "^5.0.0",
     "@types/gtag.js": "^0.0.13",
     "@types/uuid": "^9.0.4",
@@ -92,6 +92,6 @@
     "@typescript-eslint/parser": "^6.7.4",
     "eslint": "^8.49.0",
     "eslint-config-next": "^13.5.4",
-    "prisma": "^5.3.1"
+    "prisma": "^5.4.1"
   }
 }
