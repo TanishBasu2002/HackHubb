@@ -5,9 +5,6 @@ import "../globals.css"
 import { Urbanist } from 'next/font/google';
 import { ToasterProvider } from '@/lib/providers/toaster';
 
-import { Analytics } from '@vercel/analytics/react';
-import { dark } from '@clerk/themes';
-
 const inter = Urbanist({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -24,7 +21,6 @@ export default function RootLayout({
         <body className={`${inter.className} bg-slate-950 text-white`}>
         <ToasterProvider />
                   {children}
-                  <Analytics />
           </body>
     </html>
   )
