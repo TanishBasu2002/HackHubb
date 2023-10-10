@@ -33,7 +33,7 @@ NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
 NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/onboarding
 NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/guide
 NEXT_CLERK_WEBHOOK_SECRET=whsec_5q1VFCRQwbcYwoGHmPP7jixn+jQuPnfd
-DATABASE_URL='mysql://x2li2wxb56zlth3eke1j:pscale_pw_dIoHnRvEhwoRcgILYiEE2YFsXAF9I2V5s9lSme3lO6T@aws.connect.psdb.cloud/hackstore-admin?sslaccept=strict'
+DATABASE_URL='mysql://zgqi0a59f44m5ef6h8ff:pscale_pw_In57dPsClqr2vxZjQhyM5IkYLYEUau0i50aAS445Bo9@aws.connect.psdb.cloud/hackstore-admin?sslaccept=strict'
 MONGODB_URL=mongodb+srv://TanishBasu:1234@cluster0.dryvr9z.mongodb.net/?retryWrites=true&w=majority
 UPLOADTHING_SECRET=sk_live_ff4f3ec4bb2e5bcbf623825acbc7f7088584a715d6f47539353048413136c3b5
 UPLOADTHING_APP_ID=n0rqwbhupt
