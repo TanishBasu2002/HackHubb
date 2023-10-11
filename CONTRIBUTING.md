@@ -24,27 +24,22 @@ Before you begin, make sure you have the following installed:
    cd hackhubb
    npm install
 ```
-3. Set Up .env file
+3. Set Up .env file make sure its .env nothing else like .env.local
 ```
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
-CLERK_SECRET_KEY=
-NEXT_PUBLIC_CLERK_SIGN_IN_URL=
-NEXT_PUBLIC_CLERK_SIGN_UP_URL=
-NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=
-NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=
-
-NEXT_CLERK_WEBHOOK_SECRET=
-
-MONGODB_URL=
-
-DATABASE_URL=
-
-UPLOADTHING_SECRET=
-UPLOADTHING_APP_ID=
-
-LIVEKIT_API_KEY=
-LIVEKIT_API_SECRET=
-NEXT_PUBLIC_LIVEKIT_URL=
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_c3VwZXJiLWtvYWxhLTE5LmNsZXJrLmFjY291bnRzLmRldiQ
+CLERK_SECRET_KEY=sk_test_yJWZHHqqc9Nozelr5fNmmUD3n0XJw6ZbrNqIgGqgZ5
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/onboarding
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/guide
+NEXT_CLERK_WEBHOOK_SECRET=whsec_5q1VFCRQwbcYwoGHmPP7jixn+jQuPnfd
+DATABASE_URL='mysql://zgqi0a59f44m5ef6h8ff:pscale_pw_In57dPsClqr2vxZjQhyM5IkYLYEUau0i50aAS445Bo9@aws.connect.psdb.cloud/hackstore-admin?sslaccept=strict'
+MONGODB_URL=mongodb+srv://TanishBasu:1234@cluster0.dryvr9z.mongodb.net/?retryWrites=true&w=majority
+UPLOADTHING_SECRET=sk_live_ff4f3ec4bb2e5bcbf623825acbc7f7088584a715d6f47539353048413136c3b5
+UPLOADTHING_APP_ID=n0rqwbhupt
+LIVEKIT_API_KEY=API6bk36FYom3y4
+LIVEKIT_API_SECRET=DzzWufmOBanEGmEV0QC87eeWfuo1sirKKBPys62X0fYD
+NEXT_PUBLIC_LIVEKIT_URL=wss://hackhubb-8evvdd17.livekit.cloud
 ```
 4. Start the project
   ```
