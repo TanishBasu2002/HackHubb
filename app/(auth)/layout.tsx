@@ -20,10 +20,8 @@ export const metadata: Metadata = {
   }) {
     return (
         <html lang="en">
-            <body className={ cn(`${inter.className}`,`bg-gradient-to-br from-slate-700 via-slate-950 to-black`)}>
-              <div className="w-full flex justify-center items-center min-h-screen">
+            <body className={ cn(`${inter.className}`,`bg-gradient-to-br from-slate-700 via-slate-950 to-black w-full flex justify-center items-center min-h-screen`)}>
               {children}
-              </div>
             </body>
         </html>
     )

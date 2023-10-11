@@ -20,7 +20,8 @@ export default function RootLayout({
       <html lang="en">
         <body suppressHydrationWarning>
         <ToasterProvider />
-          {children}</body>
+          {children}
+          </body>
         <Analytics />
       </html>
     </ClerkProvider>
