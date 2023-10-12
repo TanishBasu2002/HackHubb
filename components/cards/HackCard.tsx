@@ -46,15 +46,15 @@ export default function HackCard({
             <div className="flex items-start justify-between gap-4">
                 <div className=" w-full flex-1 flex-row gap-4 flex ">
                     <div className="flex flex-col items-center ">
-                        <Link href={`/profile/${author.id}`} className="relative h-11 w-11">
-                            <Image src={author.image} alt="Profile Image" fill className="cursor-pointer h-72 w-96 rounded-full"/>
+                        <Link href={`/profile/${author?.id}`} className="relative h-11 w-11">
+                            <Image src={author?.image} alt="Profile Image" fill className="cursor-pointer h-72 w-96 rounded-full"/>
                         </Link>
                         <div className={!isComment?"thread-card_bar":""}/>
                         </div>
                         <div className="flex w-full flex-col">
-                        <Link href={`/profile/${author.id}`} className="w-fit">
+                        <Link href={`/profile/${author?.id}`} className="w-fit">
                             <h4 className="cursor-pointer text-base-semibold text-light-1">
-                                {author.name}
+                                {author?.name}
                             </h4>
                         </Link>
                         {/**No Image Content */}
@@ -96,7 +96,7 @@ export default function HackCard({
         <DeleteHack
           hackId={JSON.stringify(id)}
           currentUserId={currentUserId}
-          authorId={author.id}
+          authorId={author?.id}
           parentId={parentId}
           isComment={isComment}
         />
@@ -107,7 +107,7 @@ export default function HackCard({
           {comments.slice(0, 2).map((comment, index) => (
             <Image
               key={index}
-              src={comment.author.image}
+              src={comment?.author?.image}
               alt={`user_${index}`}
               width={24}
               height={24}
