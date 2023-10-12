@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import * as z from "zod";
 import axios from 'axios';
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -11,7 +11,12 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { CreateCourseSchema } from '@/lib/validations/school.validation';
-const CreatePage = () => {
+
+const CreatePage = async () => {
+  const [isClient, setIsClient] = useState(false); 
+   useEffect(() => {
+    setIsClient(true)
+  }, []);
   const router = useRouter();
   const form = useForm<z.infer<typeof CreateCourseSchema>>({
     resolver: zodResolver(CreateCourseSchema),
@@ -43,7 +48,9 @@ const CreatePage = () => {
       });
     }
   }
-
+  if (!isClient) {
+    return null;
+}
   return ( 
     <div className="max-w-5xl mx-auto flex md:items-center md:justify-center h-full p-6">
       <div>
