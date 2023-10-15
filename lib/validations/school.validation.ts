@@ -6,7 +6,7 @@ export const CreateCourseSchema = z.object({
   });
 
 export const CourseSchema = z.object({
-    input: z.string().min(1, {
+    title: z.string().min(1, {
       message: "Input is required",
     }),
   });

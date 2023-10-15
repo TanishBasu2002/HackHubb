@@ -22,7 +22,7 @@ import { CourseSchema } from "@/lib/validations/school.validation";
 
 interface TitleFormProps {
   initialData: {
-    input: string;
+    title: string;
   };
   courseId: string;
 };
@@ -84,7 +84,7 @@ export const TitleForm = ({
       </div>
       {!isEditing && (
         <p className="text-sm mt-2">
-          {initialData.input}
+          {initialData.title}
         </p>
       )}
       {isEditing && (
@@ -95,7 +95,7 @@ export const TitleForm = ({
           >
             <FormField
               control={form.control}
-              name="input"
+              name="title"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
