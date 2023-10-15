@@ -4,3 +4,9 @@ export const CreateCourseSchema = z.object({
       message: "Title is required",
     }),
   });
+
+export const CourseSchema = z.object({
+    input: z.string().min(1, {
+      message: "Input is required",
+    }),
+  });

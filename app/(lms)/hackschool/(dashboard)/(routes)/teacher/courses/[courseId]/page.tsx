@@ -1,9 +1,11 @@
-import { Button } from "@/components/ui/button";
+import { IconBadge } from "@/components/school/icon-badge";
 import { fetchUser } from "@/lib/actions/user.actions";
 import { db } from "@/lib/db";
 import { currentUser } from "@clerk/nextjs";
-import Link from "next/link";
+import { LayoutDashboard } from "lucide-react";
 import { redirect } from "next/navigation";
+import { TitleForm } from "./_components/title-form";
+import { DescriptionForm } from "./_components/description-form";
 
 const CourseIdPage = async({params}:{params:{courseId:string}}) => {
   const user = await currentUser();
@@ -39,6 +41,18 @@ const CourseIdPage = async({params}:{params:{courseId:string}}) => {
         <span className="text-sm text-slate-600">
           Complete all fields {completionText}
         </span>
+      </div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
+      <div>
+        <div className="flex items-center gap-x-2">
+        <IconBadge icon={LayoutDashboard}/>
+        <h2 className="text-xl">
+          Customize Course
+        </h2>
+        </div>
+        <TitleForm initialData={course} courseId={course.id}/>
+        <DescriptionForm initialData={course} courseId={course.id}/>
       </div>
       </div>
     </div>
