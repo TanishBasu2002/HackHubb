@@ -22,6 +22,8 @@ import { useUploadThing } from "@/lib/uploadthing";
 import { useOrganization } from "@clerk/nextjs";
 import toast from "react-hot-toast";
 import { FileUpload } from "../chat-models/tools/file-upload";
+import { IconBadge } from "../school/icon-badge";
+import { Image, LayoutDashboard, Text } from "lucide-react";
 
 export default function PostHack({ userId }: { userId: string }) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
