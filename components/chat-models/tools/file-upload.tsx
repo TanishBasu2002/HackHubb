@@ -6,14 +6,15 @@ import "@uploadthing/react/styles.css"
 import {FileIcon, X} from "lucide-react"
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { ourFileRouter } from "@/app/api/uploadthing/core";
 
 
 interface FileUploadProps{
   onChange:(url?:string)=>void;
-  value:string | null;
+  value?:string | null;
   divClass?:string;
   imgClass?:string;
-  endpoint:"messageFile"|"chatImage"|"media"|"storage"
+  endpoint:keyof typeof ourFileRouter;
 }
 export const FileUpload = ({
   onChange,
