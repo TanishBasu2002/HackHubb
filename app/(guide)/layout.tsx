@@ -2,12 +2,9 @@
 import { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import "../globals.css";
-
-import Topbar from "@/components/share/Topbar";
 import { NextUiProviders } from "@/app/providers";
 import { Navbar } from "./_components/Navbar";
 import { Separator } from "@/components/ui/separator";
-import { Footer } from "./_components/Footer";
 
 const inter = Urbanist({ subsets: ['latin'] })
 
@@ -36,7 +33,6 @@ export const metadata: Metadata = {
               {children}
             </main>
           </div>
-          <Footer/>
           </NextUiProviders>
           </body>
         </html>)

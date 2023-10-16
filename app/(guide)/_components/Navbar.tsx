@@ -1,4 +1,5 @@
 "use client"
+import MobileToggle from "@/components/share/MobileToggle"
 import { Button } from "@nextui-org/react"
 import Image from "next/image"
 import Link from "next/link"
@@ -16,9 +17,7 @@ export const Navbar = () => {
         />
         <p className="text-heading3-bold md:block text-light-1 max-lg:hidden">Guide</p>
       </Link>
-      <Button as={Link} radius="full" className="bg-gradient-to-tr from-pink-700 to-orange-500 text-white shadow-lg" href="/" variant="flat">
-            Go To Home
-      </Button>
+      <MobileToggle />
     </nav>
   )
 }
