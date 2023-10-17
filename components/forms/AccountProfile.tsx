@@ -25,6 +25,7 @@ import { updateUser } from "@/lib/actions/user.actions";
 import { usePathname, useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { FileUpload } from "../chat-models/tools/file-upload";
+import { EmojiPicker } from "../chat-models/tools/emoji-picker";
 
 interface Props{
   user:{
@@ -171,7 +172,10 @@ const AccountProfile = ( {user,btnTitle} :Props) => {
           render={({ field }) => (
             <FormItem className='flex w-full flex-col gap-3'>
               <FormLabel className='text-base-semibold text-light-2'>
+              <div className="w-full flex items-center justify-between">
                 Bio
+                <EmojiPicker onChange={(emoji:string)=>field.onChange(`${field.value} ${emoji}`)}/>
+              </div>
               </FormLabel>
               <FormControl>
                 <Textarea

@@ -22,8 +22,7 @@ import { useUploadThing } from "@/lib/uploadthing";
 import { useOrganization } from "@clerk/nextjs";
 import toast from "react-hot-toast";
 import { FileUpload } from "../chat-models/tools/file-upload";
-import { IconBadge } from "../school/icon-badge";
-import { Image, LayoutDashboard, Text } from "lucide-react";
+import { EmojiPicker } from "../chat-models/tools/emoji-picker";
 
 export default function PostHack({ userId }: { userId: string }) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -99,13 +98,15 @@ export default function PostHack({ userId }: { userId: string }) {
           name='hack'
           render={({ field }) => (
             <FormItem className='flex w-full flex-col gap-3'>
-              <FormLabel className='mt-10 text-base-semibold text-light-2'>
+              <FormLabel className='mt-10 text-base-semibold text-light-2 w-full flex items-center justify-between'>
                 Content
+                <EmojiPicker onChange={(emoji:string)=>field.onChange(`${field.value} ${emoji}`)}/>
               </FormLabel>
-              <FormControl  className='border border-dark-4 bg-dark-4 text-light-1 no-focus'>
+              <FormControl  className='text-light-1 no-focus'>
                 <Textarea
                   rows={8}
                   {...field}
+                  className="border border-dark-4 bg-dark-4 "
                 />
               </FormControl>
               <FormMessage />
