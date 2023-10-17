@@ -22,6 +22,7 @@ import { addCommentToHack} from "@/lib/actions/hack.actions";
 import Image from "next/image";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
+import { EmojiPicker } from "../chat-models/tools/emoji-picker";
 
 interface Props{
     hackId:string,
@@ -83,15 +84,22 @@ export default function Comment({hackId,
               <FormLabel>
                 <Image src={currentUserImg} alt="Profile Image" width={48} height={48} className="rounded-full object-cover"/>
               </FormLabel>
-              <FormControl  className='border-none bg-transparent'>
-                <Input type="text" placeholder="Comment..." className="no-focus text-light-1 outline-none"
+              <FormControl className='border-none bg-transparent'>
+                <div className="flex items-center justify-center">
+                <div className="mr-5">
+                <Input type="text" placeholder="Comment..." className="no-focus text-light-1 outline-none border-none bg-transparent pr-10"
                   {...field}
                 />
+                </div>
+                </div>
               </FormControl>
+              <div className="ml-20">
+                <EmojiPicker onChange={(emoji:string)=>field.onChange(`${field.value} ${emoji}`)}/>
+              </div>
             </FormItem>
           )}
         />
-        <Button disabled={loading} type="submit" className=" w-40 card-btn">
+        <Button disabled={loading} type="submit" className="w-40 card-btn">
             Reply
         </Button>
         </form>
