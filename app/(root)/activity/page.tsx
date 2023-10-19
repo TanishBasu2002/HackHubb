@@ -25,7 +25,7 @@ async function Page() {
               <Link key={activity._id} href={`/hack/${activity.parentId}`}>
                 <article className='activity-card'>
                   <Image
-                    src={activity.author.image}
+                    src={activity.author?.image}
                     alt='user_logo'
                     width={28}
                     height={28}
@@ -33,7 +33,7 @@ async function Page() {
                   />
                   <p className='!text-small-regular text-light-1'>
                     <span className='mr-1 text-primary-500'>
-                      {activity.author.name}
+                      {activity.author?.name}
                     </span>{" "}
                     replied to your hack
                   </p>

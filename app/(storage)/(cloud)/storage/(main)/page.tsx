@@ -1,7 +1,7 @@
-import FileStorageHeader from "@/components/cloud/FileStorageHeader";
 import { fetchUser } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
+import FileStorageHeader from "./_components/FileStorageHeader";
 
 /* eslint-disable react/react-in-jsx-scope */
 const Page = async () =>  {
