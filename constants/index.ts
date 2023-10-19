@@ -1,3 +1,5 @@
+
+
 export const bottombarLinks =[
   {
     imgURL: "/assets/home.svg",
@@ -101,3 +103,9 @@ export const communityTabs = [
   { value: "requests", label: "Requests", icon: "/assets/request.svg" },
 ];
 
+export const formatPrice = (price: number) => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "INR"
+  }).format(price)
+}
