@@ -1,6 +1,6 @@
-# Fullstack Web Ecosystem for Developers: Next.js 13, React, Socket.io, Prisma, Tailwind, MySQL, MongoDB, Clerk, Webhooks, Livekit(Webrtc)
-
-
+# Fullstack Web Ecosystem for Developers: 
+## Main Technologies:
+ <img src="https://skillicons.dev/icons?i=tailwind,ts,react,nextjs,prisma,git,github,mysql,planetscale,mongodb,vercel,linux,webflow," />
 Features:
 
 - Image Sharing both Personal and in community
