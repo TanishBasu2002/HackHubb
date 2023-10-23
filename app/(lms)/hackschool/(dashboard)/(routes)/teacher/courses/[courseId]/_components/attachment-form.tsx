@@ -7,7 +7,6 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { Attachment, Course } from "@prisma/client";
-import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import { FileUpload } from "@/components/chat-models/tools/file-upload";
@@ -97,7 +96,7 @@ export const AttachmentForm = ({
               {initialData.attachments.map((attachment) => (
                 <div
                   key={attachment.id}
-                  className="flex items-center p-3 w-full bg-fuchsia-700 border-fuchsia-800 border text-fuchsia-200 rounded-md"
+                  className="flex items-center p-3 w-full bg-indigo-900 border-indigo-950 border text-fuchsia-200 rounded-md"
                 >
                   <File className="h-4 w-4 mr-2 flex-shrink-0" />
                   <p className="text-xs line-clamp-1">
