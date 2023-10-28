@@ -34,10 +34,10 @@ export const ConfirmModal = ({
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={onConfirm}>
-            Continue
-          </AlertDialogAction>
+        <div className="justify-between text-light-2 flex py-2 items-center p-2 gap-2 w-full">
+              <AlertDialogCancel className="bg-rose-700 hover:bg-rose-900 hover:text-light-1 border-none">Cancel</AlertDialogCancel>
+              <AlertDialogAction className="bg-emerald-700 hover:bg-emerald-900" onClick={onConfirm}>Continiue</AlertDialogAction>
+        </div>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

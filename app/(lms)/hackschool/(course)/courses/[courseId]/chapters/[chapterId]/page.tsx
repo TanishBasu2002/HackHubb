@@ -2,14 +2,16 @@ import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { File } from "lucide-react";
 
-import { getChapter } from "@/actions/get-chapter";
-import { Banner } from "@/components/banner";
+
 import { Separator } from "@/components/ui/separator";
-import { Preview } from "@/components/preview";
+
 
 import { VideoPlayer } from "./_components/video-player";
 import { CourseEnrollButton } from "./_components/course-enroll-button";
 import { CourseProgressButton } from "./_components/course-progress-button";
+import { Banner } from "@/components/school/banner";
+import { getChapter } from "@/lib/actions/school/get-chapter";
+import { Preview } from "@/components/school/preview";
 
 const ChapterIdPage = async ({
   params
@@ -19,7 +21,7 @@ const ChapterIdPage = async ({
   const { userId } = auth();
   
   if (!userId) {
-    return redirect("/");
+    return redirect("/hackschool");
   } 
 
   const {
@@ -37,7 +39,7 @@ const ChapterIdPage = async ({
   });
 
   if (!chapter || !course) {
-    return redirect("/")
+    return redirect("/hackschool")
   }
 
 
