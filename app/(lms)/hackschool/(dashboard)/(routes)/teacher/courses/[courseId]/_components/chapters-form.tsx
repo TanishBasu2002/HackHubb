@@ -83,10 +83,22 @@ export const ChaptersForm = ({
       await axios.put(`/api/courses/${courseId}/chapters/reorder`, {
         list: updateData
       });
-      toast.success("Chapters reordered");
+      toast.success("Chapters reordered",{
+        style: {
+          borderRadius: '10px',
+          background: '#44495C',
+          color: '#fff',
+        },
+      });
       router.refresh();
     } catch {
-      toast.error("Something went wrong");
+      toast.error("Something went wrong",{
+        style: {
+          borderRadius: '10px',
+          background: '#44495C',
+          color: '#fff',
+        },
+      });
     } finally {
       setIsUpdating(false);
     }

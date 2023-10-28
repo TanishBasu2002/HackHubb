@@ -1,6 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
-
-
 import { Navbar } from "./_components/navbar";
 import { Sidebar } from "./_components/sidebar";
 

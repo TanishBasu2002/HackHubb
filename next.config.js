@@ -4,7 +4,6 @@ const nextConfig = {
     ignoreBuildErrors:true,
   },
     experimental: {
-      serverActions: true,
       serverComponentsExternalPackages: ["mongoose"],
     },
     webpack: (config) => {

@@ -2,7 +2,7 @@ import { IconBadge } from "@/components/school/icon-badge";
 import { fetchUser } from "@/lib/actions/user.actions";
 import { db } from "@/lib/db";
 import { auth, currentUser } from "@clerk/nextjs";
-import { CircleDollarSign, File, LayoutDashboard, ListChecks } from "lucide-react";
+import { File, LayoutDashboard, ListChecks } from "lucide-react";
 import { redirect } from "next/navigation";
 import { TitleForm } from "./_components/title-form";
 import { DescriptionForm } from "./_components/description-form";
@@ -13,6 +13,8 @@ import { ChaptersForm } from "./_components/chapters-form";
 import { PriceForm } from "./_components/price-form";
 import { AttachmentForm } from "./_components/attachment-form";
 import { BiRupee } from "react-icons/bi";
+import { Banner } from "@/components/school/banner";
+import { Actions } from "./_components/actions";
 
 const CourseIdPage = async({params}:{params:{courseId:string}}) => {
   const user = await currentUser();
@@ -49,7 +51,7 @@ const CourseIdPage = async({params}:{params:{courseId:string}}) => {
   });
 
   if (!course) {
-    return redirect("/");
+    return redirect("/hackschool");
   }
 
   const requiredFields = [
@@ -69,6 +71,11 @@ const CourseIdPage = async({params}:{params:{courseId:string}}) => {
   const isComplete = requiredFields.every(Boolean);
   return(
     <ScrollArea className="bg-slate-950 min-h-screen">
+    {!course.isPublished && (
+        <Banner
+          label="This course is unpublished. It will not be visible to the students."
+        />
+      )}
     <div className="p-6">
     <div className="flex items-center justify-between">
       <div className="flex flex-col gap-y-2">
@@ -79,6 +86,11 @@ const CourseIdPage = async({params}:{params:{courseId:string}}) => {
           Complete all fields {completionText}
         </span>
       </div>
+      <Actions
+            disabled={!isComplete}
+            courseId={params.courseId}
+            isPublished={course.isPublished}
+          />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
       <div>
