@@ -76,7 +76,7 @@ interface ActionsProps {
             }
           });
         router.refresh();
-        router.push(`/teacher/courses`);
+        router.push(`/hackschool/teacher/courses`);
       } catch {
         toast.error("Something went wrong",{
             style: {

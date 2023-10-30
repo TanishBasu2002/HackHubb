@@ -6,6 +6,7 @@ import { db } from "@/lib/db";
 
 import { CourseSidebarItem } from "./course-sidebar-item";
 import { CourseProgress } from "@/components/school/course-progress";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface CourseSidebarProps {
   course: Course & {
@@ -36,7 +37,7 @@ export const CourseSidebar = async ({
   });
 
   return (
-    <div className="h-full border-r flex flex-col overflow-y-auto shadow-sm">
+    <ScrollArea className="bg-slate-900 border-none h-full border-r flex flex-col overflow-y-auto shadow-sm">
       <div className="p-8 flex flex-col border-b">
         <h1 className="font-semibold">
           {course.title}
@@ -62,6 +63,6 @@ export const CourseSidebar = async ({
           />
         ))}
       </div>
-    </div>
+    </ScrollArea>
   )
 }

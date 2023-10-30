@@ -1,4 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
 import { formatDateString } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";

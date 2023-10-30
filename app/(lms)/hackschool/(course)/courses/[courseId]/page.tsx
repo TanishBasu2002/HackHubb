@@ -23,10 +23,10 @@ const CourseIdPage = async ({
   });
 
   if (!course) {
-    return redirect("/");
+    return redirect("/hackschool");
   }
 
-  return redirect(`/courses/${course.id}/chapters/${course.chapters[0].id}`);
+  return redirect(`/hackschool/courses/${course.id}/chapters/${course.chapters[0].id}`);
 }
  
 export default CourseIdPage;

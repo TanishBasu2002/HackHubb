@@ -13,9 +13,9 @@ export const NavbarRoutes = () => {
   const { userId } = useAuth();
   const pathname = usePathname();
 
-  const isTeacherPage = pathname?.startsWith("/teacher");
-  const isCoursePage = pathname?.includes("/courses");
-  const isSearchPage = pathname === "/search";
+  const isTeacherPage = pathname?.startsWith("/hackschool/teacher");
+  const isCoursePage = pathname?.includes("/hackschool/courses");
+  const isSearchPage = pathname === "/hackschool/search";
 
   return (
     <>
@@ -26,15 +26,15 @@ export const NavbarRoutes = () => {
       )}
       <div className="flex gap-x-2 ml-auto">
         {isTeacherPage || isCoursePage ? (
-          <Link href="/">
-            <Button size="sm" variant="ghost">
+          <Link href="/hackschool">
+            <Button size="sm" variant="default">
               <LogOut className="h-4 w-4 mr-2" />
               Exit
             </Button>
           </Link>
         ) : isTeacher(userId) ? (
-          <Link href="/teacher/courses">
-            <Button size="sm" variant="ghost">
+          <Link href="/hackschool/teacher/courses">
+            <Button size="sm" variant="default">
               Teacher Login
             </Button>
           </Link>
