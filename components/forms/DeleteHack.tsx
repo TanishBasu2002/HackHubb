@@ -48,7 +48,6 @@ function DeleteHack({
            background: '#44495C',
            color: '#fff',
          },
-         duration: 500,
        });
        
       if (!parentId || !isComment && pathname === `/profile/${userId}`) {
@@ -69,7 +68,7 @@ function DeleteHack({
   return (<>
   <AlertDialog>
           <AlertDialogTrigger asChild>
-            <Button variant="outline" className="bg-transparent hover:bg-slate-600"> 
+            <Button variant="default" className="bg-transparent hover:bg-slate-600"> 
             <Image
             src='/assets/delete.svg'
             alt='delete'

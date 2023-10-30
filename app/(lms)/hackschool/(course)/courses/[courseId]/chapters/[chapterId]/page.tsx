@@ -12,6 +12,7 @@ import { CourseProgressButton } from "./_components/course-progress-button";
 import { Banner } from "@/components/school/banner";
 import { getChapter } from "@/lib/actions/school/get-chapter";
 import { Preview } from "@/components/school/preview";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const ChapterIdPage = async ({
   params
@@ -47,7 +48,7 @@ const ChapterIdPage = async ({
   const completeOnEnd = !!purchase && !userProgress?.isCompleted;
 
   return ( 
-    <div>
+    <ScrollArea className="bg-slate-950" >
       {userProgress?.isCompleted && (
         <Banner
           variant="success"
@@ -117,7 +118,7 @@ const ChapterIdPage = async ({
           )}
         </div>
       </div>
-    </div>
+    </ScrollArea>
    );
 }
  
