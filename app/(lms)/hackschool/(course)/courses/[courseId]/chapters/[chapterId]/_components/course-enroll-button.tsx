@@ -27,7 +27,13 @@ export const CourseEnrollButton = ({
 
       window.location.assign(response.data.url);
     } catch {
-      toast.error("Something went wrong");
+      toast.error("Something went wrong",{
+        style: {
+          borderRadius: '10px',
+          background: '#44495C',
+          color: '#fff',
+        },
+      });
     } finally {
       setIsLoading(false);
     }
