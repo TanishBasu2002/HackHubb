@@ -45,15 +45,27 @@ export const VideoPlayer = ({
           confetti.onOpen();
         }
 
-        toast.success("Progress updated");
+        toast.success("Progress updated",{
+          style: {
+            borderRadius: '10px',
+            background: '#44495C',
+            color: '#fff',
+          },
+        });
         router.refresh();
 
         if (nextChapterId) {
-          router.push(`/courses/${courseId}/chapters/${nextChapterId}`)
+          router.push(`/hackschool/courses/${courseId}/chapters/${nextChapterId}`)
         }
       }
     } catch {
-      toast.error("Something went wrong");
+      toast.error("Something went wrong",{
+        style: {
+          borderRadius: '10px',
+          background: '#44495C',
+          color: '#fff',
+        },
+      });
     }
   }
 

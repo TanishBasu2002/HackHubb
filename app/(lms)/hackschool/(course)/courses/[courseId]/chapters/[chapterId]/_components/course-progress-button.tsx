@@ -40,13 +40,25 @@ export const CourseProgressButton = ({
       }
 
       if (!isCompleted && nextChapterId) {
-        router.push(`/courses/${courseId}/chapters/${nextChapterId}`);
+        router.push(`/hackschool/courses/${courseId}/chapters/${nextChapterId}`);
       }
 
-      toast.success("Progress updated");
+      toast.success("Progress updated",{
+        style: {
+          borderRadius: '10px',
+          background: '#44495C',
+          color: '#fff',
+        },
+      });
       router.refresh();
     } catch {
-      toast.error("Something went wrong");
+      toast.error("Something went wrong",{
+        style: {
+          borderRadius: '10px',
+          background: '#44495C',
+          color: '#fff',
+        },
+      });
     } finally {
       setIsLoading(false);
     }

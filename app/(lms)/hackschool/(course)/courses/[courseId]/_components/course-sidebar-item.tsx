@@ -27,7 +27,7 @@ export const CourseSidebarItem = ({
   const isActive = pathname?.includes(id);
 
   const onClick = () => {
-    router.push(`/courses/${courseId}/chapters/${id}`);
+    router.push(`/hackschool/courses/${courseId}/chapters/${id}`);
   }
 
   return (
