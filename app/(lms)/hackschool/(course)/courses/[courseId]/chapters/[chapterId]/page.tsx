@@ -13,6 +13,7 @@ import { Banner } from "@/components/school/banner";
 import { getChapter } from "@/lib/actions/school/get-chapter";
 import { Preview } from "@/components/school/preview";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import Link from "next/link";
 
 const ChapterIdPage = async ({
   params
@@ -92,26 +93,26 @@ const ChapterIdPage = async ({
               />
             )}
           </div>
-          <Separator />
+          <Separator className="bg-slate-700"/>
           <div>
             <Preview value={chapter.description!} />
           </div>
           {!!attachments.length && (
             <>
-              <Separator />
+              <Separator className="bg-slate-700"/>
               <div className="p-4">
                 {attachments.map((attachment) => (
-                  <a 
+                  <Link
                     href={attachment.url}
                     target="_blank"
                     key={attachment.id}
-                    className="flex items-center p-3 w-full bg-sky-200 border text-sky-700 rounded-md hover:underline"
+                    className="flex items-center p-3 w-full bg-indigo-950 border-none text-indigo-200 rounded-md hover:underline mb-2"
                   >
                     <File />
                     <p className="line-clamp-1">
                       {attachment.name}
                     </p>
-                  </a>
+                  </Link>
                 ))}
               </div>
             </>

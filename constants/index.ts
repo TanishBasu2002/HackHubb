@@ -93,8 +93,8 @@ export const sidebarLinks = [
 
 export const profileTabs = [
   { value: "hacks", label: "Hacks", icon: "/assets/reply.svg" },
-  { value: "replies", label: "Replies", icon: "/assets/members.svg" },
-  { value: "tagged", label: "Tagged", icon: "/assets/tag.svg" },
+  { value: "liked", label: "Liked Hack", icon: "/assets/heart-gray.svg" },
+  { value: "saved", label: "Saved Hack", icon: "/assets/tag.svg" },
 ];
 
 export const communityTabs = [
