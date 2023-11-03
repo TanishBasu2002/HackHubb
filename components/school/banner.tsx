@@ -9,7 +9,7 @@ const bannerVariants = cva(
     variants: {
       variant: {
         warning: "bg-slate-700/80 border-slate-600 text-primary",
-        success: "bg-emerald-700 border-emerald-800 text-secondary",
+        success: "bg-emerald-500 border-emerald-500 text-secondary",
       }
     },
     defaultVariants: {
