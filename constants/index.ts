@@ -44,12 +44,12 @@ export const sidebarLinks = [
     label: "Home",
   },
   {
-    imgURL: "/assets/search.svg",
+    imgURL: "/assets/search.png",
     route: "/search",
     label: "Search",
   },
   {
-    imgURL: "/assets/create.svg",
+    imgURL: "/assets/create.png",
     route: "/create-hack",
     label: "Create Hack",
   },
@@ -59,32 +59,32 @@ export const sidebarLinks = [
     label: "Communities",
   },
   {
-    imgURL: "/assets/store.svg",
+    imgURL: "/assets/store.png",
     route: "/hackstore",
     label: "HackStore",
   },
   {
-    imgURL: "/assets/message.svg",
+    imgURL: "/assets/message.png",
     route: "/hackchat",
     label: "HackChat",
   },
   {
-    imgURL: "/assets/code.svg",
+    imgURL: "/assets/code.png",
     route: "/hackschool",
     label: "Hack School",
   },
   {
-    imgURL: "/assets/storage.svg",
+    imgURL: "/assets/storage.png",
     route: "/storage",
     label: "File Storage",
   },
   {
-    imgURL: "/assets/user.svg",
+    imgURL: "/assets/user.png",
     route: "/profile",
     label: "Profile",
   },
   {
-    imgURL: "/assets/guide.svg",
+    imgURL: "/assets/guide.png",
     route: "/guide",
     label: "Guide",
   },
