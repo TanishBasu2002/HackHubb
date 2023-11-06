@@ -32,7 +32,10 @@ export default function Topbar() {
                 <div className="block">
                     <Link href="/activity">
                     <div className="block cursor-pointer text-white">
-                    <ActionTooltip label="Activity" side="bottom">{isActive ? <Image src="/assets/heart-filled.svg"  alt="logo" width={28} height={28}/> : <Image src="/assets/heart.svg"  alt="logo" width={24} height={24}/>}</ActionTooltip>
+                    <ActionTooltip label="Activity" side="bottom">
+                        {isActive ? <Image src="/assets/bell-gradient.png"  alt="logo" width={28} height={28}/>
+                     : <Image src="/assets/bell.png"  alt="logo" width={24} height={24}/>}
+                     </ActionTooltip>
                     </div>
                     </Link>
                 </div>
