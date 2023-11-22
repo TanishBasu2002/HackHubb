@@ -14,14 +14,14 @@ interface Props {
 
 function Pagination({ pageNumber, isNext, path }: Props) {
   const router = useRouter();
-  const [isMounted,setIsMounted]=useState(false);
-  useEffect(()=>{
-      setIsMounted(true);
-  },[]);
-  
-    if (!isMounted) {
-        return null;
-    }
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
   const handleNavigation = (type: string) => {
     let nextPageNumber = pageNumber;
 
@@ -41,19 +41,19 @@ function Pagination({ pageNumber, isNext, path }: Props) {
   if (!isNext && pageNumber === 1) return null;
 
   return (
-    <div className='pagination'>
+    <div className="pagination">
       <Button
         onClick={() => handleNavigation("prev")}
         disabled={pageNumber === 1}
-        className='!text-small-regular text-light-2'
+        className="!text-small-regular text-light-2"
       >
         Prev
       </Button>
-      <p className='text-small-semibold text-light-1'>{pageNumber}</p>
+      <p className="text-small-semibold text-light-1">{pageNumber}</p>
       <Button
         onClick={() => handleNavigation("next")}
         disabled={!isNext}
-        className='!text-small-regular text-light-2'
+        className="!text-small-regular text-light-2"
       >
         Next
       </Button>

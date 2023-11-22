@@ -26,7 +26,7 @@ interface ChapterAccessFormProps {
   initialData: Chapter;
   courseId: string;
   chapterId: string;
-};
+}
 
 const formSchema = z.object({
   isFree: z.boolean().default(false),
@@ -35,7 +35,7 @@ const formSchema = z.object({
 export const ChapterAccessForm = ({
   initialData,
   courseId,
-  chapterId
+  chapterId,
 }: ChapterAccessFormProps) => {
   const [isEditing, setIsEditing] = useState(false);
 
@@ -46,7 +46,7 @@ export const ChapterAccessForm = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      isFree: !!initialData.isFree
+      isFree: !!initialData.isFree,
     },
   });
 
@@ -54,26 +54,29 @@ export const ChapterAccessForm = ({
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}`, values);
-      toast.success("Chapter updated",{
+      await axios.patch(
+        `/api/courses/${courseId}/chapters/${chapterId}`,
+        values,
+      );
+      toast.success("Chapter updated", {
         style: {
-          borderRadius: '10px',
-          background: '#44495C',
-          color: '#fff',
+          borderRadius: "10px",
+          background: "#44495C",
+          color: "#fff",
         },
       });
       toggleEdit();
       router.refresh();
     } catch {
-      toast.error("Something went wrong",{
+      toast.error("Something went wrong", {
         style: {
-          borderRadius: '10px',
-          background: '#44495C',
-          color: '#fff',
+          borderRadius: "10px",
+          background: "#44495C",
+          color: "#fff",
         },
       });
     }
-  }
+  };
 
   return (
     <div className="mt-6 border-none bg-slate-900 rounded-md p-4">
@@ -91,10 +94,12 @@ export const ChapterAccessForm = ({
         </Button>
       </div>
       {!isEditing && (
-        <p className={cn(
-          "text-sm mt-2",
-          !initialData.isFree && "text-slate-500 italic"
-        )}>
+        <p
+          className={cn(
+            "text-sm mt-2",
+            !initialData.isFree && "text-slate-500 italic",
+          )}
+        >
           {initialData.isFree ? (
             <>This chapter is free for preview.</>
           ) : (
@@ -122,7 +127,8 @@ export const ChapterAccessForm = ({
                   </FormControl>
                   <div className="space-y-1 leading-none">
                     <FormDescription>
-                      Check this box if you want to make this chapter free for preview
+                      Check this box if you want to make this chapter free for
+                      preview
                     </FormDescription>
                   </div>
                 </FormItem>
@@ -141,5 +147,5 @@ export const ChapterAccessForm = ({
         </Form>
       )}
     </div>
-  )
-}
+  );
+};

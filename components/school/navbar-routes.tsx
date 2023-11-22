@@ -39,14 +39,14 @@ export const NavbarRoutes = () => {
             </Button>
           </Link>
         ) : (
-        <Link href="/hackschool/teacher">
-        <Button size="sm" variant="outline">
-          Become a teacher
-        </Button>
-        </Link>
-      )}
-        <MobileToggle className="max-md:hidden"/>
-    </div>
+          <Link href="/hackschool/teacher">
+            <Button size="sm" variant="outline">
+              Become a teacher
+            </Button>
+          </Link>
+        )}
+        <MobileToggle className="max-md:hidden" />
+      </div>
     </>
-  )
-}
+  );
+};

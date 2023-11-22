@@ -25,12 +25,9 @@ interface TitleFormProps {
     title: string;
   };
   courseId: string;
-};
+}
 
-export const TitleForm = ({
-  initialData,
-  courseId
-}: TitleFormProps) => {
+export const TitleForm = ({ initialData, courseId }: TitleFormProps) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const toggleEdit = () => setIsEditing((current) => !current);
@@ -47,25 +44,25 @@ export const TitleForm = ({
   const onSubmit = async (values: z.infer<typeof CourseSchema>) => {
     try {
       await axios.patch(`/api/courses/${courseId}`, values);
-      toast.success("Course updated",{
+      toast.success("Course updated", {
         style: {
-          borderRadius: '10px',
-          background: '#44495C',
-          color: '#fff',
+          borderRadius: "10px",
+          background: "#44495C",
+          color: "#fff",
         },
       });
       toggleEdit();
       router.refresh();
     } catch {
-      toast.error("Something went wrong",{
+      toast.error("Something went wrong", {
         style: {
-          borderRadius: '10px',
-          background: '#44495C',
-          color: '#fff',
+          borderRadius: "10px",
+          background: "#44495C",
+          color: "#fff",
         },
       });
     }
-  }
+  };
 
   return (
     <div className="mt-6 border-none bg-slate-900 rounded-md p-4">
@@ -82,11 +79,7 @@ export const TitleForm = ({
           )}
         </Button>
       </div>
-      {!isEditing && (
-        <p className="text-sm mt-2">
-          {initialData.title}
-        </p>
-      )}
+      {!isEditing && <p className="text-sm mt-2">{initialData.title}</p>}
       {isEditing && (
         <Form {...form}>
           <form
@@ -123,5 +116,5 @@ export const TitleForm = ({
         </Form>
       )}
     </div>
-  )
-}
+  );
+};

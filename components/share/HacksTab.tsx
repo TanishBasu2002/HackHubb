@@ -9,11 +9,11 @@ interface Result {
   name: string;
   image: string;
   id: string;
-  hacks: { 
+  hacks: {
     _id: string;
     text: string;
     parentId: string | null;
-    image:string;
+    image: string;
     author: {
       name: string;
       image: string;
@@ -39,23 +39,27 @@ interface Props {
   accountType: string;
 }
 
-async function HacksTab({ currentUserId,accountId,accountType}: Props) {
-  let result:Result;
-  if (accountType ==='Community') {
-    result= await fetchCommunityPosts(accountId);
+async function HacksTab({ currentUserId, accountId, accountType }: Props) {
+  let result: Result;
+  if (accountType === "Community") {
+    result = await fetchCommunityPosts(accountId);
   } else {
-    result= await fetchUserPosts(accountId);
+    result = await fetchUserPosts(accountId);
   }
   if (!result) {
     redirect("/");
   }
 
   return (
-    <section className='mt-9 flex flex-col gap-10'>
-          <>
-          {result.hacks.map((hack)=>(
-            <HackCard
-            key={hack._id} id={hack._id} currentUserId={currentUserId} parentId={hack.parentId} content={hack.text}
+    <section className="mt-9 flex flex-col gap-10">
+      <>
+        {result.hacks.map((hack) => (
+          <HackCard
+            key={hack._id}
+            id={hack._id}
+            currentUserId={currentUserId}
+            parentId={hack.parentId}
+            content={hack.text}
             image={hack.image}
             author={
               accountType === "User"
@@ -74,9 +78,8 @@ async function HacksTab({ currentUserId,accountId,accountType}: Props) {
             createdAt={hack.createdAt}
             comments={hack.children}
           />
-  
-          ))}
-          </>
+        ))}
+      </>
     </section>
   );
 }

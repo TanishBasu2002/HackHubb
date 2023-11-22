@@ -1,109 +1,125 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use client"
+"use client";
 
 import { useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
-} from "@/components/ui/form"
-import {zodResolver} from "@hookform/resolvers/zod"
-import * as z from "zod"
+} from "@/components/ui/form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
 import { Input } from "../ui/input";
-import { usePathname} from "next/navigation";
+import { usePathname } from "next/navigation";
 
 //import { updateUser } from "@/lib/actions/user.actions";
 import { CommentValidation } from "@/lib/validations/hack.validation";
-import { addCommentToHack} from "@/lib/actions/hack.actions";
+import { addCommentToHack } from "@/lib/actions/hack.actions";
 import Image from "next/image";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { EmojiPicker } from "../chat-models/tools/emoji-picker";
 
-interface Props{
-    hackId:string,
-    currentUserImg:string,
-    currentUserId:string,
+interface Props {
+  hackId: string;
+  currentUserImg: string;
+  currentUserId: string;
 }
-export default function Comment({hackId,
-    currentUserImg,
-    currentUserId,}:Props){
-    const pathname = usePathname();
-    const form =useForm({
-        resolver: zodResolver(CommentValidation),
-        defaultValues:{
-        hack:'',
-        }
-    });
-    //Submit action 
-    const [loading, setLoading] = useState(false);
-    const onSubmit =async(values:z.infer<typeof CommentValidation>)=>{
-     try {
+export default function Comment({
+  hackId,
+  currentUserImg,
+  currentUserId,
+}: Props) {
+  const pathname = usePathname();
+  const form = useForm({
+    resolver: zodResolver(CommentValidation),
+    defaultValues: {
+      hack: "",
+    },
+  });
+  //Submit action
+  const [loading, setLoading] = useState(false);
+  const onSubmit = async (values: z.infer<typeof CommentValidation>) => {
+    try {
       setLoading(true);
       await addCommentToHack(
         hackId,
         values.hack,
         JSON.parse(currentUserId),
-        pathname ?? ''); 
+        pathname ?? "",
+      );
       form.reset();
-      toast.success("Commented",{
+      toast.success("Commented", {
         style: {
-          borderRadius: '10px',
-          background: '#44495C',
-          color: '#fff',
+          borderRadius: "10px",
+          background: "#44495C",
+          color: "#fff",
         },
       });
-     } catch (error:any) {
+    } catch (error: any) {
       toast.error(error);
-     }finally{
+    } finally {
       setLoading(false);
-     }
-    };
-    const [isMounted,setIsMounted]=useState(false);
-    useEffect(()=>{
-        setIsMounted(true);
-    },[]);
-    
-      if (!isMounted) {
-          return null;
-      }
-    return(
-        <>
-        {/**Usign Pre-Defile form from shadcn ui */}
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="comment-form">
-      <FormField
-          control={form.control}
-          name='hack'
-          render={({ field }) => (
-            <FormItem className='flex w-full items-center gap-3'>
-              <FormLabel>
-                <Image src={currentUserImg} alt="Profile Image" width={48} height={48} className="rounded-full object-cover"/>
-              </FormLabel>
-              <FormControl className='border-none bg-transparent'>
-                <div className="flex items-center justify-center">
-                <div className="mr-5">
-                <Input type="text" placeholder="Comment..." className="no-focus text-light-1 outline-none border-none bg-transparent pr-10"
-                  {...field}
-                />
+    }
+  };
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
+  return (
+    <>
+      {/**Usign Pre-Defile form from shadcn ui */}
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="comment-form">
+          <FormField
+            control={form.control}
+            name="hack"
+            render={({ field }) => (
+              <FormItem className="flex w-full items-center gap-3">
+                <FormLabel>
+                  <Image
+                    src={currentUserImg}
+                    alt="Profile Image"
+                    width={48}
+                    height={48}
+                    className="rounded-full object-cover"
+                  />
+                </FormLabel>
+                <FormControl className="border-none bg-transparent">
+                  <div className="flex items-center justify-center">
+                    <div className="mr-5">
+                      <Input
+                        type="text"
+                        placeholder="Comment..."
+                        className="no-focus text-light-1 outline-none border-none bg-transparent pr-10"
+                        {...field}
+                      />
+                    </div>
+                  </div>
+                </FormControl>
+                <div className="ml-20">
+                  <EmojiPicker
+                    onChange={(emoji: string) =>
+                      field.onChange(`${field.value} ${emoji}`)
+                    }
+                  />
                 </div>
-                </div>
-              </FormControl>
-              <div className="ml-20">
-                <EmojiPicker onChange={(emoji:string)=>field.onChange(`${field.value} ${emoji}`)}/>
-              </div>
-            </FormItem>
-          )}
-        />
-        <Button disabled={loading} type="submit" className="w-40 card-btn">
+              </FormItem>
+            )}
+          />
+          <Button disabled={loading} type="submit" className="w-40 card-btn">
             Reply
-        </Button>
+          </Button>
         </form>
-    </Form>
+      </Form>
     </>
-    )
+  );
 }

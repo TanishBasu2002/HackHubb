@@ -16,23 +16,23 @@ async function Page() {
 
   return (
     <>
-      <h1 className='head-text'>Activity</h1>
+      <h1 className="head-text">Activity</h1>
 
-      <section className='mt-10 flex flex-col gap-5'>
+      <section className="mt-10 flex flex-col gap-5">
         {activity.length > 0 ? (
           <>
             {activity.map((activity) => (
               <Link key={activity._id} href={`/hack/${activity.parentId}`}>
-                <article className='activity-card'>
+                <article className="activity-card">
                   <Image
                     src={activity.author?.image}
-                    alt='user_logo'
+                    alt="user_logo"
                     width={28}
                     height={28}
-                    className='rounded-full object-cover'
+                    className="rounded-full object-cover"
                   />
-                  <p className='!text-small-regular text-light-1'>
-                    <span className='mr-1 text-primary-500'>
+                  <p className="!text-small-regular text-light-1">
+                    <span className="mr-1 text-primary-500">
                       {activity.author?.name}
                     </span>{" "}
                     replied to your hack
@@ -42,7 +42,7 @@ async function Page() {
             ))}
           </>
         ) : (
-          <p className='!text-base-regular text-light-3'>No Activity</p>
+          <p className="!text-base-regular text-light-3">No Activity</p>
         )}
       </section>
     </>

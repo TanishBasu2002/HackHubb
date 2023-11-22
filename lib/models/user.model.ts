@@ -16,10 +16,10 @@ const userSchema = new mongoose.Schema({
   },
   image: String,
   bio: String,
-  hacks: [  
+  hacks: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Hack", 
+      ref: "Hack",
     },
   ],
   onboarded: {

@@ -24,7 +24,7 @@ import { Textarea } from "@/components/ui/textarea";
 interface DescriptionFormProps {
   initialData: Course;
   courseId: string;
-};
+}
 
 const formSchema = z.object({
   description: z.string().min(1, {
@@ -34,7 +34,7 @@ const formSchema = z.object({
 
 export const DescriptionForm = ({
   initialData,
-  courseId
+  courseId,
 }: DescriptionFormProps) => {
   const [isEditing, setIsEditing] = useState(false);
 
@@ -45,7 +45,7 @@ export const DescriptionForm = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      description: initialData?.description || ""
+      description: initialData?.description || "",
     },
   });
 
@@ -54,25 +54,25 @@ export const DescriptionForm = ({
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.patch(`/api/courses/${courseId}`, values);
-      toast.success("Course updated",{
+      toast.success("Course updated", {
         style: {
-          borderRadius: '10px',
-          background: '#44495C',
-          color: '#fff',
+          borderRadius: "10px",
+          background: "#44495C",
+          color: "#fff",
         },
       });
       toggleEdit();
       router.refresh();
     } catch {
-      toast.error("Something went wrong",{
+      toast.error("Something went wrong", {
         style: {
-          borderRadius: '10px',
-          background: '#44495C',
-          color: '#fff',
+          borderRadius: "10px",
+          background: "#44495C",
+          color: "#fff",
         },
       });
     }
-  }
+  };
 
   return (
     <div className="mt-6 border-none bg-slate-900 rounded-md p-4">
@@ -90,10 +90,12 @@ export const DescriptionForm = ({
         </Button>
       </div>
       {!isEditing && (
-        <p className={cn(
-          "text-sm mt-2",
-          !initialData.description && "text-slate-500 italic"
-        )}>
+        <p
+          className={cn(
+            "text-sm mt-2",
+            !initialData.description && "text-slate-500 italic",
+          )}
+        >
           {initialData.description || "No description"}
         </p>
       )}
@@ -133,5 +135,5 @@ export const DescriptionForm = ({
         </Form>
       )}
     </div>
-  )
-}
+  );
+};

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 export const Footer = () => {
   return (
@@ -7,5 +7,5 @@ export const Footer = () => {
         &copy; 2023 Tanish. All rights reserved.
       </p>
     </footer>
-  )
-}
+  );
+};

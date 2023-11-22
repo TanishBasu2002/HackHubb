@@ -3,9 +3,7 @@ import { isTeacher } from "@/lib/validations/teacher.validation";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
-export async function POST(
-  req: Request,
-) {
+export async function POST(req: Request) {
   try {
     const { userId } = auth();
     const { title } = await req.json();
@@ -18,7 +16,7 @@ export async function POST(
       data: {
         userId,
         title,
-      }
+      },
     });
 
     return NextResponse.json(course);

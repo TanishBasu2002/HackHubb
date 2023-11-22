@@ -24,8 +24,8 @@ import { Combobox } from "@/components/ui/combobox";
 interface CategoryFormProps {
   initialData: Course;
   courseId: string;
-  options: { label: string; value: string; }[];
-};
+  options: { label: string; value: string }[];
+}
 
 const formSchema = z.object({
   categoryId: z.string().min(1),
@@ -45,7 +45,7 @@ export const CategoryForm = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      categoryId: initialData?.categoryId || ""
+      categoryId: initialData?.categoryId || "",
     },
   });
 
@@ -54,27 +54,29 @@ export const CategoryForm = ({
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.patch(`/api/courses/${courseId}`, values);
-      toast.success("Course updated",{
+      toast.success("Course updated", {
         style: {
-          borderRadius: '10px',
-          background: '#44495C',
-          color: '#fff',
+          borderRadius: "10px",
+          background: "#44495C",
+          color: "#fff",
         },
       });
       toggleEdit();
       router.refresh();
     } catch {
-      toast.error("Something went wrong",{
+      toast.error("Something went wrong", {
         style: {
-          borderRadius: '10px',
-          background: '#44495C',
-          color: '#fff',
+          borderRadius: "10px",
+          background: "#44495C",
+          color: "#fff",
         },
       });
     }
-  }
+  };
 
-  const selectedOption = options.find((option) => option.value === initialData.categoryId);
+  const selectedOption = options.find(
+    (option) => option.value === initialData.categoryId,
+  );
 
   return (
     <div className="mt-6 border-nones bg-slate-900 rounded-md p-4">
@@ -92,10 +94,12 @@ export const CategoryForm = ({
         </Button>
       </div>
       {!isEditing && (
-        <p className={cn(
-          "text-sm mt-2",
-          !initialData.categoryId && "text-slate-500 italic"
-        )}>
+        <p
+          className={cn(
+            "text-sm mt-2",
+            !initialData.categoryId && "text-slate-500 italic",
+          )}
+        >
           {selectedOption?.label || "No category"}
         </p>
       )}
@@ -111,10 +115,7 @@ export const CategoryForm = ({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Combobox
-                      options={...options}
-                      {...field}
-                    />
+                    <Combobox options={...options} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -133,5 +134,5 @@ export const CategoryForm = ({
         </Form>
       )}
     </div>
-  )
-}
+  );
+};

@@ -3,7 +3,7 @@ import { columns } from "./_components/columns";
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
-const CoursesPage = async() => {
+const CoursesPage = async () => {
   const { userId } = auth();
 
   if (!userId) {
@@ -22,6 +22,6 @@ const CoursesPage = async() => {
     <div className="p-6 bg-slate-950">
       <DataTable columns={columns} data={courses} />
     </div>
-  )
-}
+  );
+};
 export default CoursesPage;

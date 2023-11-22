@@ -25,16 +25,13 @@ import { formatPrice } from "@/constants";
 interface PriceFormProps {
   initialData: Course;
   courseId: string;
-};
+}
 
 const formSchema = z.object({
   price: z.coerce.number(),
 });
 
-export const PriceForm = ({
-  initialData,
-  courseId
-}: PriceFormProps) => {
+export const PriceForm = ({ initialData, courseId }: PriceFormProps) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const toggleEdit = () => setIsEditing((current) => !current);
@@ -53,25 +50,25 @@ export const PriceForm = ({
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.patch(`/api/courses/${courseId}`, values);
-      toast.success("Course updated",{
+      toast.success("Course updated", {
         style: {
-          borderRadius: '10px',
-          background: '#44495C',
-          color: '#fff',
+          borderRadius: "10px",
+          background: "#44495C",
+          color: "#fff",
         },
       });
       toggleEdit();
       router.refresh();
     } catch {
-      toast.error("Something went wrong",{
+      toast.error("Something went wrong", {
         style: {
-          borderRadius: '10px',
-          background: '#44495C',
-          color: '#fff',
+          borderRadius: "10px",
+          background: "#44495C",
+          color: "#fff",
         },
       });
     }
-  }
+  };
 
   return (
     <div className="mt-6 border-none bg-slate-900 rounded-md p-4">
@@ -89,14 +86,13 @@ export const PriceForm = ({
         </Button>
       </div>
       {!isEditing && (
-        <p className={cn(
-          "text-sm mt-2",
-          !initialData.price && "text-slate-500 italic"
-        )}>
-          {initialData.price
-            ? formatPrice(initialData.price)
-            : "No price"
-          }
+        <p
+          className={cn(
+            "text-sm mt-2",
+            !initialData.price && "text-slate-500 italic",
+          )}
+        >
+          {initialData.price ? formatPrice(initialData.price) : "No price"}
         </p>
       )}
       {isEditing && (
@@ -137,5 +133,5 @@ export const PriceForm = ({
         </Form>
       )}
     </div>
-  )
-}
+  );
+};

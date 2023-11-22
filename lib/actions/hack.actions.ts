@@ -50,32 +50,42 @@ export async function fetchHacks(pageNumber = 1, pageSize = 20) {
 }
 
 interface Params {
-  text: string,
-  author: string,
-  image:string | null,
-  communityId: string | null,
-  path: string,
+  text: string;
+  author: string;
+  image: string | null;
+  communityId: string | null;
+  path: string;
 }
 
-export async function createHack({ text,image, author, communityId, path }: Params) {
+export async function createHack({
+  text,
+  image,
+  author,
+  communityId,
+  path,
+}: Params) {
   try {
     connectToDB();
 
     const communityIdObject = await Community.findOne(
       { id: communityId },
-      { _id: 1 }
+      { _id: 1 },
     );
 
-    const createdHack = await Hack.create(image?({
-      text,
-      image,
-      author,
-      community: communityIdObject, // Assign communityId if provided, or leave it null for personal account
-    }):({
-      text,
-      author,
-      community: communityIdObject, // Assign communityId if provided, or leave it null for personal account
-    }));
+    const createdHack = await Hack.create(
+      image
+        ? {
+            text,
+            image,
+            author,
+            community: communityIdObject, // Assign communityId if provided, or leave it null for personal account
+          }
+        : {
+            text,
+            author,
+            community: communityIdObject, // Assign communityId if provided, or leave it null for personal account
+          },
+    );
 
     // Update User model
     await User.findByIdAndUpdate(author, {
@@ -122,24 +132,21 @@ export async function deleteHack(id: string, path: string): Promise<void> {
     const descendantHacks = await fetchAllChildHacks(id);
 
     // Get all descendant hack IDs including the main hack ID and child hack IDs
-    const descendantHackIds = [
-      id,
-      ...descendantHacks.map((hack) => hack._id),
-    ];
+    const descendantHackIds = [id, ...descendantHacks.map((hack) => hack._id)];
 
     // Extract the authorIds and communityIds to update User and Community models respectively
     const uniqueAuthorIds = new Set(
       [
         ...descendantHacks.map((hack) => hack.author?._id?.toString()), // Use optional chaining to handle possible undefined values
         mainHack.author?._id?.toString(),
-      ].filter((id) => id !== undefined)
+      ].filter((id) => id !== undefined),
     );
 
     const uniqueCommunityIds = new Set(
       [
         ...descendantHacks.map((hack) => hack.community?._id?.toString()), // Use optional chaining to handle possible undefined values
         mainHack.community?._id?.toString(),
-      ].filter((id) => id !== undefined)
+      ].filter((id) => id !== undefined),
     );
 
     // Recursively delete child hacks and their descendants
@@ -148,13 +155,13 @@ export async function deleteHack(id: string, path: string): Promise<void> {
     // Update User model
     await User.updateMany(
       { _id: { $in: Array.from(uniqueAuthorIds) } },
-      { $pull: { hacks: { $in: descendantHackIds } } }
+      { $pull: { hacks: { $in: descendantHackIds } } },
     );
 
     // Update Community model
     await Community.updateMany(
       { _id: { $in: Array.from(uniqueCommunityIds) } },
-      { $pull: { hacks: { $in: descendantHackIds } } }
+      { $pull: { hacks: { $in: descendantHackIds } } },
     );
 
     revalidatePath(path);
@@ -210,7 +217,7 @@ export async function addCommentToHack(
   hackId: string,
   commentText: string,
   userId: string,
-  path: string
+  path: string,
 ) {
   connectToDB();
 

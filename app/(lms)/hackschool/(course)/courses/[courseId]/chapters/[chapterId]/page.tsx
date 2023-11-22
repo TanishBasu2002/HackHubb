@@ -2,9 +2,7 @@ import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { File } from "lucide-react";
 
-
 import { Separator } from "@/components/ui/separator";
-
 
 import { VideoPlayer } from "./_components/video-player";
 import { CourseEnrollButton } from "./_components/course-enroll-button";
@@ -16,15 +14,15 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import Link from "next/link";
 
 const ChapterIdPage = async ({
-  params
+  params,
 }: {
-  params: { courseId: string; chapterId: string }
+  params: { courseId: string; chapterId: string };
 }) => {
   const { userId } = auth();
-  
+
   if (!userId) {
     return redirect("/hackschool");
-  } 
+  }
 
   const {
     chapter,
@@ -41,20 +39,16 @@ const ChapterIdPage = async ({
   });
 
   if (!chapter || !course) {
-    return redirect("/hackschool")
+    return redirect("/hackschool");
   }
-
 
   const isLocked = !chapter.isFree && !purchase;
   const completeOnEnd = !!purchase && !userProgress?.isCompleted;
 
-  return ( 
-    <ScrollArea className="bg-slate-950" >
+  return (
+    <ScrollArea className="bg-slate-950">
       {userProgress?.isCompleted && (
-        <Banner
-          variant="success"
-          label="You already completed this chapter."
-        />
+        <Banner variant="success" label="You already completed this chapter." />
       )}
       {isLocked && (
         <Banner
@@ -76,9 +70,7 @@ const ChapterIdPage = async ({
         </div>
         <div>
           <div className="p-4 flex flex-col md:flex-row items-center justify-between">
-            <h2 className="text-2xl font-semibold mb-2">
-              {chapter.title}
-            </h2>
+            <h2 className="text-2xl font-semibold mb-2">{chapter.title}</h2>
             {purchase ? (
               <CourseProgressButton
                 chapterId={params.chapterId}
@@ -93,13 +85,13 @@ const ChapterIdPage = async ({
               />
             )}
           </div>
-          <Separator className="bg-slate-700"/>
+          <Separator className="bg-slate-700" />
           <div>
             <Preview value={chapter.description!} />
           </div>
           {!!attachments.length && (
             <>
-              <Separator className="bg-slate-700"/>
+              <Separator className="bg-slate-700" />
               <div className="p-4">
                 {attachments.map((attachment) => (
                   <Link
@@ -109,9 +101,7 @@ const ChapterIdPage = async ({
                     className="flex items-center p-3 w-full bg-indigo-950 border-none text-indigo-200 rounded-md hover:underline mb-2"
                   >
                     <File />
-                    <p className="line-clamp-1">
-                      {attachment.name}
-                    </p>
+                    <p className="line-clamp-1">{attachment.name}</p>
                   </Link>
                 ))}
               </div>
@@ -120,7 +110,7 @@ const ChapterIdPage = async ({
         </div>
       </div>
     </ScrollArea>
-   );
-}
- 
+  );
+};
+
 export default ChapterIdPage;

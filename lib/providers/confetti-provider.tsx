@@ -3,7 +3,6 @@
 import { useConfettiStore } from "@/hooks/school/use-confetti-store";
 import ReactConfetti from "react-confetti";
 
-
 export const ConfettiProvider = () => {
   const confetti = useConfettiStore();
 
@@ -18,5 +17,5 @@ export const ConfettiProvider = () => {
         confetti.onClose();
       }}
     />
-  )
-}
+  );
+};
