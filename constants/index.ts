@@ -1,6 +1,4 @@
-
-
-export const bottombarLinks =[
+export const bottombarLinks = [
   {
     imgURL: "/assets/home.svg",
     route: "/",
@@ -31,12 +29,12 @@ export const bottombarLinks =[
     route: "/hackchat",
     label: "HackChat",
   },
- {
+  {
     imgURL: "/assets/user.svg",
     route: "/profile",
     label: "Profile",
   },
-]
+];
 export const sidebarLinks = [
   {
     imgURL: "/assets/home.svg",
@@ -90,7 +88,6 @@ export const sidebarLinks = [
   },
 ];
 
-
 export const profileTabs = [
   { value: "hacks", label: "Hacks", icon: "/assets/reply.svg" },
   { value: "liked", label: "Liked Hack", icon: "/assets/heart-gray.svg" },
@@ -106,6 +103,6 @@ export const communityTabs = [
 export const formatPrice = (price: number) => {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
-    currency: "INR"
-  }).format(price)
-}
+    currency: "INR",
+  }).format(price);
+};

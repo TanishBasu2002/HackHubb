@@ -7,7 +7,6 @@ import toast from "react-hot-toast";
 import { Button } from "@/components/ui/button";
 import { formatPrice } from "@/constants";
 
-
 interface CourseEnrollButtonProps {
   price: number;
   courseId: string;
@@ -23,21 +22,21 @@ export const CourseEnrollButton = ({
     try {
       setIsLoading(true);
 
-      const response = await axios.post(`/api/courses/${courseId}/checkout`)
+      const response = await axios.post(`/api/courses/${courseId}/checkout`);
 
       window.location.assign(response.data.url);
     } catch {
-      toast.error("Something went wrong",{
+      toast.error("Something went wrong", {
         style: {
-          borderRadius: '10px',
-          background: '#44495C',
-          color: '#fff',
+          borderRadius: "10px",
+          background: "#44495C",
+          color: "#fff",
         },
       });
     } finally {
       setIsLoading(false);
     }
-  }
+  };
 
   return (
     <Button
@@ -48,5 +47,5 @@ export const CourseEnrollButton = ({
     >
       Enroll for {formatPrice(price)}
     </Button>
-  )
-}
+  );
+};

@@ -9,19 +9,18 @@ import toast from "react-hot-toast";
 import { Button } from "@/components/ui/button";
 import { useConfettiStore } from "@/hooks/school/use-confetti-store";
 
-
 interface CourseProgressButtonProps {
   chapterId: string;
   courseId: string;
   isCompleted?: boolean;
   nextChapterId?: string;
-};
+}
 
 export const CourseProgressButton = ({
   chapterId,
   courseId,
   isCompleted,
-  nextChapterId
+  nextChapterId,
 }: CourseProgressButtonProps) => {
   const router = useRouter();
   const confetti = useConfettiStore();
@@ -31,40 +30,45 @@ export const CourseProgressButton = ({
     try {
       setIsLoading(true);
 
-      await axios.put(`/api/courses/${courseId}/chapters/${chapterId}/progress`, {
-        isCompleted: !isCompleted
-      });
+      await axios.put(
+        `/api/courses/${courseId}/chapters/${chapterId}/progress`,
+        {
+          isCompleted: !isCompleted,
+        },
+      );
 
       if (!isCompleted && !nextChapterId) {
         confetti.onOpen();
       }
 
       if (!isCompleted && nextChapterId) {
-        router.push(`/hackschool/courses/${courseId}/chapters/${nextChapterId}`);
+        router.push(
+          `/hackschool/courses/${courseId}/chapters/${nextChapterId}`,
+        );
       }
 
-      toast.success("Progress updated",{
+      toast.success("Progress updated", {
         style: {
-          borderRadius: '10px',
-          background: '#44495C',
-          color: '#fff',
+          borderRadius: "10px",
+          background: "#44495C",
+          color: "#fff",
         },
       });
       router.refresh();
     } catch {
-      toast.error("Something went wrong",{
+      toast.error("Something went wrong", {
         style: {
-          borderRadius: '10px',
-          background: '#44495C',
-          color: '#fff',
+          borderRadius: "10px",
+          background: "#44495C",
+          color: "#fff",
         },
       });
     } finally {
       setIsLoading(false);
     }
-  }
+  };
 
-  const Icon = isCompleted ? XCircle : CheckCircle
+  const Icon = isCompleted ? XCircle : CheckCircle;
 
   return (
     <Button
@@ -77,5 +81,5 @@ export const CourseProgressButton = ({
       {isCompleted ? "Not completed" : "Mark as complete"}
       <Icon className="h-4 w-4 ml-2" />
     </Button>
-  )
-}
+  );
+};

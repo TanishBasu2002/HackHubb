@@ -1,6 +1,5 @@
 # Fullstack Web Ecosystem for Developers: Next.js 13, React, Socket.io, Prisma, Tailwind, MySQL, MongoDB, Clerk, Webhooks, Livekit(Webrtc)
 
-
 Features:
 
 - Image Sharing both Personal and in community
@@ -39,7 +38,6 @@ npm i
 ```
 
 ### Setup .env file
-
 
 ```js
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
@@ -83,6 +81,6 @@ npm run dev
 
 Running commands with npm `npm run [command]`
 
-| command         | description                              |
-| :-------------- | :--------------------------------------- |
-| `dev`           | Starts a development instance of the app |
+| command | description                              |
+| :------ | :--------------------------------------- |
+| `dev`   | Starts a development instance of the app |

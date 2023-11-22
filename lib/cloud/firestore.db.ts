@@ -1,4 +1,3 @@
-
 import { collection, addDoc, doc, updateDoc, getDoc } from "firebase/firestore";
 import { database } from "../firebase.config";
 
@@ -9,7 +8,7 @@ export const addFiles = (
   imageName: string,
   parentId: string,
   userEmail: string,
-  ownerEmail: string
+  ownerEmail: string,
 ) => {
   try {
     addDoc(files, {

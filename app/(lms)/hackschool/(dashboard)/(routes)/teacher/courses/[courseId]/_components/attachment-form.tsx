@@ -11,11 +11,10 @@ import { Attachment, Course } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import { FileUpload } from "@/components/chat-models/tools/file-upload";
 
-
 interface AttachmentFormProps {
   initialData: Course & { attachments: Attachment[] };
   courseId: string;
-};
+}
 
 const formSchema = z.object({
   url: z.string().min(1),
@@ -23,7 +22,7 @@ const formSchema = z.object({
 
 export const AttachmentForm = ({
   initialData,
-  courseId
+  courseId,
 }: AttachmentFormProps) => {
   const [isEditing, setIsEditing] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
@@ -35,21 +34,21 @@ export const AttachmentForm = ({
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.post(`/api/courses/${courseId}/attachments`, values);
-      toast.success("Course updated",{
+      toast.success("Course updated", {
         style: {
-          borderRadius: '10px',
-          background: '#44495C',
-          color: '#fff',
+          borderRadius: "10px",
+          background: "#44495C",
+          color: "#fff",
         },
       });
       toggleEdit();
       router.refresh();
     } catch {
-      toast.error("Something went wrong",{
+      toast.error("Something went wrong", {
         style: {
-          borderRadius: '10px',
-          background: '#44495C',
-          color: '#fff',
+          borderRadius: "10px",
+          background: "#44495C",
+          color: "#fff",
         },
       });
     }
@@ -66,16 +65,14 @@ export const AttachmentForm = ({
     } finally {
       setDeletingId(null);
     }
-  }
+  };
 
   return (
     <div className="mt-6 border-none bg-slate-900 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
         Course attachments
         <Button onClick={toggleEdit} variant="default">
-          {isEditing && (
-            <>Cancel</>
-          )}
+          {isEditing && <>Cancel</>}
           {!isEditing && (
             <>
               <PlusCircle className="h-4 w-4 mr-2" />
@@ -99,9 +96,7 @@ export const AttachmentForm = ({
                   className="flex items-center p-3 w-full bg-indigo-900 border-indigo-950 border text-fuchsia-200 rounded-md"
                 >
                   <File className="h-4 w-4 mr-2 flex-shrink-0" />
-                  <p className="text-xs line-clamp-1">
-                    {attachment.name}
-                  </p>
+                  <p className="text-xs line-clamp-1">{attachment.name}</p>
                   {deletingId === attachment.id && (
                     <div>
                       <Loader2 className="h-4 w-4 animate-spin" />
@@ -137,5 +132,5 @@ export const AttachmentForm = ({
         </div>
       )}
     </div>
-  )
-}
+  );
+};

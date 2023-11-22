@@ -25,22 +25,19 @@ import { ChaptersList } from "./chapters-list";
 interface ChaptersFormProps {
   initialData: Course & { chapters: Chapter[] };
   courseId: string;
-};
+}
 
 const formSchema = z.object({
   title: z.string().min(1),
 });
 
-export const ChaptersForm = ({
-  initialData,
-  courseId
-}: ChaptersFormProps) => {
+export const ChaptersForm = ({ initialData, courseId }: ChaptersFormProps) => {
   const [isCreating, setIsCreating] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
 
   const toggleCreating = () => {
     setIsCreating((current) => !current);
-  }
+  };
 
   const router = useRouter();
 
@@ -56,57 +53,57 @@ export const ChaptersForm = ({
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.post(`/api/courses/${courseId}/chapters`, values);
-      toast.success("Chapter created",{
+      toast.success("Chapter created", {
         style: {
-          borderRadius: '10px',
-          background: '#44495C',
-          color: '#fff',
+          borderRadius: "10px",
+          background: "#44495C",
+          color: "#fff",
         },
       });
       toggleCreating();
       router.refresh();
     } catch {
-      toast.error("Something went wrong",{
+      toast.error("Something went wrong", {
         style: {
-          borderRadius: '10px',
-          background: '#44495C',
-          color: '#fff',
+          borderRadius: "10px",
+          background: "#44495C",
+          color: "#fff",
         },
       });
     }
-  }
+  };
 
   const onReorder = async (updateData: { id: string; position: number }[]) => {
     try {
       setIsUpdating(true);
 
       await axios.put(`/api/courses/${courseId}/chapters/reorder`, {
-        list: updateData
+        list: updateData,
       });
-      toast.success("Chapters reordered",{
+      toast.success("Chapters reordered", {
         style: {
-          borderRadius: '10px',
-          background: '#44495C',
-          color: '#fff',
+          borderRadius: "10px",
+          background: "#44495C",
+          color: "#fff",
         },
       });
       router.refresh();
     } catch {
-      toast.error("Something went wrong",{
+      toast.error("Something went wrong", {
         style: {
-          borderRadius: '10px',
-          background: '#44495C',
-          color: '#fff',
+          borderRadius: "10px",
+          background: "#44495C",
+          color: "#fff",
         },
       });
     } finally {
       setIsUpdating(false);
     }
-  }
+  };
 
   const onEdit = (id: string) => {
     router.push(`/hackschool/teacher/courses/${courseId}/chapters/${id}`);
-  }
+  };
 
   return (
     <div className="relative mt-6 border-none bg-slate-900 rounded-md p-4">
@@ -162,10 +159,12 @@ export const ChaptersForm = ({
         </Form>
       )}
       {!isCreating && (
-        <div className={cn(
-          "text-sm mt-2",
-          !initialData.chapters.length && "text-slate-500 italic"
-        )}>
+        <div
+          className={cn(
+            "text-sm mt-2",
+            !initialData.chapters.length && "text-slate-500 italic",
+          )}
+        >
           {!initialData.chapters.length && "No chapters"}
           <ChaptersList
             onEdit={onEdit}
@@ -180,5 +179,5 @@ export const ChaptersForm = ({
         </p>
       )}
     </div>
-  )
-}
+  );
+};

@@ -25,7 +25,7 @@ interface ChapterTitleFormProps {
   };
   courseId: string;
   chapterId: string;
-};
+}
 
 const formSchema = z.object({
   title: z.string().min(1),
@@ -51,26 +51,29 @@ export const ChapterTitleForm = ({
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}`, values);
-      toast.success("Chapter updated",{
+      await axios.patch(
+        `/api/courses/${courseId}/chapters/${chapterId}`,
+        values,
+      );
+      toast.success("Chapter updated", {
         style: {
-          borderRadius: '10px',
-          background: '#44495C',
-          color: '#fff',
+          borderRadius: "10px",
+          background: "#44495C",
+          color: "#fff",
         },
       });
       toggleEdit();
       router.refresh();
     } catch {
-      toast.error("Something went wrong",{
+      toast.error("Something went wrong", {
         style: {
-          borderRadius: '10px',
-          background: '#44495C',
-          color: '#fff',
+          borderRadius: "10px",
+          background: "#44495C",
+          color: "#fff",
         },
       });
     }
-  }
+  };
 
   return (
     <div className="mt-6 border-none bg-slate-900 rounded-md p-4">
@@ -87,11 +90,7 @@ export const ChapterTitleForm = ({
           )}
         </Button>
       </div>
-      {!isEditing && (
-        <p className="text-sm mt-2">
-          {initialData.title}
-        </p>
-      )}
+      {!isEditing && <p className="text-sm mt-2">{initialData.title}</p>}
       {isEditing && (
         <Form {...form}>
           <form
@@ -128,5 +127,5 @@ export const ChapterTitleForm = ({
         </Form>
       )}
     </div>
-  )
-}
+  );
+};

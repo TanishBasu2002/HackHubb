@@ -55,7 +55,7 @@ export const POST = async (request: Request) => {
   try {
     evnt = wh.verify(
       JSON.stringify(payload),
-      heads as IncomingHttpHeaders & WebhookRequiredHeaders
+      heads as IncomingHttpHeaders & WebhookRequiredHeaders,
     ) as Event;
   } catch (err) {
     return NextResponse.json({ message: err }, { status: 400 });
@@ -79,7 +79,7 @@ export const POST = async (request: Request) => {
         slug,
         logo_url || image_url,
         "org bio",
-        created_by
+        created_by,
       );
 
       return NextResponse.json({ message: "User created" }, { status: 201 });
@@ -87,7 +87,7 @@ export const POST = async (request: Request) => {
       console.log(err);
       return NextResponse.json(
         { message: "Internal Server Error" },
-        { status: 500 }
+        { status: 500 },
       );
     }
   }
@@ -102,14 +102,14 @@ export const POST = async (request: Request) => {
 
       return NextResponse.json(
         { message: "Invitation created" },
-        { status: 201 }
+        { status: 201 },
       );
     } catch (err) {
       console.log(err);
 
       return NextResponse.json(
         { message: "Internal Server Error" },
-        { status: 500 }
+        { status: 500 },
       );
     }
   }
@@ -127,14 +127,14 @@ export const POST = async (request: Request) => {
 
       return NextResponse.json(
         { message: "Invitation accepted" },
-        { status: 201 }
+        { status: 201 },
       );
     } catch (err) {
       console.log(err);
 
       return NextResponse.json(
         { message: "Internal Server Error" },
-        { status: 500 }
+        { status: 500 },
       );
     }
   }
@@ -156,7 +156,7 @@ export const POST = async (request: Request) => {
 
       return NextResponse.json(
         { message: "Internal Server Error" },
-        { status: 500 }
+        { status: 500 },
       );
     }
   }
@@ -178,7 +178,7 @@ export const POST = async (request: Request) => {
 
       return NextResponse.json(
         { message: "Internal Server Error" },
-        { status: 500 }
+        { status: 500 },
       );
     }
   }
@@ -196,14 +196,14 @@ export const POST = async (request: Request) => {
 
       return NextResponse.json(
         { message: "Organization deleted" },
-        { status: 201 }
+        { status: 201 },
       );
     } catch (err) {
       console.log(err);
 
       return NextResponse.json(
         { message: "Internal Server Error" },
-        { status: 500 }
+        { status: 500 },
       );
     }
   }

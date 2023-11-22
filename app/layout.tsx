@@ -1,29 +1,30 @@
-import { ClerkProvider } from '@clerk/nextjs'
-import { dark } from '@clerk/themes'
-import { Analytics } from '@vercel/analytics/react'
-import "./globals.css"
-import { ToasterProvider } from '@/lib/providers/toaster'
+import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
+import { Analytics } from "@vercel/analytics/react";
+import "./globals.css";
+import { ToasterProvider } from "@/lib/providers/toaster";
 export const metadata = {
-  title: 'HackSpace',
-}
- 
+  title: "HackSpace",
+};
+
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider  appearance={{
+    <ClerkProvider
+      appearance={{
         baseTheme: dark,
-      }}>
-
+      }}
+    >
       <html lang="en">
         <body suppressHydrationWarning>
-        <ToasterProvider />
+          <ToasterProvider />
           {children}
-          </body>
+        </body>
         <Analytics />
       </html>
     </ClerkProvider>
-  )
+  );
 }

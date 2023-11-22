@@ -28,7 +28,7 @@ interface Params {
   name: string;
   bio: string;
   image: string;
-  path: string ;
+  path: string;
 }
 
 export async function updateUser({
@@ -51,7 +51,7 @@ export async function updateUser({
         image,
         onboarded: true,
       },
-      { upsert: true }
+      { upsert: true },
     );
 
     if (path === "/profile/edit") {
