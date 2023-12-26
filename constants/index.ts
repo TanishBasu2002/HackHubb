@@ -67,11 +67,6 @@ export const sidebarLinks = [
     label: "HackChat",
   },
   {
-    imgURL: "/assets/code.png",
-    route: "/hackschool",
-    label: "Hack School",
-  },
-  {
     imgURL: "/assets/storage.png",
     route: "/storage",
     label: "File Storage",
