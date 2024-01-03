@@ -1,10 +1,11 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-.next
+
 # dependencies
-node_modules
+/node_modules
 /.pnp
 .pnp.js
-package-lock.json
+.yarn/install-state.gz
+
 # testing
 /coverage
 
@@ -14,6 +15,7 @@ package-lock.json
 
 # production
 /build
+
 # misc
 .DS_Store
 *.pem
@@ -24,14 +26,11 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env
 .env*.local
 
 # vercel
 .vercel
-.turbo
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-certificates

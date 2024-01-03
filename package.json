@@ -6,11 +6,17 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "npx prettier . --write",
-    "check": "npx prettier . --check"
+    "check": "npx prettier . --check",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
     "prettier": "3.1.1",
     "turbo": "latest"
   },

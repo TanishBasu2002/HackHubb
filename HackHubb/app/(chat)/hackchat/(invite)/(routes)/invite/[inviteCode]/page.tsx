@@ -2,8 +2,6 @@ import { currentProfile } from "@/lib/chat/current-profile";
 import { db } from "@/lib/db";
 import { redirectToSignIn } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
-
-/* eslint-disable react/react-in-jsx-scope */
 interface InviteCodePageProps {
   params: {
     inviteCode: string;
