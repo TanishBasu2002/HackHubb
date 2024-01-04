@@ -11,6 +11,7 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@repo/ui": "*",
     "@babel/traverse": "^7.23.6",
     "@clerk/nextjs": "^4.29.0",
     "@clerk/themes": "^1.7.9",
