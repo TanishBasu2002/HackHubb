@@ -4,9 +4,7 @@ export default function Home() {
   return (
     <>
       <p className="text-red-500">Skillcast</p>
-      <Button variant="default" size={"lg"}>
-        Cast
-      </Button>
+      <Button size={"lg"}>Cast</Button>
     </>
   );
 }
