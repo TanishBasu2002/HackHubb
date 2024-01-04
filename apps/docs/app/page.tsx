@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { cn } from "../../../packages/ui/src/lib/utils";
 
 export default function Home() {
   return (
@@ -19,7 +20,6 @@ export default function Home() {
             <Image
               src="/vercel.svg"
               alt="Vercel Logo"
-              className="dark:invert"
               width={100}
               height={24}
               priority

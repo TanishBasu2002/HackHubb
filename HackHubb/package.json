@@ -3,6 +3,7 @@
   "version": "1.1.0",
   "private": true,
   "scripts": {
+    "@repo/ui": "*",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -97,6 +98,8 @@
     "zustand": "^4.4.7"
   },
   "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
     "@prisma/client": "^5.7.1",
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^14.4.3",
