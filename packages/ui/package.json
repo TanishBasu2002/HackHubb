@@ -47,7 +47,14 @@
     "./toggle": "./src/components/ui/toggle.tsx",
     "./tooltip": "./src/components/ui/tooltip.tsx",
     "./use-toast": "./src/components/ui/use-toast.ts",
-    "./cn": "./src/lib/utils.ts"
+    "./cn": "./src/lib/utils.ts",
+    "./login-button": "./src/components/auth/login-button.tsx",
+    "./login-form": "./src/components/auth/login-form.tsx",
+    "./card-wrapper": "./src/components/auth/card-wrapper.tsx",
+    "./header": "./src/components/auth/header.tsx",
+    "./social": "./src/components/auth/social.tsx",
+    "./back-button": "./src/components/auth/back-button.tsx",
+    "./routes": "./src/routes.tsx"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
