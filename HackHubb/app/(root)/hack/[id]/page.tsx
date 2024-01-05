@@ -1,4 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
 import HackCard from "@/components/cards/HackCard";
 import Comment from "@/components/forms/Comment";
 import { fetchHackById } from "@/lib/actions/hack.actions";

@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react/react-in-jsx-scope */
 import UserCard from "@/components/cards/UserCard";
 import HacksTab from "@/components/share/HacksTab";
 import ProfileHeader from "@/components/share/ProfileHeader";
