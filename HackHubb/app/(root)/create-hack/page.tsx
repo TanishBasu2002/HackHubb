@@ -1,4 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
 import PostHack from "@/components/forms/PostHack";
 import { fetchUser } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs";
