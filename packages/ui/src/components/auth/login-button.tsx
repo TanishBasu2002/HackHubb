@@ -28,7 +28,12 @@ export const LoginButton = ({
       <Dialog>
         <DialogTrigger asChild={asChild}>{children}</DialogTrigger>
         <DialogContent className="p-0 w-auto bg-transparent border-none">
-          <LoginForm />
+          <LoginForm
+            title="Auth"
+            headerLabel="Welcome back"
+            backButtonLabel="Don't have an account?"
+            backButtonHref="/auth/register"
+          />
         </DialogContent>
       </Dialog>
     );
