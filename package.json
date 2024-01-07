@@ -28,5 +28,8 @@
     "apps/*",
     "packages/*",
     "HackHubb"
-  ]
+  ],
+  "dependencies": {
+    "@vercel/speed-insights": "^1.0.2"
+  }
 }

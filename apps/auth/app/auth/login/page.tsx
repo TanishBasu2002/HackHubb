@@ -1,4 +1,4 @@
-import { LoginForm } from "@repo/ui/login-form";
+import { LoginForm } from "@repo/ui/auth";
 
 const LoginPage = () => {
   return (
