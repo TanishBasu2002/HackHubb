@@ -1,6 +1,6 @@
-import { Button } from "@repo/ui/button";
+import { Button } from "@repo/ui/shadcn";
 import { cn } from "@repo/ui/cn";
-import { LoginButton } from "@repo/ui/login-button";
+import { LoginButton } from "@repo/ui/auth";
 import { Poppins } from "next/font/google";
 
 const font = Poppins({
