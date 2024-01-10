@@ -12,9 +12,9 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "./alert-dialog";
-import { Badge } from "./badge";
-import { Button, buttonVariants } from "./button";
-import { Calendar } from "./calendar";
+import { Badge, BadgeProps } from "./badge";
+import { Button, buttonVariants, ButtonProps } from "./button";
+import { Calendar, CalendarProps } from "./calendar";
 import {
   Card,
   CardContent,
@@ -119,7 +119,7 @@ import {
 } from "./form";
 import { cn } from "../../lib/utils";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./hover-card";
-import { Input } from "./input";
+import { Input, InputProps } from "./input";
 import { Label } from "./label";
 import {
   Menubar,
@@ -208,14 +208,14 @@ import {
   TableRow,
 } from "./table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./tabs";
-import { Textarea } from "./textarea";
+import { Textarea, TextareaProps } from "./textarea";
 import {
   Toast,
   ToastAction,
   ToastActionElement,
   ToastClose,
-  ToastDescription,
   ToastProps,
+  ToastDescription,
   ToastProvider,
   ToastTitle,
   ToastViewport,
@@ -229,7 +229,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "./tooltip";
-import { useToast, toast } from "./use-toast";
+import { useToast, toast, reducer } from "./use-toast";
 export {
   Alert,
   AlertDescription,
@@ -438,4 +438,14 @@ export {
   toast,
   toggleVariants,
   useToast,
+};
+export type {
+  ToastActionElement,
+  ToastProps,
+  BadgeProps,
+  ButtonProps,
+  CalendarProps,
+  InputProps,
+  TextareaProps,
+  reducer,
 };

@@ -1,5 +1,5 @@
-import { Button } from "@repo/ui/shadcn";
-import { cn } from "@repo/ui/cn";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { LoginButton } from "@repo/ui/auth";
 import { Poppins } from "next/font/google";
 
