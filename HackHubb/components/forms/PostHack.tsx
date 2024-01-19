@@ -51,8 +51,9 @@ export default function PostHack({ userId }: { userId: string }) {
 
         if (hasImageChanged) {
           const imgRes = await startUpload(files);
+          //@ts-ignore
           if (imgRes && imgRes[0].url) {
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            //@ts-ignore
             imageToUse = imgRes[0].url; // Use the uploaded image URL
           }
         }
