@@ -1,5 +1,5 @@
 import { Layout, Space } from "antd";
-import CurrentUser from "./current-user";
+import { CurrentUser } from "./current-user";
 
 const Header = () => {
   const headerStyles: React.CSSProperties = {
@@ -22,4 +22,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export { Header };

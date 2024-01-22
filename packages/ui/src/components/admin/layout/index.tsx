@@ -12,4 +12,4 @@ const Layout = ({ children }: React.PropsWithChildren) => {
   );
 };
 
-export default Layout;
+export { Layout };

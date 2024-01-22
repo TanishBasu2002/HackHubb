@@ -5,6 +5,11 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
+    "docs": "sudo turbo run dev --filter docs",
+    "auth": "sudo turbo run dev --filter auth",
+    "admin": "sudo turbo run dev --filter admin",
+    "container": "sudo turbo run dev --filter container",
+    "hub": "sudo turbo run dev --filter HackHubb",
     "format": "npx prettier . --write",
     "check": "npx prettier . --check",
     "prepare": "husky install"
