@@ -9,6 +9,7 @@
     "auth": "sudo turbo run dev --filter auth",
     "admin": "sudo turbo run dev --filter admin",
     "container": "sudo turbo run dev --filter container",
+    "board": "sudo turbo run dev --filter board",
     "hub": "sudo turbo run dev --filter HackHubb",
     "format": "npx prettier . --write",
     "check": "npx prettier . --check",
