@@ -73,7 +73,7 @@ export const sidebarLinks = [
   },
   {
     imgURL: "/assets/storage.png",
-    route: "http://localhost:5173/",
+    route: "https://admin-hackhubb.netlify.app/",
     label: "Admin",
   },
   {
