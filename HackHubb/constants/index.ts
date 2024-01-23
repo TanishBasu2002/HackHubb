@@ -58,7 +58,7 @@ export const sidebarLinks = [
   },
   {
     imgURL: "/assets/store.png",
-    route: `/`,
+    route: `/404`,
     label: "HackStore",
   },
   {
@@ -68,8 +68,18 @@ export const sidebarLinks = [
   },
   {
     imgURL: "/assets/storage.png",
-    route: "/storage",
+    route: "https://container-hackhubb.netlify.app/",
     label: "File Storage",
+  },
+  {
+    imgURL: "/assets/storage.png",
+    route: "http://localhost:5173/",
+    label: "Admin",
+  },
+  {
+    imgURL: "/assets/storage.png",
+    route: "https://hack-hubb-board.vercel.app/",
+    label: "Collabe",
   },
   {
     imgURL: "/assets/user.png",
@@ -78,7 +88,7 @@ export const sidebarLinks = [
   },
   {
     imgURL: "/assets/guide.png",
-    route: `/`,
+    route: `https://hackhubb-docs.netlify.app/`,
     label: "Guide",
   },
 ];
