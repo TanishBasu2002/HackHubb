@@ -6,7 +6,10 @@
     "./admin": "./src/components/admin/index.ts",
     "./shadcn": "./src/components/ui/index.ts",
     "./auth": "./src/components/auth/index.ts",
-    "./routes": "./src/routes.tsx"
+    "./routes": "./src/routes.tsx",
+    "./tsconfig": "./tailwind.config.js",
+    "./postcss": "./postcss.config.js",
+    "./gobals": "./globals.css"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
