@@ -1,20 +1,31 @@
 {
-  "name": "docs",
-  "type": "module",
+  "name": "nextra-docs-template",
   "version": "0.0.1",
+  "description": "Nextra docs template",
   "scripts": {
-    "dev": "astro dev --host",
-    "start": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shuding/nextra-docs-template.git"
+  },
+  "author": "Shu Ding <g@shud.in>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shuding/nextra-docs-template/issues"
+  },
+  "homepage": "https://github.com/shuding/nextra-docs-template#readme",
   "dependencies": {
-    "@astrojs/netlify": "^4.1.1",
-    "@astrojs/starlight": "^0.15.4",
-    "@astrojs/tailwind": "^5.1.0",
-    "astro": "^4.2.1",
-    "sharp": "^0.32.5",
-    "tailwindcss": "^3.4.1"
+    "next": "^13.0.6",
+    "nextra": "latest",
+    "nextra-theme-docs": "latest",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.11.10",
+    "typescript": "^4.9.3"
   }
 }
