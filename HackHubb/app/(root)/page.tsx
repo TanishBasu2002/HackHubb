@@ -1,5 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
-
 import HackCard from "@/components/cards/HackCard";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { fetchHacks } from "@/lib/actions/hack.actions";
@@ -7,11 +5,7 @@ import { fetchUser } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | undefined };
-}) {
+export default async function Home() {
   const user = await currentUser();
   if (!user) redirect("/sign-in");
   const userInfo = await fetchUser(user.id);

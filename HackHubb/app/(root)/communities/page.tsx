@@ -1,4 +1,5 @@
 import CommunityCard from "@/components/cards/CommunityCard";
+import Pagination from "@/components/share/Pagination";
 import Searchbar from "@/components/share/SearchBar";
 import { fetchCommunities } from "@/lib/actions/community.action";
 import { fetchUser } from "@/lib/actions/user.actions";
@@ -35,20 +36,26 @@ async function Page({
           <p className="no-result">No Result</p>
         ) : (
           <>
-            {result.communities.map(({ community }: any) => (
+            {result.communities.map((community) => (
               <CommunityCard
                 key={community.id}
                 id={community.id}
                 name={community.name}
                 username={community.username}
-                imgUrl={community.image ? community.image : "/assets/c.png"}
-                bio=""
+                imgUrl={community.image}
+                bio={community.bio}
                 members={community.members}
               />
             ))}
           </>
         )}
       </section>
+
+      <Pagination
+        path="communities"
+        pageNumber={searchParams?.page ? +searchParams.page : 1}
+        isNext={result.isNext}
+      />
     </>
   );
 }
