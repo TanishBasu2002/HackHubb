@@ -1,4 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
 "use client";
 
 import { ActionTooltip } from "../tools/action-tooltip";

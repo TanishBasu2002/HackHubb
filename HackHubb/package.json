@@ -100,6 +100,7 @@
     "zustand": "^4.4.7"
   },
   "devDependencies": {
+    "database": "*",
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "@prisma/client": "^5.7.1",
