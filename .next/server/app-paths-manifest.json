@@ -1,7 +1,0 @@
-{
-  "/api/messages/route": "app/api/messages/route.js",
-  "/(chat)/hackchat/(setup)/page": "app/(chat)/hackchat/(setup)/page.js",
-  "/(root)/page": "app/(root)/page.js",
-  "/(chat)/hackchat/(main)/(routes)/servers/[serverId]/channels/[channelId]/page": "app/(chat)/hackchat/(main)/(routes)/servers/[serverId]/channels/[channelId]/page.js",
-  "/(chat)/hackchat/(main)/(routes)/servers/[serverId]/page": "app/(chat)/hackchat/(main)/(routes)/servers/[serverId]/page.js"
-}
