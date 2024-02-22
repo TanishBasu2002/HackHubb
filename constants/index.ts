@@ -20,11 +20,6 @@ export const bottombarLinks = [
     label: "Communities",
   },
   {
-    imgURL: "/assets/store.svg",
-    route: "/hackstore",
-    label: "HackStore",
-  },
-  {
     imgURL: "/assets/message.svg",
     route: "/hackchat",
     label: "HackChat",
@@ -57,29 +52,9 @@ export const sidebarLinks = [
     label: "Communities",
   },
   {
-    imgURL: "/assets/store.svg",
-    route: `/404`,
-    label: "HackStore",
-  },
-  {
     imgURL: "/assets/message.svg",
     route: "/hackchat",
     label: "HackChat",
-  },
-  {
-    imgURL: "/assets/storage.svg",
-    route: "https://container-hackhubb.netlify.app/",
-    label: "File Storage",
-  },
-  {
-    imgURL: "/assets/admin.svg",
-    route: "https://admin-hackhubb.netlify.app/",
-    label: "Admin",
-  },
-  {
-    imgURL: "/assets/collabe.svg",
-    route: "https://hack-hubb-board.vercel.app/",
-    label: "Collabe",
   },
   {
     imgURL: "/assets/user.svg",
