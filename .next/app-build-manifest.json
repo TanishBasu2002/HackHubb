@@ -1,0 +1,69 @@
+{
+  "pages": {
+    "/(root)/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(root)/layout.css",
+      "static/chunks/app/(root)/layout.js"
+    ],
+    "/(root)/loading": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(root)/loading.js"
+    ],
+    "/loading": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/loading.js"
+    ],
+    "/not-found": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/not-found.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
+    "/(root)/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(root)/page.js"
+    ],
+    "/(chat)/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(chat)/layout.css",
+      "static/chunks/app/(chat)/layout.js"
+    ],
+    "/(chat)/hackchat/(setup)/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(chat)/hackchat/(setup)/page.css",
+      "static/chunks/app/(chat)/hackchat/(setup)/page.js"
+    ],
+    "/(chat)/hackchat/(main)/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(chat)/hackchat/(main)/layout.js"
+    ],
+    "/(chat)/hackchat/(main)/(routes)/servers/[serverId]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(chat)/hackchat/(main)/(routes)/servers/[serverId]/page.js"
+    ],
+    "/(chat)/hackchat/(main)/(routes)/servers/[serverId]/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(chat)/hackchat/(main)/(routes)/servers/[serverId]/layout.js"
+    ],
+    "/(chat)/hackchat/(main)/(routes)/servers/[serverId]/channels/[channelId]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/(chat)/hackchat/(main)/(routes)/servers/[serverId]/channels/[channelId]/page.css",
+      "static/chunks/app/(chat)/hackchat/(main)/(routes)/servers/[serverId]/channels/[channelId]/page.js"
+    ]
+  }
+}
